@@ -10,11 +10,23 @@ function SignUp() {
   const [email, setEmail] = useState(''); // État pour l'email de l'utilisateur.
   const [username, setUsername] = useState(''); // État pour le nom d'utilisateur.
   const [password, setPassword] = useState(''); // État pour le mot de passe.
+  const [confirmPassword, setConfirmPassword] = useState(''); // État pour le mot de passe à confirmer.
+  const [error, setError] = useState(''); // État pour les erreurs.
+
+  const validatePassword = () => {
+    if (password !== confirmPassword) {
+      setError("Les mots de passe ne correspondent pas");
+      console.log("Les mots de passe ne correspondent pas");
+      return false;
+    }
+  };
 
   // Définition de la fonction handleSubmit qui sera appelée lors de la soumission du formulaire.
   const handleSubmit = (e) => {
     e.preventDefault(); // Empêche le comportement par défaut de soumission de formulaire (rechargement de la page).
+    if (validatePassword()){
     dispatch(signUpUser({ email, username, password })); // Dispatch de l'action signUpUser avec email, username, et password comme payload.
+    }
   };
 
   return (
@@ -43,6 +55,15 @@ function SignUp() {
         value={password}
         onChange={(e) => setPassword(e.target.value)} // Met à jour l'état du mot de passe à chaque changement.
       />
+      <label htmlFor="confirmPassword">Mot de passe : </label>
+      <input
+        type="password"
+        placeholder="Mot de passe à confirmer"
+        id="confirmPassword"
+        value={confirmPassword}
+        onChange={(e) => setConfirmPassword(e.target.value)} // Met à jour l'état du mot de passe à chaque changement.
+      />
+      {error && <p>{error}</p>}
       <button type="submit">S'inscrire</button>
     </form>
   );

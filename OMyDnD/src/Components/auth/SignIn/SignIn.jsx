@@ -23,14 +23,6 @@ function SignIn() { // Déclare le composant fonctionnel SignIn.
         value={email}
         onChange={(e) => setEmail(e.target.value)} // Met à jour l'état local email lors de chaque saisie.
       />
-      <label htmlFor="username">Nom d'utilisateur : </label>
-      <input
-        type="username"
-        placeholder="Nom d'utilisateur"
-        id="username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)} // Met à jour l'état local username lors de chaque saisie.
-      />
       <label htmlFor="password">Mot de passe : </label>
       <input
         type="password"
