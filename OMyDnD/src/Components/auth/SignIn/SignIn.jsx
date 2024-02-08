@@ -1,6 +1,7 @@
 import React, { useState } from 'react'; // Importe React et le Hook useState pour gérer l'état local du composant.
 import { useDispatch } from 'react-redux'; // Importe le Hook useDispatch pour permettre l'envoi d'actions Redux.
 import { signInUser } from '../../../store/slices/authSlice.js'; // Importe l'action signInUser depuis le slice d'authentification.
+import { FormField, Button, Form } from 'semantic-ui-react'
 
 function SignIn() { // Déclare le composant fonctionnel SignIn.
   const dispatch = useDispatch(); // Initialise useDispatch pour envoyer des actions à l'état global Redux.
@@ -14,25 +15,33 @@ function SignIn() { // Déclare le composant fonctionnel SignIn.
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="email">L'adresse mail : </label>
+    <div className='flex flex-col justify-center items-center h-screen'>
+    <Form onSubmit={handleSubmit} className='flex flex-col m-8 w-80'>
+      <FormField>
+      <label htmlFor="email"><p className='text-xl uppercase'>L'adresse mail : </p></label>
       <input
+        className='custom-size'
         type="email"
         placeholder="Email"
         id="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)} // Met à jour l'état local email lors de chaque saisie.
       />
-      <label htmlFor="password">Mot de passe : </label>
+      </FormField>
+      <FormField>
+      <label htmlFor="password"><p className='text-xl uppercase'>Mot de passe : </p></label>
       <input
+        className='custom-size'
         type="password"
         placeholder="Mot de passe"
         id="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)} // Met à jour l'état local password lors de chaque saisie.
-      />
-      <button type="submit">Connexion</button>
-    </form>
+      /></FormField>
+      <Button type="submit" className="register-button">Connexion</Button>
+      
+    </Form>
+    </div>
   );
 }
 

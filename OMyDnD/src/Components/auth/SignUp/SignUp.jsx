@@ -2,6 +2,7 @@
 import React, { useState } from 'react'; // Importation de React pour utiliser les hooks et JSX.
 import { useDispatch } from 'react-redux'; // Importation du hook useDispatch de react-redux pour dispatcher des actions Redux.
 import { signUpUser } from '../../../store/slices/authSlice.js'; // Importation de l'action signUpUser depuis son fichier de définition.
+import { FormField, Button, Form } from 'semantic-ui-react'
 
 function SignUp() {
   
@@ -30,42 +31,56 @@ function SignUp() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="username">Nom d'utilisateur : </label>
+    <div className='flex flex-col justify-center items-center h-screen'>
+      <Form onSubmit={handleSubmit} className='flex flex-col m-8 w-80'>
+      <FormField>
+      <label htmlFor="username"><p className='text-xl uppercase'>Nom d'utilisateur : </p></label>
       <input
-        type="username"
-        placeholder="username"
+      className='custom-size'
+        type="text"
+        placeholder="Nom d'utilisateur"
         id="username"
         value={username}
         onChange={(e) => setUsername(e.target.value)} // Met à jour l'état du nom d'utilisateur à chaque changement.
       />
-      <label htmlFor="email">L'adresse mail : </label>
+      </FormField>
+      <FormField>
+      <label htmlFor="email"><p className='text-xl uppercase'>adresse e-mail : </p></label>
       <input
+      className='custom-size'
         type="email"
         placeholder="Email"
         id="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)} // Met à jour l'état de l'email à chaque changement.
       />
-      <label htmlFor="password">Mot de passe : </label>
+      </FormField>
+      <FormField>
+      <label htmlFor="password"><p className='text-xl uppercase'>Mot de passe : </p></label>
       <input
+      className='custom-size'
         type="password"
         placeholder="Mot de passe"
         id="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)} // Met à jour l'état du mot de passe à chaque changement.
       />
-      <label htmlFor="confirmPassword">Mot de passe : </label>
+      </FormField>
+      <FormField>
+      <label htmlFor="confirmPassword"><p className='text-xl uppercase'>Confirmation : </p></label>
       <input
+      className='custom-size'
         type="password"
-        placeholder="Mot de passe à confirmer"
+        placeholder="Confirmez votre mot de passe"
         id="confirmPassword"
         value={confirmPassword}
         onChange={(e) => setConfirmPassword(e.target.value)} // Met à jour l'état du mot de passe à chaque changement.
       />
+      </FormField>
       {error && <p>{error}</p>}
-      <button type="submit">S'inscrire</button>
-    </form>
+      <Button type="submit" className="register-button">S'inscrire</Button>
+    </Form>
+    </div>
   );
 }
 

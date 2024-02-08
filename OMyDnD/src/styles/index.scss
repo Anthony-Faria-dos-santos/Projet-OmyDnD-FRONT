@@ -4,3 +4,15 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+.custom-size {
+    font-size: 1.2em !important;
+
+    &::placeholder {
+        font-size: 1.2rem !important;
+    }
+}
+
+.register-button {
+    font-size: 1.2em !important;
+}
