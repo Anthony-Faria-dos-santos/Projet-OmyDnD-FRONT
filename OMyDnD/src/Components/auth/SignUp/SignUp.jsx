@@ -20,6 +20,7 @@ function SignUp() {
       console.log("Les mots de passe ne correspondent pas");
       return false;
     }
+    return true;
   };
 
   // Définition de la fonction handleSubmit qui sera appelée lors de la soumission du formulaire.
@@ -27,6 +28,11 @@ function SignUp() {
     e.preventDefault(); // Empêche le comportement par défaut de soumission de formulaire (rechargement de la page).
     if (validatePassword()){
     dispatch(signUpUser({ email, username, password })); // Dispatch de l'action signUpUser avec email, username, et password comme payload.
+    setEmail('');
+    setUsername('');
+    setPassword('');
+    setConfirmPassword('');
+    setError('');
     }
   };
 
