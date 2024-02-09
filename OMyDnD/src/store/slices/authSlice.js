@@ -68,11 +68,22 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => { // Traite les actions asynchrones.
     builder
+      .addCase(signUpUser.pending, (state) => { // Gère l'état pendant l'inscription.
+        state.status = "loading"; // Indique que l'action est en cours.
+      })
       // Gère l'état après une inscription réussie.
       .addCase(signUpUser.fulfilled, (state, action) => {
         state.user = action.payload.user; // Met à jour l'utilisateur.
         state.token = action.payload.token; // Met à jour le token.
         state.status = "succeeded"; // Indique que l'action a réussi.
+      })
+      // Gère l'état après une inscription échouée.
+      .addCase(signUpUser.rejected, (state, action) => {
+        state.status = "failed"; // Indique que l'action a échoué.
+        state.error = action.payload.message; // Met à jour l'erreur.
+      })
+      .addCase(signInUser.pending, (state) => { // Gère l'état pendant la connexion.
+        state.status = "loading"; // Indique que l'action est en cours.
       })
       // Gère l'état après une connexion réussie.
       .addCase(signInUser.fulfilled, (state, action) => {
@@ -80,12 +91,25 @@ const authSlice = createSlice({
         state.token = action.payload.token; // Met à jour le token.
         state.status = "succeeded"; // Indique que l'action a réussi.
       })
+      // Gère l'état après une connexion échouée.
+      .addCase(signInUser.rejected, (state, action) => {
+        state.status = "failed"; // Indique que l'action a échoué.
+        state.error = action.payload.message; // Met à jour l'erreur.
+      })
+      .addCase(deleteUser.pending, (state) => { // Gère l'état pendant la suppression de compte.
+        state.status = "loading"; // Indique que l'action est en cours.
+      })
       // Gère l'état après une suppression de compte réussie.
       .addCase(deleteUser.fulfilled, (state) => {
         state.user = null; // Réinitialise l'utilisateur à null.
         state.token = null; // Réinitialise le token à null.
         state.status = "succeeded"; // Indique que l'action a réussi.
-      });
+      })
+      // Gère l'état après une suppression de compte échouée.
+      .addCase(deleteUser.rejected, (state, action) => {
+        state.status = "failed"; // Indique que l'action a échoué.
+        state.error = action.payload.message; // Met à jour l'erreur.
+      });      
   },
 });
 
