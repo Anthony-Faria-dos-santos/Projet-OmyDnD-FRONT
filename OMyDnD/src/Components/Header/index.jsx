@@ -8,54 +8,55 @@ import {
 } from "@heroicons/react/24/outline";
 import { Button } from "semantic-ui-react";
 import Sidebar from "../UserPanel/SideBar";
+import { Link } from "react-router-dom";
 
 const sanctuaries = [
   {
     name: "Races",
     description: "Get a better understanding of your traffic",
-    href: "#",
+    href: "/sanctuary/races",
     icon: `/images/races-logo.png`,
   },
   {
     name: "Classes",
     description: "Speak directly to your customers",
-    href: "#",
+    href: "/sanctuary/classes",
     icon: `/images/classes-logo.png`,
   },
   {
     name: "Personnalités et historiques",
     description: "Your customers’ data will be safe and secure",
-    href: "#",
+    href: "/sanctuary/backgrounds",
     icon: `/images/background-logo.png`,
   },
   {
     name: "Caractéristiques",
     description: "Connect with third-party tools",
-    href: "#",
+    href: "/sanctuary/abilities",
     icon: `/images/caracteristiques-logo.png`,
   },
   {
     name: "Équipements",
     description: "Build strategic funnels that will convert",
-    href: "#",
+    href: "/sanctuary/equipments",
     icon: `/images/equipements-logo.png`,
   },
   {
     name: "Altérations d'état",
     description: "Build strategic funnels that will convert",
-    href: "#",
+    href: "/sanctuary/conditions",
     icon: `/images/alterations-logo.png`,
   },
   {
     name: "Sorts",
     description: "Build strategic funnels that will convert",
-    href: "#",
+    href: "/sanctuary/spells",
     icon: `/images/sorts-logo.png`,
   },
   {
     name: "Dons",
     description: "Build strategic funnels that will convert",
-    href: "#",
+    href: "/sanctuary/skills",
     icon: `/images/dons-logo.png`,
   },
 ];
@@ -67,6 +68,7 @@ function classNames(...classes) {
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <header className="bg-white border-solid border-b-indigo-500 border-b-4">
@@ -101,7 +103,7 @@ function Header() {
 
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
           <Popover className="relative">
-            <Popover.Button className="flex items-center gap-x-1 rounded-md bg-indigo-600 px-7 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500">
+            <Popover.Button onClick={() => setOpen(!open)} className="flex items-center gap-x-1 rounded-md bg-indigo-600 px-7 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500">
               Sanctuaire
               <Bars3Icon
                 className="h-5 w-5 float-right ml-2 text-white"
@@ -111,6 +113,7 @@ function Header() {
 
             <Transition
               as={Fragment}
+              show={open}
               enter="transition ease-out duration-200"
               enterFrom="opacity-0 translate-y-1"
               enterTo="opacity-100 translate-y-0"
@@ -120,12 +123,13 @@ function Header() {
             >
               <Popover.Panel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
                 <div className="p-4">
-                  <a
-                    href="#"
+                  <Link
+                    to="/sanctuary"
                     className="font-semibold text-indigo-600 hover:text-indigo-500 flex justify-center"
+                    onClick={() => setOpen(false)}
                   >
                     Voir tout
-                  </a>
+                  </Link>
                   {sanctuaries.map((item) => (
                     <div
                       key={item.name}
@@ -139,13 +143,14 @@ function Header() {
                         />
                       </div>
                       <div className="flex-auto">
-                        <a
-                          href={item.href}
+                        <Link
+                          to={item.href}
                           className="block font-semibold text-gray-900 hover:text-indigo-600"
+                          onClick={() => setOpen(false)}
                         >
                           {item.name}
                           <span className="absolute inset-0" />
-                        </a>
+                        </Link>
                         <p className="mt-1 text-gray-600">{item.description}</p>
                       </div>
                     </div>
@@ -156,29 +161,29 @@ function Header() {
           </Popover>
 
           <button className="rounded-md bg-indigo-600 px-7 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500">
-            <a
-              href="#"
+            <Link
+              to="#"
               className="text-sm font-semibold leading-6 text-[#fff] hover:text-[#fff]"
             >
               Outil
-            </a>
+            </Link>
           </button>
           <button className="rounded-md bg-indigo-600 px-7 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500">
-            <a
-              href="#"
+            <Link
+              to="#"
               className="text-sm font-semibold leading-6 text-[#fff] hover:text-[#fff]"
             >
               Contact
-            </a>
+            </Link>
           </button>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <Link to="#" className="text-sm font-semibold leading-6 text-gray-900">
             <MagnifyingGlassCircleIcon
               className="h-10 w-10"
               aria-hidden="true"
             />
-          </a>
+          </Link>
         </div>
       </nav>
       <Dialog
@@ -236,12 +241,12 @@ function Header() {
                         />
                       </Disclosure.Button>
                       <Disclosure.Panel className="mt-2 space-y-2">
-                        <a
-                          href="#"
+                        <Link
+                          to="#"
                           className="font-semibold text-indigo-600 hover:text-indigo-500 flex justify-center text-sm"
                         >
                           Voir tout
-                        </a>
+                        </Link>
                         {[...sanctuaries].map((item) => (
                           <Disclosure.Button
                             key={item.name}
@@ -256,18 +261,18 @@ function Header() {
                     </>
                   )}
                 </Disclosure>
-                <a
-                  href="#"
+                <Link
+                  to="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Outil
-                </a>
-                <a
-                  href="#"
+                </Link>
+                <Link
+                  to="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Contact
-                </a>
+                </Link>
               </div>
             </div>
           </div>
