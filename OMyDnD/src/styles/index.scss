@@ -13,6 +13,11 @@
     background: #6366f1 !important;
 }
 
+.sidebar-border {
+    border-right: 1px solid #E7E7E9;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  }
+
 @media (min-width: 640px) and (max-width: 1024px) {
     .custom-link {
         display: none !important;

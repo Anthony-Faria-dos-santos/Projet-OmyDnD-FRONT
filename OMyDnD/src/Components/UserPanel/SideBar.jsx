@@ -9,20 +9,27 @@ import {
   DevicePhoneMobileIcon,
   UserGroupIcon,
 } from "@heroicons/react/24/outline";
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
-
-const navigation = [
-  { name: "Profil", href: "#", icon: UserIcon, current: false },
-  { name: "Personnages", href: "#", icon: UserGroupIcon, current: false },
-  { name: "Créer un compte", href: "#", icon: DevicePhoneMobileIcon, current: false },
-  { name: "Se connecter", href: "#", icon: ArrowRightEndOnRectangleIcon, current: false },
-  { name: "Se déconnecter", href: "#", icon: ArrowLeftStartOnRectangleIcon, current: false },
-];
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../store/slices/authSlice";
+import { simulateLogin } from "../../store/slices/authSlice";
 
 function Sidebar({ sidebarOpen, setSidebarOpen }) {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
+  const isLoggedIn = !!user;
+
+  const handleLogout = () => {
+    dispatch(logout());
+    localStorage.removeItem("token");
+    setSidebarOpen(false);
+  };
+
+  const handleSimulateLogin = () => {
+    dispatch(simulateLogin());
+    localStorage.setItem("token", "fakeToken123");
+  };
+
   return (
     <Transition.Root show={sidebarOpen} as={Fragment}>
       <Dialog as="div" className="relative z-40" onClose={setSidebarOpen}>
@@ -36,7 +43,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
             leaveFrom="translate-x-0"
             leaveTo="-translate-x-full"
           >
-            <Dialog.Panel className="relative flex-1 flex flex-col max-w-xs w-full bg-white">
+            <Dialog.Panel className="relative flex-1 flex flex-col max-w-xs w-full bg-white sidebar-border">
               <button
                 type="button"
                 className="border border-transparent absolute top-0 right-0 mt-2 mr-2 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
@@ -48,32 +55,75 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
               
               <div className="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
                 <nav className="mt-5 px-2 space-y-1">
-                  {navigation.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className={classNames(
-                        item.current ? "bg-gray-100 text-gray-900" : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
-                        "group flex items-center px-2 py-2 text-base font-medium rounded-md"
-                      )}
+                <button onClick={handleSimulateLogin} className="group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900">
+                    <ArrowRightEndOnRectangleIcon
+                      className="mr-4 flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"
+                      aria-hidden="true"
+                    />
+                    Simuler une connexion
+                  </button>
+                  {isLoggedIn ? (
+                    <>
+                    <Link
+                      to="/profile"
+                      className="group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900"
                     >
-                      <item.icon
-                        className={classNames(
-                          item.current ? "text-gray-500" : "text-gray-400 group-hover:text-gray-500",
-                          "mr-4 flex-shrink-0 h-6 w-6"
-                        )}
+                      <UserIcon
+                        className="mr-4 flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"
                         aria-hidden="true"
                       />
-                      {item.name}
-                    </a>
-                  ))}
+                      Profil de <span className="text-indigo-600 ml-1 font-bold"> {user.name} </span>
+
+                    </Link>
+                    <Link
+                      to="/characters"
+                      className="group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                    >
+                      <UserGroupIcon
+                        className="mr-4 flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"
+                        aria-hidden="true"
+                      />
+                      Personnages
+                    </Link>
+                    <button
+                      onClick={handleLogout}
+                      className="group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                    >
+                      <ArrowLeftStartOnRectangleIcon
+                        className="mr-4 h-6 w-6 text-gray-400 group-hover:text-gray-500"
+                        aria-hidden="true"
+                      />
+                      Se déconnecter
+                    </button>
+                    </>
+                  ) : (
+                    <>
+                    <Link
+                      to="/signup"
+                      className="group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                    >
+                      <DevicePhoneMobileIcon
+                        className="mr-4 flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"
+                        aria-hidden="true"
+                      />
+                      Créer un compte
+                    </Link>
+                    <Link
+                      to="/signin"
+                      className="group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                    >
+                      <ArrowRightEndOnRectangleIcon
+                        className="mr-4 flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"
+                        aria-hidden="true"
+                      />
+                      Se connecter
+                    </Link>
+                    </>
+                  )}
                 </nav>
               </div>
             </Dialog.Panel>
           </Transition.Child>
-          <div className="flex-shrink-0 w-14" aria-hidden="true">
-            {/* Élément vide pour forcer la sidebar à rétrécir pour s'adapter à l'icône de fermeture */}
-          </div>
         </div>
       </Dialog>
     </Transition.Root>

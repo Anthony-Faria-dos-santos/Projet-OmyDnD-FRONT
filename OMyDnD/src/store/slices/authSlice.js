@@ -32,7 +32,7 @@ export const signInUser = createAsyncThunk(
       localStorage.setItem("token", response.data.token); // Stocke le token reçu dans le localStorage.
       return response.data; // Renvoie les données de l'utilisateur et le token.
     } catch (error) {
-      return rejectWithValue(error.response.data); // Gère les erreurs en renvoyant les données d'erreur.
+      return rejectWithValue("Échec de la connexion. Vérifiez vos identifiants."); // Gère les erreurs en renvoyant les données d'erreur.
     }
   }
 );
@@ -65,6 +65,14 @@ const authSlice = createSlice({
       state.user = null; // Réinitialise l'utilisateur à null.
       state.token = null; // Réinitialise le token à null.
     },
+
+    //! Fonction pour simuler une connexion, à retirer en production.
+    simulateLogin(state) { // Reducer pour simuler une connexion.
+      state.user = { id: "user123", name: "John Doe", email: "johndoe@example.com" }; // Données utilisateur factices
+        state.token = "fakeToken123"; // Token factice
+        state.status = "succeeded"; // Simuler une connexion réussie
+    }
+    //! 
   },
   extraReducers: (builder) => { // Traite les actions asynchrones.
     builder
@@ -76,6 +84,7 @@ const authSlice = createSlice({
         state.user = action.payload.user; // Met à jour l'utilisateur.
         state.token = action.payload.token; // Met à jour le token.
         state.status = "succeeded"; // Indique que l'action a réussi.
+        state.error = null; // Réinitialise l'erreur.
       })
       // Gère l'état après une inscription échouée.
       .addCase(signUpUser.rejected, (state, action) => {
@@ -90,6 +99,7 @@ const authSlice = createSlice({
         state.user = action.payload.user; // Met à jour l'utilisateur.
         state.token = action.payload.token; // Met à jour le token.
         state.status = "succeeded"; // Indique que l'action a réussi.
+        state.error = null; // Réinitialise l'erreur.
       })
       // Gère l'état après une connexion échouée.
       .addCase(signInUser.rejected, (state, action) => {
@@ -104,6 +114,7 @@ const authSlice = createSlice({
         state.user = null; // Réinitialise l'utilisateur à null.
         state.token = null; // Réinitialise le token à null.
         state.status = "succeeded"; // Indique que l'action a réussi.
+        state.error = null; // Réinitialise l'erreur.
       })
       // Gère l'état après une suppression de compte échouée.
       .addCase(deleteUser.rejected, (state, action) => {
@@ -112,6 +123,10 @@ const authSlice = createSlice({
       });      
   },
 });
+
+//! Fonction pour simuler une connexion, à retirer en production.
+export const { simulateLogin } = authSlice.actions; // Exporte les actions de simulation de connexion.
+//!
 
 // Exporte l'action de déconnexion pour utilisation dans les composants.
 export const { logout } = authSlice.actions;
