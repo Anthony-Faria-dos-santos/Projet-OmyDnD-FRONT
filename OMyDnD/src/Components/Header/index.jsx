@@ -71,7 +71,7 @@ function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="bg-white border-solid border-b-indigo-500 border-b-4">
+    <header className="bg-white border-solid border-b-gray-700 border-b-4">
       <nav
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
         aria-label="Global"
@@ -79,12 +79,12 @@ function Header() {
         <div className="flex lg:flex-1">
           <button
             type="button"
-            className="px-4 text-gray-500 "
+            className="px-4 text-gray-400"
             onClick={() => setSidebarOpen(true)}
           >
-            <span className="sr-only">Open sidebar</span>
+            <span className="sr-only">Ouvrir bar latérale</span>
             <UserCircleIcon
-              className="text-black h-10 w-10"
+              className="text-gray-500 h-10 w-10 hover:text-gray-600"
               aria-hidden="true"
             />
           </button>
@@ -103,7 +103,10 @@ function Header() {
 
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
           <Popover className="relative">
-            <Popover.Button onClick={() => setOpen(!open)} className="flex items-center gap-x-1 rounded-md bg-indigo-600 px-7 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500">
+            <Popover.Button
+              onClick={() => setOpen(!open)}
+              className="flex items-center gap-x-1 rounded-md bg-gray-700 px-7 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600"
+            >
               Sanctuaire
               <Bars3Icon
                 className="h-5 w-5 float-right ml-2 text-white"
@@ -121,11 +124,11 @@ function Header() {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
+              <Popover.Panel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-gray-700 text-white shadow-lg ring-1 ring-gray-900/5">
                 <div className="p-4">
                   <Link
                     to="/sanctuary"
-                    className="font-semibold text-indigo-600 hover:text-indigo-500 flex justify-center"
+                    className="font-semibold text-white hover:text-gray-500 flex justify-center"
                     onClick={() => setOpen(false)}
                   >
                     Voir tout
@@ -133,25 +136,25 @@ function Header() {
                   {sanctuaries.map((item) => (
                     <div
                       key={item.name}
-                      className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
+                      className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-500"
                     >
                       <div className="flex h-11 w-11 flex-none items-center justify-center rounded-2xl bg-gray-50 group-hover:bg-white">
                         <img
                           src={item.icon}
-                          className="h-9 w-12 text-gray-600 group-hover:text-indigo-600"
+                          className="h-9 w-12 text-gray-600 group-hover:text-gray-700"
                           aria-hidden="true"
                         />
                       </div>
                       <div className="flex-auto">
                         <Link
                           to={item.href}
-                          className="block font-semibold text-gray-900 hover:text-indigo-600"
+                          className="block font-semibold text-gray-50 hover:text-gray-900"
                           onClick={() => setOpen(false)}
                         >
                           {item.name}
                           <span className="absolute inset-0" />
                         </Link>
-                        <p className="mt-1 text-gray-600">{item.description}</p>
+                        <p className="mt-1 text-gray-50">{item.description}</p>
                       </div>
                     </div>
                   ))}
@@ -160,7 +163,7 @@ function Header() {
             </Transition>
           </Popover>
 
-          <button className="rounded-md bg-indigo-600 px-7 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500">
+          <button className="rounded-md bg-gray-700 px-7 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600">
             <Link
               to="#"
               className="text-sm font-semibold leading-6 text-[#fff] hover:text-[#fff]"
@@ -168,7 +171,7 @@ function Header() {
               Outil
             </Link>
           </button>
-          <button className="rounded-md bg-indigo-600 px-7 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500">
+          <button className="rounded-md bg-gray-700 px-7 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600">
             <Link
               to="#"
               className="text-sm font-semibold leading-6 text-[#fff] hover:text-[#fff]"
@@ -178,9 +181,12 @@ function Header() {
           </button>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link to="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <Link
+            to="#"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
             <MagnifyingGlassCircleIcon
-              className="h-10 w-10"
+              className="h-10 w-10 text-gray-400 hover:text-gray-600"
               aria-hidden="true"
             />
           </Link>
@@ -243,7 +249,7 @@ function Header() {
                       <Disclosure.Panel className="mt-2 space-y-2">
                         <Link
                           to="#"
-                          className="font-semibold text-indigo-600 hover:text-indigo-500 flex justify-center text-sm"
+                          className="font-semibold text-gray-700 hover:text-gray-600 flex justify-center text-sm"
                         >
                           Voir tout
                         </Link>

@@ -13,10 +13,7 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/sanctuary" element={<Sanctuary />} />
-        <Route
-          path="/sanctuary/:featureType"
-          element={<CoreFeatures />}
-        />
+        <Route path="/sanctuary/:featureType" element={<CoreFeatures />} />
       </Routes>
     </Router>
   );
