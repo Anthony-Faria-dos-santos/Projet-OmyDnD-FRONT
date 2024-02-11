@@ -7,6 +7,7 @@ import {
   UserCircleIcon,
 } from "@heroicons/react/24/outline";
 import { Button } from "semantic-ui-react";
+import Sidebar from "../UserPanel/SideBar";
 
 const sanctuaries = [
   {
@@ -65,6 +66,7 @@ function classNames(...classes) {
 
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <header className="bg-white border-solid border-b-indigo-500 border-b-4">
@@ -73,13 +75,18 @@ function Header() {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">profil utilisateur</span>
+          <button
+            type="button"
+            className="px-4 text-gray-500 "
+            onClick={() => setSidebarOpen(true)}
+          >
+            <span className="sr-only">Open sidebar</span>
             <UserCircleIcon
               className="text-black h-10 w-10"
               aria-hidden="true"
             />
-          </a>
+          </button>
+          <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
         </div>
         <div className="flex lg:hidden">
           <Button
@@ -183,18 +190,34 @@ function Header() {
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">profil utilisateur</span>
-              <UserCircleIcon className="h-8 w-auto text-black" />
-            </a>
             <button
               type="button"
-              className="-m-2.5 rounded-md p-2.5 text-gray-700"
+              className="custom-link -m-1.5 p-1.5 sm:block"
+              onClick={() => {
+                setSidebarOpen(true);
+                setMobileMenuOpen(false);
+              }}
+            >
+              <span className="sr-only">Profil utilisateur</span>
+              <UserCircleIcon
+                className="h-8 w-auto text-black"
+                aria-hidden="true"
+              />
+            </button>
+
+            <button
+              type="button"
+              className="-m-2.5 rounded-md p-2.5 ml-auto text-gray-700"
               onClick={() => setMobileMenuOpen(false)}
             >
               <span className="sr-only">Fermer le menu déroulant</span>
               <XMarkIcon className="h-6 w-6" aria-hidden="true" />
             </button>
+
+            <Sidebar
+              sidebarOpen={sidebarOpen}
+              setSidebarOpen={setSidebarOpen}
+            />
           </div>
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
