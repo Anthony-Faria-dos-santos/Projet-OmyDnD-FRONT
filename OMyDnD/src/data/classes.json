@@ -1,6 +1,7 @@
 [
   {
     "index": "barbarian",
+    "imageUrl": "/images/classes/barbare.jpg",
     "name": "Barbare",
     "description": "Drapé de fourrure et portant une hache, un humain tribal de haute taille marche à grandes enjambées à travers le blizzard. Riant aux éclats, il charge le géant du givre qui a osé s'en prendre au troupeau de son clan. Une demi-orc grogne férocement contre le dernier adversaire qui a voulu remettre en cause son autorité sur la tribu, prête à lui briser le cou comme elle l'a fait avec les six précédents. L'écume aux lèvres, un nain balance son casque dans le visage d'un premier ennemi drow puis, se retournant, envoie sa cubitière dans le ventre d'un second. Ces barbares, bien que différents, ont en commun leur rage : un déchaînement de fureur, inextinguible et irraisonné. Bien plus qu'une émotion passagère, leur colère est celle d'un féroce prédateur acculé, l'assaut implacable de la tempête, le tumulte d'une mer démontée. Pour certains, leur rage est le fruit d'une communion avec de fiers esprits animaux. D'autres la puisent d'une réserve trouble de colère contre ce monde de souffrance. Mais pour tous, la rage est une force qui n'alimente pas que leur frénésie guerrière. Elle leur donne aussi des réflexes, une résistance et des prouesses physiques incroyables.",
     "trait": "Instinct primitif",
@@ -17,11 +18,11 @@
         "health_by_lvl": "1d12 (ou 7) + votre modificateur de Constitution"
       },
       "masteries": {
-        "armors": "armures légères, armures intermédiaires, boucliers",
-        "weapons": "armes courantes, armes de guerre",
-        "tools": "aucun",
-        "saving_throws": "Force, Constitution",
-        "skills": "choisissez deux compétences parmi Athlétisme, Dressage, Intimidation, Nature, Perception et Survie"
+        "armures": "armures légères, armures intermédiaires, boucliers",
+        "armes": "armes courantes, armes de guerre",
+        "outils": "aucun",
+        "Jet de sauvegarde": "Force, Constitution",
+        "compétences": "choisissez deux compétences parmi Athlétisme, Dressage, Intimidation, Nature, Perception et Survie"
       },
       "equipement": {
         "description": "Vous commencez avec l'équipement suivant, en plus de l'équipement accordé par votre historique :",
@@ -209,6 +210,7 @@
   },
   {
     "index": "bard",
+    "imageUrl": "/images/classes/barde.jpg",
     "name": "Barde",
     "description": "Fredonnant alors qu’elle passe ses doigts sur un ancien monument au cœur de ruines depuis longtemps oubliées, une demi-elfe vêtue de cuir robuste sent le savoir, invoqué par la magie de son chant, bondir dans son esprit. Le savoir de ceux qui ont érigé ce monument. Le savoir relatant la saga mythique qui y est illustrée. Un solide guerrier humain frappe son épée avec rythme sur son armure d’écailles, instaurant un tempo pour accompagner son chant de guerre et exhortant ses compagnons à la bravoure et à l’héroïsme. La magie de son chant les fortifie et les enhardit. Accordant son cistre tout en rigolant, une gnome tisse sa subtile magie sur l’assemblée des nobles, s'assurant ainsi que les paroles de ses compagnons seront bien reçues. Qu'il soit érudit, scalde ou scélérat, un barde façonne la magie à travers ses mots et sa musique pour inspirer ses alliés, démoraliser ses ennemis, manipuler les esprits, créer des illusions, et même pour soigner les blessures.",
     "trait": "Musique et magie",
@@ -225,11 +227,11 @@
         "health_by_lvl": "1d8 (ou 5) + votre modificateur de Constitution"
       },
       "masteries": {
-        "armors": "armures légères",
-        "weapons": "armes courantes, arbalète de poing, épée longue, épée courte, rapière",
-        "tools": "trois instruments de musique de votre choix",
-        "saving_throws": "Dextérité, Charisme",
-        "skills": "choisissez trois compétences de votre choix"
+        "armures": "armures légères",
+        "armes": "armes courantes, arbalète de poing, épée longue, épée courte, rapière",
+        "outils": "trois instruments de musique de votre choix",
+        "Jet de sauvegarde": "Dextérité, Charisme",
+        "Compétences": "choisissez trois compétences de votre choix"
       },
       "equipement": {
         "description": "Vous commencez avec l'équipement suivant, en plus de l'équipement accordé par votre historique :",
@@ -363,6 +365,7 @@
   },
   {
     "index": "cleric",
+    "imageUrl": "/images/classes/clerc.jpg",
     "name": "Clerc",
     "description": "Les bras et les yeux levés en direction du soleil, une prière sur les lèvres, un elfe commence à briller d'une lumière intérieure qui s'en va guérir ses compagnons usés par le combat. Chantant une chanson de gloire, un nain fait osciller sa hache en de larges mouvements circulaires afin de couper les rangs orcs face à lui, criant des louanges aux dieux à chaque ennemi qui tombe. Jetant une malédiction sur les morts-vivants qui s'avancent, un humain brandit son symbole sacré alors qu'une lumière se libère de celui-ci pour repousser les zombis qui se pressaient sur ses compagnons. Les clercs sont des intermédiaires entre le monde des mortels et les plans éloignés des dieux. Aussi variés que les dieux qu'ils servent, les clercs s'efforcent d'incarner l'œuvre de leurs divinités. Un clerc est imprégné de magie divine, ce n'est pas un religieux ordinaire.",
     "trait": "Guérisseurs et combattants",
@@ -379,11 +382,11 @@
         "health_by_lvl": "1d8 (ou 5) + votre modificateur de Constitution"
       },
       "masteries": {
-        "armors": "armures légères et intermédiaires, boucliers",
-        "weapons": "armes courantes",
-        "tools": "aucun",
-        "saving_throws": "Sagesse, Charisme",
-        "skills": "choisissez deux compétences parmi Histoire, Intuition, Médecine, Persuasion et Religion"
+        "armures": "armures légères et intermédiaires, boucliers",
+        "armes": "armes courantes",
+        "outils": "aucun",
+        "Jet de sauvegarde": "Sagesse, Charisme",
+        "Compétences": "choisissez deux compétences parmi Histoire, Intuition, Médecine, Persuasion et Religion"
       },
       "equipement": {
         "description": "Vous commencez avec l'équipement suivant, en plus de l'équipement accordé par votre historique :",

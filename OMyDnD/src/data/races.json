@@ -1,7 +1,7 @@
 [
   {
     "index": "elf",
-    "imageUrl": "/images/360_F_569261619_Rh4Ny75nD1lNyBuDFNMhEjCxg1ShmFgJ.jpg",
+    "imageUrl": "/images/races/elfe.jpg",
     "name": "Elfe",
     "description": "Les elfes sont des créatures magiques d’une extraordinaire grâce, habitant le monde sans en faire totalement partie. Ils vivent dans des lieux d’une beauté éthérée, au cœur d’anciennes forêts ou dans des tours scintillantes d’une lumière féerique, là où une douce musique flotte dans l’air et où de subtils effluves embaument la brise. Les elfes aiment la nature et la magie, l’art et l’artisanat, la musique et la poésie, et les bonnes choses de ce monde.",
     "details": {
@@ -156,6 +156,7 @@
   },
   {
     "index": "halflings",
+    "imageUrl": "/images/races/halfelin.jpg",
     "name": "Halfelin",
     "description": "Le confort à la maison est ce à quoi aspirent la plupart des halfelins : un endroit où s’installer dans une paix sereine, loin des monstres errants et des confrontations armées ; un feu ardent et un repas copieux ; un breuvage fin et une conversation raffinée. Bien que certains halfelins vivent leurs jours isolés dans des communautés agricoles, d’autres forment des bandes nomades en constant déplacement, attirés par les grands chemins et les vastes horizons pour découvrir les merveilles de nouvelles terres et de nouveaux peuples. Mais même ces itinérants aiment la paix, la nourriture, un foyer et un chez-soi, même si ce chez-soi est un chariot cahotant sur une route poussiéreuse ou un radeau flottant au gré du courant.",
     "details": {
@@ -264,6 +265,7 @@
   },
   {
     "index": "human",
+    "imageUrl": "/images/races/humain.jpg",
     "name": "Humain",
     "description": "Dans la plupart des mondes, les humains sont la plus jeune des races communes, la dernière à être apparue et celle dotée de la plus faible longévité par rapport aux nains, aux elfes et aux dragons. Peut-être du fait de leurs vies plus courtes, ils s'efforcent d'atteindre autant d'objectifs qu'ils peuvent pendant les années qui leur sont données. Ou peut-être sentent-ils qu'ils ont quelque chose à prouver aux races plus anciennes, et c'est pourquoi ils construisent de puissants empires basés sur la conquête et le commerce. Mais quelle que soit la raison qui les pousse de l'avant, les humains sont les innovateurs, les bâtisseurs et les pionniers de leurs mondes.",
     "details": {
@@ -352,6 +354,7 @@
   },
   {
     "index": "dwarf",
+    "imageUrl": "/images/races/nain.jpg",
     "name": "Nain",
     "description": "De riches royaumes d’une ancienne magnificence, des halls creusés aux racines mêmes des montagnes, l’écho des pioches et des marteaux dans les mines profondes et les forges ardentes, un engagement au clan et à la tradition ainsi qu’une intense haine des gobelins et des orcs, ce sont les traits communs qui unissent tous les nains.",
     "details": {
@@ -464,6 +467,7 @@
   },
   {
     "index": "half-elf",
+    "imageUrl": "/images/races/demi-elf.jpg",
     "name": "Demi-elfe",
     "description": "Fréquentant deux mondes, mais n'appartenant vraiment à aucun des deux, les demi-elfes combinent ce que certains disent être les meilleures qualités de leurs parents elfes et humains : la curiosité et la créativité humaine, et une ambition tempérée par des sens raffinés, l'amour de la nature et les goûts artistiques des elfes. Certains demi-elfes vivent parmi les humains, un peu en marge de par leurs différences physiques et émotionnelles, en regardant vieillir leurs amis et leurs proches alors que le temps les touche à peine. D'autres vivent chez les elfes, devenant adultes alors que leurs pairs continuent de vivre comme des enfants, s'agitant de plus en plus dans ces royaumes elfiques intemporels. Beaucoup d'autres demi-elfes, incapables de s'intégrer dans quelle société que ce soit, choisissent une vie d'errance solitaire, ou rejoignent d'autres marginaux et exclus pour partager une vie d'aventures.",
     "details": {
@@ -518,6 +522,7 @@
   },
   {
     "index": "half-orc",
+    "imageUrl": "/images/races/demi-orc.jpg",
     "name": "Demi-orc",
     "description": "Que ce soit unis sous la direction d'un puissant occultiste ou lors de trêves après des années de conflit, les tribus orcs et humaines forment parfois des alliances, unissant leurs forces en une horde encore plus grande qui engendre la terreur dans les terres civilisées proches. Et lorsque ces alliances sont scellées par des mariages, des demi-orcs naissent. Certains deviennent de fiers chefs de tribus orcs, leur sang humain leur donnant un avantage sur leurs rivaux orcs. Certains s'aventurent dans le monde afin de prouver leur valeur parmi les humains ou d'autres races plus civilisées. Beaucoup d'entre eux deviennent alors des aventuriers, acquérant la grandeur à travers leurs hauts faits et la notoriété à travers leurs coutumes barbares et leur fureur sauvage.",
     "details": {
@@ -588,6 +593,7 @@
   },
   {
     "index": "dragonborn",
+    "imageUrl": "/images/races/drakeide.jpg",
     "name": "Drakéide",
     "description": "Nés de dragons, comme leur nom le laisse entendre, les drakéides marchent fièrement dans un monde qui les accueille avec une incompréhension craintive. Façonnés par les dieux draconiques ou les dragons eux-mêmes, à l'origine les drakéides ont éclos d'œufs de dragons pour ensuite former une race à part entière qui combine les meilleurs attributs des dragons et des humanoïdes. Certains drakéides sont de fidèles serviteurs des vrais dragons, d'autres forment les rangs des soldats dans de grandes guerres, et d'autres encore se trouvent à la dérive, sans vocation claire dans la vie.",
     "details": {
@@ -714,6 +720,7 @@
   },
   {
     "index": "gnome",
+    "imageUrl": "/images/races/gnome.jpg",
     "name": "Gnome",
     "description": "Un bourdonnement constant d'activités imprègne les terriers et les quartiers des communautés gnomes. Et certains sons plus forts ponctuent ce bourdonnement : un craquement d'engrenages ici, une petite explosion là, un cri de surprise ou de triomphe, mais surtout des éclats de rire. Les gnomes prennent plaisir à la vie, et profitent de chaque instant, d'une invention, d'une exploration, d'une recherche, d'une création ou d'une lecture.",
     "details": {
@@ -822,6 +829,7 @@
   },
   {
     "index": "tiefling",
+    "imageUrl": "/images/races/tieffelin.jpg",
     "name": "Tieffelin",
     "description": "Être accueilli par des regards suspicieux et des murmures, souffrir insultes et violences à chaque coin de rue, croiser le doute et la peur dans chaque regard, tel est le lot quotidien du tieffelin. Et pour remuer le couteau dans la plaie, les tieffelins ont conscience que tout cela vient d'un pacte passé il y a plusieurs générations qui imprégna leur lignée de l'essence d'Asmodée, le seigneur des Neuf enfers. Leur apparence et leur nature ne sont pas le fruit de leur volonté, mais la conséquence d'un péché ancien duquel eux-mêmes, leurs enfants et toute leur descendance, seront toujours redevables.",
     "details": {
