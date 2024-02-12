@@ -15,49 +15,49 @@ const sanctuaries = [
     name: "Races",
     description: "Get a better understanding of your traffic",
     href: "/sanctuary/races",
-    icon: `/images/races-logo.png`,
+    icon: `/images/sanctuary/races-logo.png`,
   },
   {
     name: "Classes",
     description: "Speak directly to your customers",
     href: "/sanctuary/classes",
-    icon: `/images/classes-logo.png`,
+    icon: `/images/sanctuary/classes-logo.png`,
   },
   {
     name: "Personnalités et historiques",
     description: "Your customers’ data will be safe and secure",
     href: "/sanctuary/backgrounds",
-    icon: `/images/background-logo.png`,
+    icon: `/images/sanctuary/background-logo.png`,
   },
   {
     name: "Caractéristiques",
     description: "Connect with third-party tools",
     href: "/sanctuary/abilities",
-    icon: `/images/caracteristiques-logo.png`,
+    icon: `/images/sanctuary/caracteristiques-logo.png`,
   },
   {
     name: "Équipements",
     description: "Build strategic funnels that will convert",
     href: "/sanctuary/equipments",
-    icon: `/images/equipements-logo.png`,
+    icon: `/images/sanctuary/equipements-logo.png`,
   },
   {
     name: "Altérations d'état",
     description: "Build strategic funnels that will convert",
     href: "/sanctuary/conditions",
-    icon: `/images/alterations-logo.png`,
+    icon: `/images/sanctuary/alterations-logo.png`,
   },
   {
     name: "Sorts",
     description: "Build strategic funnels that will convert",
     href: "/sanctuary/spells",
-    icon: `/images/sorts-logo.png`,
+    icon: `/images/sanctuary/sorts-logo.png`,
   },
   {
     name: "Dons",
     description: "Build strategic funnels that will convert",
     href: "/sanctuary/skills",
-    icon: `/images/dons-logo.png`,
+    icon: `/images/sanctuary/dons-logo.png`,
   },
 ];
 
@@ -68,7 +68,6 @@ function classNames(...classes) {
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [open, setOpen] = useState(false);
 
   return (
     <header className="bg-white border-solid border-b-gray-700 border-b-4">
@@ -104,7 +103,6 @@ function Header() {
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
           <Popover className="relative">
             <Popover.Button
-              onClick={() => setOpen(!open)}
               className="flex items-center gap-x-1 rounded-md bg-gray-700 px-7 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600"
             >
               Sanctuaire
@@ -116,7 +114,6 @@ function Header() {
 
             <Transition
               as={Fragment}
-              show={open}
               enter="transition ease-out duration-200"
               enterFrom="opacity-0 translate-y-1"
               enterTo="opacity-100 translate-y-0"
@@ -129,7 +126,6 @@ function Header() {
                   <Link
                     to="/sanctuary"
                     className="font-semibold text-white hover:text-gray-500 flex justify-center"
-                    onClick={() => setOpen(false)}
                   >
                     Voir tout
                   </Link>
@@ -149,7 +145,6 @@ function Header() {
                         <Link
                           to={item.href}
                           className="block font-semibold text-gray-50 hover:text-gray-900"
-                          onClick={() => setOpen(false)}
                         >
                           {item.name}
                           <span className="absolute inset-0" />
