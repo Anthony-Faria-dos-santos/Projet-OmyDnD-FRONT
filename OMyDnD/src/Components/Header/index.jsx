@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Dialog, Disclosure, Popover, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
@@ -6,9 +6,10 @@ import {
   MagnifyingGlassCircleIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/outline";
-import { Button } from "semantic-ui-react";
+import { Button, Label } from "semantic-ui-react";
 import Sidebar from "../UserPanel/SideBar";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const sanctuaries = [
   {
@@ -69,6 +70,22 @@ function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
+  const token = useSelector((state) => state.auth.token);
+  const user = useSelector((state) => state.auth.user);
+  const isLoggedIn = Boolean(token && user);
+  const [showPopupLoggedIn, setshowPopupLoggedIn] = useState(false);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      setshowPopupLoggedIn(true);
+      const timer = setTimeout(() => {
+        setshowPopupLoggedIn(false);
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isLoggedIn]);
+
   return (
     <header className="bg-white border-solid border-b-gray-700 border-b-4">
       <nav
@@ -83,11 +100,18 @@ function Header() {
           >
             <span className="sr-only">Ouvrir bar latérale</span>
             <UserCircleIcon
-              className="text-gray-500 h-10 w-10 hover:text-gray-600"
+              className={`text-gray-400 hover:text-gray-600 h-10 w-10 ${isLoggedIn ? "connexion-color" : "text-gray-400"}`}
               aria-hidden="true"
             />
           </button>
           <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+
+          {/* Popup */}
+          {isLoggedIn && showPopupLoggedIn && (
+            <Label as="a" open={showPopupLoggedIn} color="teal" tag>
+              Vous êtes maintenant connecté 
+            </Label>
+          )}
         </div>
         <div className="flex lg:hidden">
           <Button
@@ -102,9 +126,7 @@ function Header() {
 
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
           <Popover className="relative">
-            <Popover.Button
-              className="flex items-center gap-x-1 rounded-md bg-gray-700 px-7 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600"
-            >
+            <Popover.Button className="flex items-center gap-x-1 rounded-md bg-gray-700 px-7 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600">
               Sanctuaire
               <Bars3Icon
                 className="h-5 w-5 float-right ml-2 text-white"
@@ -125,7 +147,7 @@ function Header() {
                 <div className="p-4">
                   <Link
                     to="/sanctuary"
-                    className="font-semibold text-white hover:text-gray-500 flex justify-center"
+                    className="p-3 rounded-lg font-semibold text-white hover:text-gray-900 flex justify-center mb-2"
                   >
                     Voir tout
                   </Link>
@@ -158,14 +180,16 @@ function Header() {
             </Transition>
           </Popover>
 
-          <button className="rounded-md bg-gray-700 px-7 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600">
-            <Link
-              to="#"
-              className="text-sm font-semibold leading-6 text-[#fff] hover:text-[#fff]"
-            >
-              Outil
-            </Link>
-          </button>
+          {isLoggedIn && (
+            <button className="rounded-md bg-gray-700 px-7 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600">
+              <Link
+                to="#"
+                className="text-sm font-semibold leading-6 text-[#fff] hover:text-[#fff]"
+              >
+                Outil
+              </Link>
+            </button>
+          )}
           <button className="rounded-md bg-gray-700 px-7 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600">
             <Link
               to="#"
@@ -194,7 +218,7 @@ function Header() {
         onClose={setMobileMenuOpen}
       >
         <div className="fixed inset-0 z-10" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-gray-700 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <button
               type="button"
@@ -206,7 +230,7 @@ function Header() {
             >
               <span className="sr-only">Profil utilisateur</span>
               <UserCircleIcon
-                className="h-8 w-auto text-black"
+                className="h-8 w-auto text-gray-400 hover:text-gray-600"
                 aria-hidden="true"
               />
             </button>
@@ -217,7 +241,10 @@ function Header() {
               onClick={() => setMobileMenuOpen(false)}
             >
               <span className="sr-only">Fermer le menu déroulant</span>
-              <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+              <XMarkIcon
+                className="rounded-md h-6 w-6 text-gray-50 hover:bg-gray-500 hover:text-gray-900"
+                aria-hidden="true"
+              />
             </button>
 
             <Sidebar
@@ -231,7 +258,7 @@ function Header() {
                 <Disclosure as="div" className="-mx-3">
                   {({ open }) => (
                     <>
-                      <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                      <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-50 hover:bg-gray-500 hover:text-gray-900">
                         Sanctuaire
                         <Bars3Icon
                           className={classNames(
@@ -243,8 +270,8 @@ function Header() {
                       </Disclosure.Button>
                       <Disclosure.Panel className="mt-2 space-y-2">
                         <Link
-                          to="#"
-                          className="font-semibold text-gray-700 hover:text-gray-600 flex justify-center text-sm"
+                          to="/sanctuary"
+                          className="font-semibold text-gray-50 hover:text-gray-900 flex justify-center text-sm"
                         >
                           Voir tout
                         </Link>
@@ -253,7 +280,7 @@ function Header() {
                             key={item.name}
                             as="a"
                             href={item.href}
-                            className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                            className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-50 hover:bg-gray-500 hover:text-gray-900"
                           >
                             {item.name}
                           </Disclosure.Button>
@@ -262,15 +289,17 @@ function Header() {
                     </>
                   )}
                 </Disclosure>
+                {isLoggedIn && (
+                  <Link
+                    to="#"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-50 hover:bg-gray-500 hover:text-gray-900"
+                  >
+                    Outil
+                  </Link>
+                )}
                 <Link
                   to="#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Outil
-                </Link>
-                <Link
-                  to="#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-50 hover:bg-gray-500 hover:text-gray-900"
                 >
                   Contact
                 </Link>
