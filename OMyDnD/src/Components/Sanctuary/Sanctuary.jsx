@@ -6,7 +6,7 @@ const pages = [
         name: "Races",
         href: "/sanctuary/races",
         imageSrc:
-        "/images/races-logo.png",
+        "/images/sanctuary/races-logo.png",
         imageAlt:
         "",
     },
@@ -15,7 +15,7 @@ const pages = [
         name: "Classes",
         href: "/sanctuary/classes",
         imageSrc:
-        "/images/classes-logo.png",
+        "/images/sanctuary/classes-logo.png",
         imageAlt:
         "",
     },
@@ -24,7 +24,7 @@ const pages = [
         name: "Personnalités et historiques",
         href: "/sanctuary/backgrounds",
         imageSrc:
-        "/images/background-logo.png",
+        "/images/sanctuary/background-logo.png",
         imageAlt:
         "",
     },
@@ -33,7 +33,7 @@ const pages = [
         name: "Caractéristiques",
         href: "/sanctuary/abilities",
         imageSrc:
-        "/images/caracteristiques-logo.png",
+        "/images/sanctuary/caracteristiques-logo.png",
         imageAlt:
         "",
     },
@@ -42,7 +42,7 @@ const pages = [
         name: "Équipements",
         href: "/sanctuary/equipments",
         imageSrc:
-        "/images/equipements-logo.png",
+        "/images/sanctuary/equipements-logo.png",
         imageAlt:
         "",
     },
@@ -51,7 +51,7 @@ const pages = [
         name: "Altérations d'état",
         href: "/sanctuary/conditions",
         imageSrc:
-        "/images/alterations-logo.png",
+        "/images/sanctuary/alterations-logo.png",
         imageAlt:
         "",
     },
@@ -60,7 +60,7 @@ const pages = [
         name: "Sorts",
         href: "/sanctuary/spells",
         imageSrc:
-        "/images/sorts-logo.png",
+        "/images/sanctuary/sorts-logo.png",
         imageAlt:
         "",
     },
@@ -69,7 +69,7 @@ const pages = [
         name: "Dons",
         href: "/sanctuary/skills",
         imageSrc:
-        "/images/dons-logo.png",
+        "/images/sanctuary/dons-logo.png",
         imageAlt:
         "",
     }
@@ -84,14 +84,14 @@ const pages = [
             <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
             {pages.map((page) => (
                 <Link key={page.id} to={page.href} className="group">
-                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-transparent xl:aspect-h-8 xl:aspect-w-7">
+                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-800 xl:aspect-h-8 xl:aspect-w-7 p-2">
                     <img
                     src={page.imageSrc}
                     alt={page.imageAlt}
                     className="h-full w-full object-cover object-center group-hover:opacity-75"
                     />
                 </div>
-                <h3 className="text-center mt-4 text-md text-gray-500">{page.name}</h3>
+                <h3 className="text-center mt-4 text-md text-gray-300">{page.name}</h3>
                 </Link>
             ))}
             </div>
