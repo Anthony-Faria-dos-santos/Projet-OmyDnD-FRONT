@@ -41,9 +41,9 @@ function CoreFeatures() {
           {data.map((data) => (
             <li key={data.name} className="rounded-2xl bg-gray-800 px-8 py-10">
               <img
-                className="mx-auto h-48 w-48 rounded-full md:h-56 md:w-56"
+                className="mx-auto h-48 w-48 rounded-2xl md:h-56 md:w-56 object-cover object-top"
                 src={data.imageUrl}
-                alt=""
+                alt={data.alt}
               />
               <h3 className="mt-6 text-base font-semibold leading-7 tracking-tight text-white">
                 {data.name}
@@ -52,7 +52,7 @@ function CoreFeatures() {
                 {data.description}
               </p>
               <Link
-                    to={`/sanctuary/${featureType}/${data.id}`}
+                    to={`/sanctuary/${featureType}/${data.index}`}
                     className="font-semibold text-gray-400 hover:text-gray-100 inline-flex justify-center"
                   >
                     Voir plus
