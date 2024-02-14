@@ -1,7 +1,7 @@
 [
   {
     "index": "acolyte",
-    "imageUrl": "/images/acolyte-background-5e.jpg",
+    "imageUrl": "/images/backgrounds/acolyte.jpg",
     "name": "Acolyte",
     "description": "Vous avez passé votre vie au service du temple d'un dieu spécifique ou d'un panthéon de dieux. Vous agissez comme intermédiaire entre les royaumes des cieux et le monde des mortels, exécutant des rites sacrés et offrant des sacrifices pour conduire les fidèles face aux divins. Vous n'êtes pas nécessairement un clerc, car exécuter des rites sacrés religieux n'est pas la même chose que de canaliser la puissance divine. Choisissez un dieu, un panthéon de dieux ou un être quasi-divin, et travaillez avec votre MD pour préciser la nature de votre labeur religieux. Étiez-vous un fonctionnaire de bas rang dans un temple, élevé dès l'enfance pour aider les clercs à réaliser leurs rites sacrés ? Ou étiez-vous un religieux qui a soudainement reçu un appel pour servir son dieu d'une manière différente ? Peut-être êtes-vous le chef d'un petit culte en dehors de la structure établie d'un temple, ou membre d'un groupe occulte qui a servi un maître diabolique que vous reniez à présent.",
     "starting_proficiencies": "Intuition, Religion",
@@ -140,6 +140,7 @@
   },
   {
     "index": "guild artisan",
+    "imageUrl": "/images/backgrounds/artisan-de-guilde.jpg",
     "name": "Artisan de guilde",
     "description": "Vous êtes le membre d'une guilde d'artisans, compétent dans un domaine particulier et en relation étroite avec d'autres artisans. Vous êtes au fait du monde des marchés, libéré des contraintes d'un ordre social féodal grâce à votre talent et à votre richesse. Vous avez appris votre savoir-faire en tant qu'apprenti auprès d'un maître artisan, sous l'égide de votre guilde, jusqu'à ce que vous deveniez à votre tour un maître dans votre branche.",
     "starting_proficiencies": "Intuition, Persuasion",
@@ -359,6 +360,7 @@
   },
   {
     "index": "artist",
+    "imageUrl": "/images/backgrounds/artiste.jpg",
     "name": "Artiste",
     "description": "Vous vous épanouissez lorsque vous vous trouvez devant un public. Vous savez comment l'hypnotiser, comment l'amuser, comment l'inspirer. Vos poèmes font fondre les cœurs de ceux qui vous écoutent, réveillant les colères et les joies, répandant le rire ou la tristesse. Votre musique envahit leur esprit et s'empare de leurs douleurs. Vos pas de danse hypnotisent, votre humour pique au vif. Quelles que soient les techniques que vous utilisiez, l'art est toute votre vie.",
     "starting_proficiencies": "Acrobaties, Représentation",
@@ -538,6 +540,7 @@
   },
   {
     "index": "charlatan",
+    "imageUrl": "/images/backgrounds/charlatan.jpg",
     "name": "Charlatan",
     "description": "Vous avez toujours eu un bon feeling avec les gens. Vous savez comment les accrocher, vous pouvez percevoir leurs plus profonds désirs après quelques minutes de conversations, et avec quelques questions précises vous pouvez lire en eux comme dans un livre ouvert. C'est un talent très utile, et vous savez exactement comment l'utiliser à votre avantage. Vous savez ce que les gens veulent et vous le leur donnez, ou plutôt vous leur promettez de le leur donner. Le sens commun voudrait qu'une personne fuit une offre qui semble trop belle pour être vraie, mais le sens commun semble toujours être absent lorsque vous êtes dans les parages. Cette bouteille d'un liquide rosâtre va soigner à coups sûrs cette vilaine éruption cutanée, cet onguent (rien de plus qu'un peu de graisse saupoudrée de poussière d'argent) peut rendre jeunesse et vigueur, et il y a un pont en ville qui vient tout juste d'être mis en vente. Ces racontars semblent invraisemblables, mais vous parvenez toujours à leur faire prendre l'apparence de très bonnes affaires tout à fait plausibles.",
     "starting_proficiencies": "Escamotage, Tromperie",
@@ -701,6 +704,7 @@
   },
   {
     "index": "criminal",
+    "imageUrl": "/images/backgrounds/criminel.jpg",
     "name": "Criminel",
     "description": "Vous êtes un criminel expérimenté avec un long passif d'infractions à la loi. Vous avez passé beaucoup de temps aux côtés d'autres criminels et avez encore des contacts au sein de la pègre. Vous êtes bien plus familier que la plupart des autres personnes avec le monde du meurtre, du vol et de la violence qui règne au sein de la civilisation, et vous avez survécu jusque là en bafouant les règles et les lois de la société.",
     "starting_proficiencies": "Discrétion, Tromperie",
@@ -872,6 +876,7 @@
   },
   {
     "index": "street child",
+    "imageUrl": "/images/backgrounds/gosse-des-rues.jpg",
     "name": "Enfant des rues",
     "description": "Vous avez grandi seul dans la rue, orphelin et pauvre. Vous n'aviez personne pour vous surveiller ni pour subvenir à vos besoins, vous avez donc tout appris par vous-même. Vous vous êtes battu férocement pour obtenir votre nourriture et gardiez constamment un œil sur d'autres âmes abandonnées comme vous qui n'espéraient qu'un bon moment pour vous voler. Vous dormiez sur des toits ou dans des rues, exposé aux intempéries, et vous avez vaincu la maladie à de nombreuses reprises, sans aucune médecine ni aucun endroit pour vous récupérer. Vous avez survécu en dépit de tous les pronostiques, ce qui vous a rendu rusé, fort ou rapide, voire un peu tout cela à la fois. Vous commencez votre carrière d'aventurier avec assez d'argent pour vivre modestement mais en sécurité pour au moins dix jours. Comment avec vous obtenu cet argent ? Qu'est-ce qui vous a permis de vous libérer de votre affreuse condition de vie et de partir pour une vie meilleure ?",
     "starting_proficiencies": "Discrétion, Escamotage",
@@ -1010,6 +1015,7 @@
   },
   {
     "index": "hermit",
+    "imageUrl": "/images/backgrounds/ermite.jpg",
     "name": "Ermite",
     "description": "Vous avez vécu reclus, soit dans une communauté protégée, comme un monastère, ou entièrement seul, lors d'un épisode formateur de votre vie. Durant cette période loin de la clameur de la société, vous avez trouvé le calme, la solitude et peut-être même certaines réponses que vous cherchiez.",
     "starting_proficiencies": "Médecine, Religion",
@@ -1181,6 +1187,7 @@
   },
   {
     "index": "folk hero",
+    "imageUrl": "/images/backgrounds/heros-du-peuple.jpg",
     "name": "Héros du peuple",
     "description": "Vous venez d'un milieu social humble, mais êtes destiné à beaucoup plus. Déjà, les gens de votre village natal vous considèrent comme leur champion, et votre destin vous appelle à vous dresser face aux tyrans et aux monstres qui menacent les gens du commun un peu partout.",
     "starting_proficiencies": "Dressage, Survie",
@@ -1360,6 +1367,7 @@
   },
   {
     "index": "noble",
+    "imageUrl": "/images/backgrounds/noble.jpg",
     "name": "Noble",
     "description": "Vous savez ce qu'est la richesse, le pouvoir et les privilèges. Vous portez un titre de noblesse, et votre famille possède des terres, perçoit des impôts, et exerce une influence politique significative. Vous pourriez être un aristocrate choyé qui ne connaît pas le travail et l'inconfort, un ancien marchand qui vient d'être élevé au rang de noble, ou une fripouille déshéritée avec un attrait pour les titres disproportionnés. Ou vous pourriez être un honnête propriétaire terrien qui travaille dur et qui se soucie profondément des gens qui vivent et travaillent sur ses terres, tout à fait conscient de votre responsabilité envers eux. Travaillez avec votre MD pour définir un titre approprié et quelle autorité ce titre vous donne. Un titre de noblesse n'est pas une chose personnelle, il concerne une famille entière, et, quel que soit le titre que vous détenez, vous le transmettrez à vos enfants. Donc non seulement vous devez déterminer votre titre de noblesse, mais vous devez également travailler avec votre MD pour décrire votre famille et l'influence qu'elle a sur vous. Votre famille est-elle ancienne et établie, ou votre titre ne vous a-t-il été que récemment accordé ? Quelle influence exerce-t-elle et sur ​​quelle superficie ? Quelle est la réputation de votre famille parmi les autres aristocrates de la région ? Comment les gens ordinaires la considèrent-ils ? Quelle est votre position au sein de votre famille ? Êtes-vous l'héritier du chef de la famille ? Avez-vous déjà hérité du titre ? Comment sentez-vous cette responsabilité ? Ou êtes-vous si loin de la ligne de l'héritage qu'on ne se soucie pas de ce que vous faites, tant que vous ne gênez personne ? Que pense le chef de votre famille de votre carrière d'aventurier ? Êtes-vous en bonnes grâces de votre famille, ou êtes-vous rejeté par le reste de votre famille ? Votre famille a-t-elle un blason ? Un insigne que vous pourriez porter sur une chevalière ? Des couleurs particulières que vous portez tout le temps ? Un animal que vous considérez comme un symbole de votre lignée ou même un membre spirituel de la famille ? Ces détails permettent d'insérer votre famille et votre titre dans le monde de la campagne.",
     "starting_proficiencies": "Histoire, Persuasion",
@@ -1498,6 +1506,7 @@
   },
   {
     "index": "sage",
+    "imageUrl": "/images/backgrounds/sage.jpg",
     "name": "Sage",
     "description": "Vous avez passé des années à étudier le multivers. Vous avez écumé les manuscrits, dévoré des parchemins et écouté les plus grands experts sur les sujets qui vous intéressent. Vos efforts ont fait de vous un maître dans vos domaines d'études.",
     "starting_proficiencies": "Arcanes, Histoire",
@@ -1669,6 +1678,7 @@
   },
   {
     "index": "soldier",
+    "imageUrl": "/images/backgrounds/soldat.jpg",
     "name": "Soldat",
     "description": "La guerre a été votre vie aussi loin que remontent vos souvenirs. Vous avez été formé dès votre jeunesse, avez étudié l'utilisation des armes et des armures, appris des techniques de base de survie, y compris la façon de rester en vie sur un champ de bataille. Vous pourriez avoir fait partie de l'armée d'un royaume ou d'une compagnie de mercenaires, ou peut-être avoir été membre d'une milice locale qui s'est fait connaître au cours d'une guerre récente. Lorsque vous choisissez cet historique, travaillez avec votre MD pour déterminer de quelle organisation militaire vous faisiez partie, jusqu'où avez-vous progressé dans ses grades, et quelles expériences avez-vous vécues au cours de votre carrière militaire. Était-ce une armée régulière, la garde d'une ville ou une milice de village ? Ou était-ce l'armée privée d'un noble ou d'un marchand, ou bien une compagnie de mercenaires ?",
     "starting_proficiencies": "Athlétisme, Intimidation",
