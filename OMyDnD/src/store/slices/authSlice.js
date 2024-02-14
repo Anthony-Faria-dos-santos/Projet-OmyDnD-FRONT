@@ -10,7 +10,7 @@ const initialState = {
   error: null, // Aucune erreur par défaut.
 };
 
-const API_URL = "https://ohmydnd-2fd0c114d2b0.herokuapp.com";
+const API_URL = import.meta.env.VITE_API_URL;
 
 // Crée une action asynchrone pour l'enregistrement d'un utilisateur.
 export const signUpUser = createAsyncThunk(
