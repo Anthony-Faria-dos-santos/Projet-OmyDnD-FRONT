@@ -81,6 +81,7 @@
       }
     },
     "sub_races": {
+      "title": "Sous-races",
       "description": "D'anciens clivages du peuple elfique ont abouti à trois sous-races principales : les haut-elfes, les elfes des bois et les elfes noirs, plus communément appelés drows. Dans certains mondes, ces sous-races sont elles-mêmes subdivisées (comme les elfes solaires et les elfes lunaires des Royaumes Oubliés), et vous pouvez si vous le souhaitez choisir une de ces subdivisions.",
       "choice_1": {
         "name": "Haut-elfe",
@@ -232,6 +233,7 @@
       }
     },
     "sub_races": {
+      "title": "Sous-races",
       "description": "Les pied-légers et les robustes sont plutôt deux branches d'une même famille que réellement des sous-races. Choisissez l'une des subdivisions proposées ci-après.",
       "choice_1": {
         "name": "Halfelin pied-léger",
@@ -349,7 +351,6 @@
       }
     },
     "sub_races": {
-      "description": "D'anciens clivages du peuple elfique ont abouti à trois sous-races principales : les haut-elfes, les elfes des bois et les elfes noirs, plus communément appelés drows. Dans certains mondes, ces sous-races sont elles-mêmes subdivisées (comme les elfes solaires et les elfes lunaires des Royaumes Oubliés), et vous pouvez si vous le souhaitez choisir une de ces subdivisions."
     }
   },
   {
@@ -434,6 +435,7 @@
       }
     },
     "sub_races": {
+      "title": "Sous-races",
       "description": "Il y a deux principales sous races de nains dans les mondes oubliés : les nains des montagnes et les nains des collines.",
       "choice_1": {
         "name": "Nain des collines",
@@ -788,6 +790,7 @@
       }
     },
     "sub_races": {
+      "title": "Sous-races",
       "description": "Il éxiste deux sous-races de gnomes dans l'univers des royaumes oubliés.",
       "choice_1": {
         "name": "Gnome des forêts",

@@ -133,10 +133,14 @@ function CoreFeatureRace() {
                   )}
                 </div>
               </section>
-
+    
+              <section aria-labelledby="details-heading" className="mt-12">
+                <h2 id="details-heading" className="sr-only">
+                  Sous-races
+                </h2>
               <div className="mt-4">
                 <p className="text-3xl tracking-tight text-gray-500">
-                  Sous-races
+                  {feature.sub_races.title}
                 </p>
                 <p className="text-gray-50 text-justify text-lg">
                   {feature.sub_races.description}
@@ -176,6 +180,7 @@ function CoreFeatureRace() {
                     </Disclosure>
                   ))}
               </div>
+              </section>
             </div>
           </div>
         </div>
