@@ -10,12 +10,14 @@ const initialState = {
   error: null, // Aucune erreur par défaut.
 };
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 // Crée une action asynchrone pour l'enregistrement d'un utilisateur.
 export const signUpUser = createAsyncThunk(
   "auth/signUp", // Identifie l'action.
   async (userData, { rejectWithValue }) => { // Fonction asynchrone prenant les données utilisateur.
     try {
-      const response = await axios.post("/api/users/signup", userData); // Envoie une requête POST pour l'inscription.
+      const response = await axios.post(`${API_URL}/api/users/signup`, userData); // Envoie une requête POST pour l'inscription.
       return response.data; // Renvoie les données de l'utilisateur.
     } catch (error) {
       return rejectWithValue(error.response.data); // Gère les erreurs en renvoyant les données d'erreur.
@@ -28,7 +30,7 @@ export const signInUser = createAsyncThunk(
   "auth/signin", // Identifie l'action.
   async (userData, { rejectWithValue }) => { // Fonction asynchrone prenant les données utilisateur.
     try {
-      const response = await axios.post("/api/users/signin", userData); // Envoie une requête POST pour la connexion.
+      const response = await axios.post(`${API_URL}/api/users/signin`, userData); // Envoie une requête POST pour la connexion.
       localStorage.setItem("token", response.data.token); // Stocke le token reçu dans le localStorage.
       return response.data; // Renvoie les données de l'utilisateur et le token.
     } catch (error) {
@@ -44,7 +46,7 @@ export const deleteUser = createAsyncThunk(
     const token = getState().auth.token; // Récupère le token depuis l'état global.
     try {
       // Envoie une requête DELETE pour supprimer le compte, en utilisant le token pour l'authentification.
-      const response = await axios.delete(`/api/users/${slug}`, { 
+      const response = await axios.delete(`${API_URL}/api/users/${slug}`, { 
         headers: { Authorization: `Bearer ${token}` },
       });
       localStorage.removeItem("token"); // Supprime le token du localStorage.
@@ -64,15 +66,7 @@ const authSlice = createSlice({
       localStorage.removeItem("token"); // Supprime le token du localStorage.
       state.user = null; // Réinitialise l'utilisateur à null.
       state.token = null; // Réinitialise le token à null.
-    },
-
-    //! Fonction pour simuler une connexion, à retirer en production.
-    simulateLogin(state) { // Reducer pour simuler une connexion.
-      state.user = { id: "user123", name: "John Doe", email: "johndoe@example.com" }; // Données utilisateur factices
-        state.token = "fakeToken123"; // Token factice
-        state.status = "succeeded"; // Simuler une connexion réussie
-    }
-    //! 
+    }, 
   },
   extraReducers: (builder) => { // Traite les actions asynchrones.
     builder
@@ -96,7 +90,12 @@ const authSlice = createSlice({
       })
       // Gère l'état après une connexion réussie.
       .addCase(signInUser.fulfilled, (state, action) => {
-        state.user = action.payload.user; // Met à jour l'utilisateur.
+        state.user = {                      // Met à jour l'utilisateur.
+          id: action.payload.id,
+          slug: action.payload.slug,
+          pseudo: action.payload.pseudo,
+          email: action.payload.email,
+        };
         state.token = action.payload.token; // Met à jour le token.
         state.status = "succeeded"; // Indique que l'action a réussi.
         state.error = null; // Réinitialise l'erreur.
@@ -123,10 +122,6 @@ const authSlice = createSlice({
       });      
   },
 });
-
-//! Fonction pour simuler une connexion, à retirer en production.
-export const { simulateLogin } = authSlice.actions; // Exporte les actions de simulation de connexion.
-//!
 
 // Exporte l'action de déconnexion pour utilisation dans les composants.
 export const { logout } = authSlice.actions;

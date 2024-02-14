@@ -5,18 +5,39 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-// body {
-//     background: #000000 !important;
-// }
+
+body {
+    background: #111827 !important;
+}
+
+Header {
+    background: #111827 !important;
+}
 
 .custom-color {
-    background: #6366f1 !important;
+    background: #4B5563 !important;
+
+    &:hover {
+        background: #6f7c8d !important;
+    }
 }
 
 .sidebar-border {
-    border-right: 1px solid #E7E7E9;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-  }
+    border-right: 1px solid #111827;
+    box-shadow: 0 0 10px 0 rgba(73, 14, 233, 0.151);
+}
+
+.description-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 8;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.connexion-color {
+    color: #009C95 !important;
+}
 
 @media (min-width: 640px) and (max-width: 1024px) {
     .custom-link {
