@@ -6,7 +6,7 @@ const pages = [
         name: "Races",
         href: "/sanctuary/races",
         imageSrc:
-        "/images/sanctuary/races-logo.png",
+        "/images/sanctuary/races-logo-2.png",
         imageAlt:
         "",
     },
@@ -15,7 +15,7 @@ const pages = [
         name: "Classes",
         href: "/sanctuary/classes",
         imageSrc:
-        "/images/sanctuary/classes-logo.png",
+        "/images/sanctuary/classes-logo-2.png",
         imageAlt:
         "",
     },
@@ -42,7 +42,7 @@ const pages = [
         name: "Équipements",
         href: "/sanctuary/equipments",
         imageSrc:
-        "/images/sanctuary/equipements-logo.png",
+        "/images/sanctuary/equipements-logo-2.png",
         imageAlt:
         "",
     },
@@ -60,7 +60,7 @@ const pages = [
         name: "Sorts",
         href: "/sanctuary/spells",
         imageSrc:
-        "/images/sanctuary/sorts-logo.png",
+        "/images/sanctuary/sorts-logo-3.png",
         imageAlt:
         "",
     },
@@ -69,7 +69,7 @@ const pages = [
         name: "Dons",
         href: "/sanctuary/skills",
         imageSrc:
-        "/images/sanctuary/dons-logo.png",
+        "/images/sanctuary/dons-logo-3.png",
         imageAlt:
         "",
     }

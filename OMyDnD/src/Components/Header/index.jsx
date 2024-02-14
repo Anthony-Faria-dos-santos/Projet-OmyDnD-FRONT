@@ -16,13 +16,13 @@ const sanctuaries = [
     name: "Races",
     description: "Get a better understanding of your traffic",
     href: "/sanctuary/races",
-    icon: `/images/sanctuary/races-logo.png`,
+    icon: `/images/sanctuary/races-logo-2.png`,
   },
   {
     name: "Classes",
     description: "Speak directly to your customers",
     href: "/sanctuary/classes",
-    icon: `/images/sanctuary/classes-logo.png`,
+    icon: `/images/sanctuary/classes-logo-2.png`,
   },
   {
     name: "Personnalités et historiques",
@@ -40,7 +40,7 @@ const sanctuaries = [
     name: "Équipements",
     description: "Build strategic funnels that will convert",
     href: "/sanctuary/equipments",
-    icon: `/images/sanctuary/equipements-logo.png`,
+    icon: `/images/sanctuary/equipements-logo-2.png`,
   },
   {
     name: "Altérations d'état",
@@ -52,13 +52,13 @@ const sanctuaries = [
     name: "Sorts",
     description: "Build strategic funnels that will convert",
     href: "/sanctuary/spells",
-    icon: `/images/sanctuary/sorts-logo.png`,
+    icon: `/images/sanctuary/sorts-logo-3.png`,
   },
   {
     name: "Dons",
     description: "Build strategic funnels that will convert",
     href: "/sanctuary/skills",
-    icon: `/images/sanctuary/dons-logo.png`,
+    icon: `/images/sanctuary/dons-logo-3.png`,
   },
 ];
 
@@ -109,7 +109,7 @@ function Header() {
           {/* Popup */}
           {isLoggedIn && showPopupLoggedIn && (
             <Label as="a" open={showPopupLoggedIn} color="teal" tag>
-              Vous êtes maintenant connecté 
+              Vous êtes maintenant connecté !
             </Label>
           )}
         </div>
