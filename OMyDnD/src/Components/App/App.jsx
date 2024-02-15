@@ -5,6 +5,9 @@ import Header from "../Header/index.jsx";
 import Sanctuary from "../Sanctuary/Sanctuary.jsx";
 import CoreFeatures from "../Sanctuary/CoreFeatures/CoreFeatures.jsx";
 import CoreFeature from "../Sanctuary/CoreFeature/CoreFeature.jsx";
+import CharacterCreator from "../Tool/CharacterCreator";
+import CharacterSheet from "../Tool/CharacterSheet";
+import ProtectedRoute from "../auth/ProtectedRoute/ProtectedRoute.jsx";
 
 function App() {
   return (
@@ -16,6 +19,15 @@ function App() {
         <Route path="/sanctuary" element={<Sanctuary />} />
         <Route path="/sanctuary/:featureType" element={<CoreFeatures />} />
         <Route path="/sanctuary/:featureType/:featureId" element={<CoreFeature />} />
+        <Route
+          path="/tool/character-creator"
+          element={
+            <ProtectedRoute>
+              <CharacterCreator />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/tool/character-creator/character-sheet" element={<CharacterSheet />} />
       </Routes>
     </Router>
   );
