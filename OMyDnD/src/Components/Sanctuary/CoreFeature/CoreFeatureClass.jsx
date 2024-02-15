@@ -71,18 +71,80 @@ function CoreFeatureClass() {
               </div>
             </div>
           </div>
-          <section aria-labelledby="details-heading" className="mt-12 p-3">
+
+          <section aria-labelledby="details-heading" className="mt-12 p-3 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
+
+            {/*Infos abilities*/}
             <h2 id="details-heading" className="sr-only">
-              Additional details
+              Spécificités classes
             </h2>
-            <div className="lg:grid lg:grid lg:items-start lg:gap-x-8">
-              {Object.entries(feature.class_abilities).map(
+            <div>
+
+              {/* Info classe stuff */}
+          <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0 bg-gray-700 rounded-lg">
+              <div className="bg-gray-800 rounded-lg text-xl font-bold tracking-tight text-gray-50 text-center uppercase">
+                Point de vie
+              </div>
+
+              <div className="mt-1">
+                <h3 className="sr-only">Description</h3>
+                <p className="text-md p-2 text-gray-50 text-justify">
+                {Object.keys(feature.class_abilities.health).map(key => (
+          <li className="list-none mb-2" key={key}>
+            <div className="p-1 bg-gray-600 font-semibold rounded-lg">{formatKey(key)} :</div><br /> {feature.class_abilities.health[key]}
+          </li>
+        ))}
+                </p>
+              </div>
+            </div>
+            <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-4 bg-gray-700 rounded-lg">
+              <div className="text-xl font-bold tracking-tight text-gray-50 bg-gray-800 rounded-lg text-center uppercase">
+                Maîtrises
+              </div>
+
+              <div className="mt-1">
+                <h3 className="sr-only">Description</h3>
+                <p className="text-md p-2 text-gray-50 text-justify">
+                {Object.keys(feature.class_abilities.masteries).map(key => (
+          <li className="list-none mb-2" key={key}>
+            <div className="p-1 bg-gray-600 font-semibold rounded-lg">{formatKey(key)} :</div><br /> {feature.class_abilities.masteries[key]}
+          </li>
+        ))}
+                </p>
+              </div>
+            </div>
+            <div className="mt-10 px-4 pb-3 sm:mt-16 sm:px-0 lg:mt-4 bg-gray-700 rounded-lg">
+              <div className="text-xl font-bold tracking-tight text-gray-50 bg-gray-800 rounded-lg text-center uppercase">
+                Équipement
+              </div>
+
+              <div className="mt-1">
+                <h2 className="sr-only">feature information</h2>
+                <p className="text-md p-2 tracking-tight text-gray-50">
+                  {feature.class_abilities.equipement.description}
+                </p>
+              </div>
+
+              <div className="mt-1">
+                <h3 className="sr-only">Description</h3>
+                <p className="text-md p-2 text-gray-50 text-justify">
+                {Object.keys(feature.class_abilities.equipement.choices).map(key => (
+          <li className="list-none p-1 bg-gray-600 rounded-lg mt-1" key={key}>
+            {feature.class_abilities.equipement.choices[key]}
+          </li>
+        ))}
+                </p>
+              </div>
+            </div>
+            </div>
+            <div className="lg:grid lg:items-start lg:gap-x-8 mt-6">
+             {Object.entries(feature.class_abilities).map(
                 ([key, item]) =>
                   item.name && (
                     <Disclosure key={key} as="div" className="mt-2">
                       {({ open }) => (
                         <>
-                          <Disclosure.Button className="flex justify-between w-full px-4 py-2 text-sm font-medium text-left text-gray-50 bg-gray-800 rounded-lg hover:bg-gray-600 focus:outline-none focus-visible:ring focus-visible:ring-gray-500 focus-visible:ring-opacity-75">
+                          <Disclosure.Button className="flex justify-between w-full px-4 py-2 text-sm font-medium text-left text-gray-50 bg-gray-800 rounded-lg hover:bg-gray-600">
                             <span>{item.name}</span>
                             <span>
                               {open ? (
@@ -102,63 +164,19 @@ function CoreFeatureClass() {
               )}
             </div>
           </section>
-          <section aria-labelledby="details-heading" className="mt-12 p-3">
-            <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
-              <p className="text-xl font-bold tracking-tight text-gray-50">
-                Point de vie
-              </p>
+          <div className="mt-10 bg-gradient-to-r from-gray-900 via-gray-600 to-gray-900 w-full h-1"></div>
 
-              <div className="mt-1">
+          {/*<div className="mt-1">
                 <h3 className="sr-only">Description</h3>
-                <p className="text-md text-gray-50 text-justify">
-                {Object.keys(feature.class_abilities.health).map(key => (
+                <p className="text-md p-2 text-gray-50 text-justify">
+                {Object.keys(feature.tables.table_1.choices).map(key => (
           <li className="list-none mb-2" key={key}>
-            {formatKey(key)} :<br /> {feature.class_abilities.health[key]}
+            <div className="p-1 bg-gray-600 font-semibold rounded-lg">{formatKey(key)} :</div><br /> {feature.tables.tables_1.choices.choices_[key]}
           </li>
         ))}
-                </p>
-              </div>
-            </div>
-            <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
-              <p className="text-xl font-bold tracking-tight text-gray-50">
-                Maîtrises
-              </p>
+        </p>
+                </div>*/}
 
-              <div className="mt-1">
-                <h3 className="sr-only">Description</h3>
-                <p className="text-md text-gray-50 text-justify">
-                {Object.keys(feature.class_abilities.masteries).map(key => (
-          <li className="list-none mb-2" key={key}>
-            {formatKey(key)} :<br /> {feature.class_abilities.masteries[key]}
-          </li>
-        ))}
-                </p>
-              </div>
-            </div>
-            <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
-              <p className="text-xl font-bold tracking-tight text-gray-50">
-                Équipement
-              </p>
-
-              <div className="mt-1">
-                <h2 className="sr-only">feature information</h2>
-                <p className="text-md tracking-tight text-gray-50">
-                  {feature.class_abilities.equipement.description}
-                </p>
-              </div>
-
-              <div className="mt-1">
-                <h3 className="sr-only">Description</h3>
-                <p className="text-md text-gray-50 text-justify">
-                {Object.keys(feature.class_abilities.equipement.choices).map(key => (
-          <li className="list-none" key={key}>
-            {feature.class_abilities.equipement.choices[key]}
-          </li>
-        ))}
-                </p>
-              </div>
-            </div>
-          </section>
         </div>
       </main>
     </div>

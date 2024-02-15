@@ -150,7 +150,7 @@
             },
             "ability_2": {
               "name": "Sursaut sauvage",
-              "description": "Au niveau 3, l'énergie magique qui coule en vous jaillit parfois. Lorsque vous entrez en rage, lancez 1d8 sur la table de Magie sauvage pour déterminer l'effet magique produit. Si l'effet requiert un jet de sauvegarde, le DD est égal à 8 + votre bonus de maîtrise + votre modificateur de Constitution."
+              "description": "Au niveau 3, l'énergie magique qui coule en vous jaillit parfois. Lorsque vous entrez en rage, lancez 1d8 sur la table de Magie sauvage pour déterminer l'effet magique produit. Si l'effet requiert un jet de sauvegarde, le DD est égal à 8 + votre bonus de maîtrise + votre modificateur de Constitution. (voir table en bas de page)"
             },
             "ability_3": {
               "name": "Réserve de magie",
