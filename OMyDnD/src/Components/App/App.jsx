@@ -1,13 +1,13 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import Header from "../Header/index.jsx";
+import CoreFeature from "../Sanctuary/CoreFeature/CoreFeature.jsx";
+import CoreFeatures from "../Sanctuary/CoreFeatures/CoreFeatures.jsx";
+import Sanctuary from "../Sanctuary/Sanctuary.jsx";
+import CharacterCreator from "../Tool/CharacterCreator";
+import CharacterSheet from "../Tool/CharacterSheet/index.jsx";
+import ProtectedRoute from "../auth/ProtectedRoute/ProtectedRoute.jsx";
 import SignIn from "../auth/SignIn/SignIn.jsx";
 import SignUp from "../auth/SignUp/SignUp.jsx";
-import Header from "../Header/index.jsx";
-import Sanctuary from "../Sanctuary/Sanctuary.jsx";
-import CoreFeatures from "../Sanctuary/CoreFeatures/CoreFeatures.jsx";
-import CoreFeature from "../Sanctuary/CoreFeature/CoreFeature.jsx";
-import CharacterCreator from "../Tool/CharacterCreator";
-import CharacterSheet from "../Tool/CharacterSheet";
-import ProtectedRoute from "../auth/ProtectedRoute/ProtectedRoute.jsx";
 
 function App() {
   return (
@@ -27,7 +27,14 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="/tool/character-creator/character-sheet" element={<CharacterSheet />} />
+        <Route
+          path="/tool/character-creator/character-sheet"
+          element={
+            <ProtectedRoute>
+              <CharacterSheet />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Router>
   );
