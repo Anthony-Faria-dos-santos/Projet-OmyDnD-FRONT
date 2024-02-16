@@ -4,13 +4,13 @@ import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 import classes from "../../../data/classes.json";
 
-
-  function formatKey(key) {
-    // Remplace les underscores par des espaces et met en majuscule la première lettre de chaque mot
-    return key.split('_')
-              .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-              .join(' ');
-  }
+function formatKey(key) {
+  // Remplace les underscores par des espaces et met en majuscule la première lettre de chaque mot
+  return key
+    .split("_")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
 
 function CoreFeatureClass() {
   const { featureType, featureId } = useParams();
@@ -75,7 +75,7 @@ function CoreFeatureClass() {
             <h2 id="details-heading" className="sr-only">
               Additional details
             </h2>
-            <div className="lg:grid lg:grid lg:items-start lg:gap-x-8">
+            <div className="lg:grid lg:items-start lg:gap-x-8">
               {Object.entries(feature.class_abilities).map(
                 ([key, item]) =>
                   item.name && (
@@ -111,11 +111,12 @@ function CoreFeatureClass() {
               <div className="mt-1">
                 <h3 className="sr-only">Description</h3>
                 <p className="text-md text-gray-50 text-justify">
-                {Object.keys(feature.class_abilities.health).map(key => (
-          <li className="list-none mb-2" key={key}>
-            {formatKey(key)} :<br /> {feature.class_abilities.health[key]}
-          </li>
-        ))}
+                  {Object.keys(feature.class_abilities.health).map((key) => (
+                    <li className="list-none mb-2" key={key}>
+                      {formatKey(key)} :<br />{" "}
+                      {feature.class_abilities.health[key]}
+                    </li>
+                  ))}
                 </p>
               </div>
             </div>
@@ -127,11 +128,12 @@ function CoreFeatureClass() {
               <div className="mt-1">
                 <h3 className="sr-only">Description</h3>
                 <p className="text-md text-gray-50 text-justify">
-                {Object.keys(feature.class_abilities.masteries).map(key => (
-          <li className="list-none mb-2" key={key}>
-            {formatKey(key)} :<br /> {feature.class_abilities.masteries[key]}
-          </li>
-        ))}
+                  {Object.keys(feature.class_abilities.masteries).map((key) => (
+                    <li className="list-none mb-2" key={key}>
+                      {formatKey(key)} :<br />{" "}
+                      {feature.class_abilities.masteries[key]}
+                    </li>
+                  ))}
                 </p>
               </div>
             </div>
@@ -150,11 +152,13 @@ function CoreFeatureClass() {
               <div className="mt-1">
                 <h3 className="sr-only">Description</h3>
                 <p className="text-md text-gray-50 text-justify">
-                {Object.keys(feature.class_abilities.equipement.choices).map(key => (
-          <li className="list-none" key={key}>
-            {feature.class_abilities.equipement.choices[key]}
-          </li>
-        ))}
+                  {Object.keys(feature.class_abilities.equipement.choices).map(
+                    (key) => (
+                      <li className="list-none" key={key}>
+                        {feature.class_abilities.equipement.choices[key]}
+                      </li>
+                    )
+                  )}
                 </p>
               </div>
             </div>
