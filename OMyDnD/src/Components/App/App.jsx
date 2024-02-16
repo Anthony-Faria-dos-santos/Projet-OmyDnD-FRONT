@@ -6,6 +6,7 @@ import Sanctuary from "../Sanctuary/Sanctuary.jsx";
 import CoreFeatures from "../Sanctuary/CoreFeatures/CoreFeatures.jsx";
 import CoreFeature from "../Sanctuary/CoreFeature/CoreFeature.jsx";
 import AttributeAbility from "../Sanctuary/Attributes/AttributeAbility.jsx";
+import AttributeEquipment from "../Sanctuary/Attributes/AttributeEquipment.jsx";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/sanctuary" element={<Sanctuary />} />
         <Route path="/sanctuary/:featureType" element={<CoreFeatures />} />
         <Route path="/sanctuary/abilities" element={<AttributeAbility />} />
+        <Route path="/sanctuary/equipments" element={<AttributeEquipment />} />
         <Route path="/sanctuary/:featureType/:featureId" element={<CoreFeature />} />
       </Routes>
     </Router>
