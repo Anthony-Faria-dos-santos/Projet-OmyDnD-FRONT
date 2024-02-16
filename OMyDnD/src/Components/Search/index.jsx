@@ -8,21 +8,23 @@ function Search() {
   const [showDropdownSpell, setShowDropdownSpell] = useState(false);
 
   const [queryClass, setQueryClass] = useState("");
-  const [selectedClass, setSelectedClass] = useState(null);
   const [showDropdownClass, setShowDropdownClass] = useState(false);
 
   const handleSelectSpell = (spell) => {
     setSelectedSpell(spell);
     setShowDropdownSpell(false);
     setQuerySpell("");
+    // Effacer la recherche de classe lorsqu'un sort est sélectionné
     setQueryClass("");
-    setSelectedClass(null);
   };
 
   const handleSelectClass = (cls) => {
-    setSelectedClass(cls);
+    // Naviguer vers l'URL spécifique de la classe sélectionnée dans un nouvel onglet
+    const classUrl = `/sanctuary/classes/${cls.index}`;
+    window.open(classUrl, "_blank");
     setShowDropdownClass(false);
     setQueryClass("");
+    // Effacer la sélection de sort lorsqu'une classe est sélectionnée
     setQuerySpell("");
     setSelectedSpell(null);
   };
@@ -40,7 +42,7 @@ function Search() {
         fontFamily: "sans-serif",
       }}
     >
-      {/* Search bar for spells */}
+      {/* Barre de recherche pour les sorts */}
       <input
         type="search"
         placeholder="Rechercher un sort..."
@@ -48,36 +50,11 @@ function Search() {
         autoComplete="off"
         onChange={(e) => setQuerySpell(e.target.value)}
         onFocus={() => setShowDropdownSpell(true)}
-        style={{
-          padding: "10px",
-          width: "100%",
-          maxWidth: "500px",
-          borderRadius: "8px",
-          border: "1px solid #ccc",
-          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-        }}
+        style={inputStyle}
       />
-      {/* Dropdown for spells */}
+      {/* Menu déroulant pour les sorts */}
       {showDropdownSpell && querySpell && (
-        <ul
-          style={{
-            listStyleType: "none",
-            padding: 0,
-            cursor: "pointer",
-            backgroundColor: "#f0f0f0",
-            border: "1px solid #ccc",
-            width: "100%",
-            maxWidth: "500px",
-            position: "absolute",
-            zIndex: 1000,
-            top: "50px",
-            maxHeight: "400px",
-            overflowY: "auto",
-            borderRadius: "8px",
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-            marginTop: "5px",
-          }}
-        >
+        <ul style={dropdownStyle}>
           {spellsData
             .filter((spell) =>
               spell.name.toLowerCase().includes(querySpell.toLowerCase())
@@ -87,14 +64,14 @@ function Search() {
               <li
                 key={index}
                 onClick={() => handleSelectSpell(spell)}
-                style={{ padding: "10px", borderBottom: "1px solid #ddd" }}
+                style={itemStyle}
               >
                 {spell.name}
               </li>
             ))}
         </ul>
       )}
-      {/* Search bar for classes */}
+      {/* Barre de recherche pour les classes */}
       <input
         type="search"
         placeholder="Rechercher une classe..."
@@ -102,37 +79,11 @@ function Search() {
         autoComplete="off"
         onChange={(e) => setQueryClass(e.target.value)}
         onFocus={() => setShowDropdownClass(true)}
-        style={{
-          padding: "10px",
-          width: "100%",
-          maxWidth: "500px",
-          borderRadius: "8px",
-          border: "1px solid #ccc",
-          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-          marginTop: "20px", // Space between the two search bars
-        }}
+        style={inputStyle}
       />
-      {/* Dropdown for classes */}
+      {/* Menu déroulant pour les classes */}
       {showDropdownClass && queryClass && (
-        <ul
-          style={{
-            listStyleType: "none",
-            padding: 0,
-            cursor: "pointer",
-            backgroundColor: "#f0f0f0",
-            border: "1px solid #ccc",
-            width: "100%",
-            maxWidth: "500px",
-            position: "absolute",
-            zIndex: 1000,
-            top: "120px", // Adjusted top to make space for both dropdowns
-            maxHeight: "400px",
-            overflowY: "auto",
-            borderRadius: "8px",
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-            marginTop: "5px",
-          }}
-        >
+        <ul style={dropdownStyle}>
           {classesData
             .filter((cls) =>
               cls.name.toLowerCase().includes(queryClass.toLowerCase())
@@ -142,14 +93,14 @@ function Search() {
               <li
                 key={index}
                 onClick={() => handleSelectClass(cls)}
-                style={{ padding: "10px", borderBottom: "1px solid #ddd" }}
+                style={itemStyle}
               >
                 {cls.name}
               </li>
             ))}
         </ul>
       )}
-      {/* Display selected spell or class */}
+      {/* Affichage du sort sélectionné  */}
       {selectedSpell && (
         <div style={resultStyle}>
           <h2 style={{ fontWeight: "bold", textAlign: "center" }}>
@@ -157,20 +108,7 @@ function Search() {
           </h2>
           {Object.entries(selectedSpell).map(([key, value]) => (
             <p key={key}>
-              <strong style={{ fontWeight: "bold" }}>{key}</strong>:{" "}
-              {typeof value === "object" ? JSON.stringify(value) : value}
-            </p>
-          ))}
-        </div>
-      )}
-      {selectedClass && (
-        <div style={resultStyle}>
-          <h2 style={{ fontWeight: "bold", textAlign: "center" }}>
-            {selectedClass.name}
-          </h2>
-          {Object.entries(selectedClass).map(([key, value]) => (
-            <p key={key}>
-              <strong style={{ fontWeight: "bold" }}>{key}</strong>:{" "}
+              <strong>{key}</strong>:{" "}
               {typeof value === "object" ? JSON.stringify(value) : value}
             </p>
           ))}
@@ -179,6 +117,39 @@ function Search() {
     </div>
   );
 }
+
+const inputStyle = {
+  padding: "10px",
+  width: "100%",
+  maxWidth: "500px",
+  borderRadius: "8px",
+  border: "1px solid #ccc",
+  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+  marginBottom: "20px",
+};
+
+const dropdownStyle = {
+  listStyleType: "none",
+  padding: 0,
+  cursor: "pointer",
+  backgroundColor: "#f0f0f0",
+  border: "1px solid #ccc",
+  width: "100%",
+  maxWidth: "500px",
+  position: "absolute",
+  zIndex: 1000,
+  top: "60px",
+  maxHeight: "400px",
+  overflowY: "auto",
+  borderRadius: "8px",
+  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+  marginTop: "5px",
+};
+
+const itemStyle = {
+  padding: "10px",
+  borderBottom: "1px solid #ddd",
+};
 
 const resultStyle = {
   marginTop: "20px",
