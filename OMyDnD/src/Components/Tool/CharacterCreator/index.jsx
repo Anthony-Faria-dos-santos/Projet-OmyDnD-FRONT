@@ -1,16 +1,28 @@
-import alignments from '../../../data/alignments.json';
+import alignments from "../../../data/alignments.json";
 
 import { Tab } from "@headlessui/react";
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { createCharacter, fetchBackgrounds, fetchClasses, fetchRaces } from '../../../store/slices/characterSlice.js';
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import {
+  createCharacter,
+  fetchBackgrounds,
+  fetchClasses,
+  fetchRaces,
+} from "../../../store/slices/characterSlice.js";
 
 function CharacterCreator() {
+  const [videoError, setVideoError] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { user } = useSelector(state => state.auth);
-  const { races, classes, backgrounds } = useSelector(state => state.character);
+  const { user } = useSelector((state) => state.auth);
+  const { races, classes, backgrounds } = useSelector(
+    (state) => state.character
+  );
+
+  const handleError = () => {
+    setVideoError(true);
+  };
 
   useEffect(() => {
     dispatch(fetchRaces());
@@ -23,27 +35,27 @@ function CharacterCreator() {
     const formData = new FormData(event.target);
     const characterData = {
       user_id: user.id,
-      name: formData.get('name'),
-      race_id: parseInt(formData.get('races'), 10),
-      classe_id: parseInt(formData.get('classes'), 10),
-      background_id: parseInt(formData.get('backgrounds'), 10),
-      alignment: formData.get('alignment'),
-      strength: parseInt(formData.get('strength'), 10),
-      dexterity: parseInt(formData.get('dexterity'), 10),
-      constitution: parseInt(formData.get('constitution'), 10),
-      inteligence: parseInt(formData.get('inteligence'), 10),
-      wisdom: parseInt(formData.get('wisdom'), 10),
-      charisma: parseInt(formData.get('charisma'), 10),
+      name: formData.get("name"),
+      race_id: parseInt(formData.get("races"), 10),
+      classe_id: parseInt(formData.get("classes"), 10),
+      background_id: parseInt(formData.get("backgrounds"), 10),
+      alignment: formData.get("alignment"),
+      strength: parseInt(formData.get("strength"), 10),
+      dexterity: parseInt(formData.get("dexterity"), 10),
+      constitution: parseInt(formData.get("constitution"), 10),
+      inteligence: parseInt(formData.get("inteligence"), 10),
+      wisdom: parseInt(formData.get("wisdom"), 10),
+      charisma: parseInt(formData.get("charisma"), 10),
     };
-    console.log('characterData:', characterData);
+    console.log("characterData:", characterData);
     dispatch(createCharacter(characterData))
       .unwrap()
       .then((createdCharacter) => {
-        console.log('Character created successfully:', createdCharacter);
-        console.log('Character name :', characterData.name);
-        navigate('/tool/character-creator/character-sheet');
+        console.log("Character created successfully:", createdCharacter);
+        console.log("Character name :", characterData.name);
+        navigate("/tool/character-creator/character-sheet");
       })
-      .catch((error) => console.error('Error creating character:', error));
+      .catch((error) => console.error("Error creating character:", error));
   };
 
   return (
@@ -54,11 +66,23 @@ function CharacterCreator() {
             <Tab.Group as="div" className="flex flex-col-reverse">
               <Tab.Panels className="aspect-h-1 aspect-w-1 w-full">
                 <Tab.Panel key="Character-Creator">
-                  <img
-                    className="h-full w-full object-cover object-center rounded-3xl"
-                    src="/images/forge.jpg"
-                    alt=""
-                  />
+                  {videoError ? ( 
+                    <img
+                      className="h-full w-full object-cover object-center rounded-3xl"
+                      src="/images/forge-2.jpg"
+                      alt=""
+                    />
+                  ) : (
+                    <video
+                      className="h-full w-full object-cover object-center rounded-3xl"
+                      autoPlay
+                      loop
+                      muted
+                      src="/f1d4f024-a7f4-499e-8f09-25d29fc9f551.mp4"
+                      onError={handleError}
+                    >
+                    </video>
+                  )}
                 </Tab.Panel>
               </Tab.Panels>
             </Tab.Group>
@@ -133,7 +157,7 @@ function CharacterCreator() {
                     </select>
                   </div>
                 </div>
-                
+
                 <div className="mb-2 sm:col-span-1 sm:w-1/3 w-full">
                   <label
                     htmlFor="backgrounds"
@@ -180,7 +204,7 @@ function CharacterCreator() {
                 </div>
               </div>
 
-              <div className='w-1/2 mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 sm:grid-rows-3'>
+              <div className="w-1/2 mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 sm:grid-rows-3">
                 <div className="sm:col-span-1">
                   <label
                     htmlFor="jet-de-sauvegarde"
@@ -249,9 +273,7 @@ function CharacterCreator() {
                     Intelligence
                   </label>
                   <div className="mt-1 mb-1">
-                    <div
-                      className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500"
-                    >
+                    <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
                       <input
                         type="number"
                         name="inteligence"
