@@ -61,7 +61,7 @@ function CoreFeatureBackground() {
             </p>
             <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-10 bg-gray-700 rounded-lg">
               <div className="bg-gray-800 rounded-lg text-xl font-bold tracking-tight text-gray-50 text-center uppercase">
-                Compétences de départ
+                Ensemble de départ
               </div>
 
               <div className="mt-1 p-1">
@@ -82,7 +82,7 @@ function CoreFeatureBackground() {
 
               <div className="mt-1 p-1">
                 <h3 className="sr-only">Description</h3>
-                <div className="p-1 bg-gray-600 font-semibold rounded-lg text-gray-50">Langues optionnelles</div>
+                <div className="p-1 bg-gray-600 font-semibold rounded-lg text-gray-50">Langues supplémentaires</div>
                 <p className="text-md p-2 text-gray-50 text-justify">
                 {feature.language_options}
                 </p>
@@ -105,7 +105,7 @@ function CoreFeatureBackground() {
 
       <section aria-labelledby="details-heading" className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8 mt-6">
                 <h2 id="details-heading" className="sr-only">
-                  Sous-races
+                  Bonus de l'historique
                 </h2>
               <div className="mt-4">
                 <p className="text-3xl tracking-tight text-gray-500 p-2">
@@ -116,14 +116,48 @@ function CoreFeatureBackground() {
                 </p>
               </div>
 
-              <div className="bg-gray-800 rounded-lg p-2 mt-10 ml-2">
-                <div className="text-gray-50 bg-gray-700 rounded-lg p-1 font-semibold text-center uppercase">Choisissez en {feature.personality_traits.choose}</div>
+              <div className="bg-gray-600 rounded-lg mt-10 m-2">
+                <div className="bg-gray-700 rounded-lg text-xl font-bold tracking-tight text-gray-50 text-center uppercase leading-4 p-1">Traits <br /> <span className= "text-sm lowercase">(Choisissez en {feature.personality_traits.choose})</span></div>
       <div className="p-1 text-gray-50"><ol>
         {feature.personality_traits.from.map((item, index) => (
-          <li className="bg-gray-600 rounded-lg p-1 m-1 list-disc list-inside" key={index}>{item.string}</li>
+          <li className="bg-gray-700 rounded-lg p-1 m-1 list-disc list-inside" key={index}>{item.string}</li>
         ))}
       </ol></div>
       </div>
+              </section>
+
+
+              {/* Les choix de liens, passifs */}
+
+              <section aria-labelledby="details-heading" className="lg:grid lg:grid-cols-3 lg:items-start lg:gap-x-4 mt-6">
+            <h2 id="details-heading" className="sr-only">Choix d'historique</h2>
+            <div className="bg-gray-600 rounded-lg mt-10 m-2">
+            <div className="bg-gray-700 rounded-lg text-xl font-bold tracking-tight text-gray-50 text-center uppercase leading-4 p-1">Idéaux <br /> <span className= "text-sm lowercase">(Choisissez en {feature.ideals.choose})</span></div>
+            <div className="p-1 text-gray-50"><ol>
+        {feature.ideals.from.map((item, index) => (
+          <li className="bg-gray-700 rounded-lg p-1 m-1.5 list-disc list-inside" key={index}>{item.string}</li>
+        ))}
+      </ol></div>
+            </div>
+
+            <div className="bg-gray-600 rounded-lg mt-10 m-2">
+            <div className="bg-gray-700 rounded-lg text-xl font-bold tracking-tight text-gray-50 text-center uppercase leading-4 p-1">Liens <br /> <span className= "text-sm lowercase">(Choisissez en {feature.bonds.choose})</span></div>
+            <div className="p-1 text-gray-50"><ol>
+        {feature.bonds.from.map((item, index) => (
+          <li className="bg-gray-700 rounded-lg p-1 m-1.5 list-disc list-inside" key={index}>{item.string}</li>
+        ))}
+      </ol></div>
+            </div>
+
+            <div className="bg-gray-600 rounded-lg mt-10 m-2">
+            <div className="bg-gray-700 rounded-lg text-xl font-bold tracking-tight text-gray-50 text-center uppercase leading-4 p-1">Défauts <br /> <span className= "text-sm lowercase">(Choisissez en {feature.flaws.choose})</span></div>
+            <div className="p-1 text-gray-50"><ol>
+        {feature.flaws.from.map((item, index) => (
+          <li className="bg-gray-700 rounded-lg p-1 m-1.5 list-disc list-inside" key={index}>{item.string}</li>
+        ))}
+      </ol></div>
+            </div>
+
               </section>
 
     </div>

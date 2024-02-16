@@ -11,7 +11,7 @@ function CoreFeature() {
       return <CoreFeatureRace />;
     case 'classes':
       return <CoreFeatureClass />;
-      case 'backgrounds':
+    case 'backgrounds':
       return <CoreFeatureBackground />;
     default:
       return <div>Feature not found</div>;
