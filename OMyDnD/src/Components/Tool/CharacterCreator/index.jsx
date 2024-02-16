@@ -12,6 +12,13 @@ import {
 } from "../../../store/slices/characterSlice.js";
 
 function CharacterCreator() {
+  const [selectedRace, setSelectedRace] = useState(null);
+  const [strength, setStrength] = useState(10);
+  const [dexterity, setDexterity] = useState(10);
+  const [constitution, setConstitution] = useState(10);
+  const [inteligence, setinteligence] = useState(10);
+  const [wisdom, setWisdom] = useState(10);
+  const [charisma, setCharisma] = useState(10);
   const [videoError, setVideoError] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -19,6 +26,38 @@ function CharacterCreator() {
   const { races, classes, backgrounds } = useSelector(
     (state) => state.character
   );
+
+  const handleCaractChange = (event, caract) => {
+    const value = parseInt(event.target.value, 10);
+    switch (caract) {
+      case 'strength':
+        setStrength(value);
+        break;
+      case 'dexterity':
+        setDexterity(value);
+        break;
+      case 'constitution':
+        setConstitution(value);
+        break;
+      case 'inteligence':
+        setinteligence(value);
+        break;
+      case 'wisdom':
+        setWisdom(value);
+        break;
+      case 'charisma':
+        setCharisma(value);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const handleRaceChange = (event) => {
+    const raceId = parseInt(event.target.value, 10);
+    const race = races.find((r) => r.id === raceId);
+    setSelectedRace(race);
+  };
 
   const handleError = () => {
     setVideoError(true);
@@ -29,6 +68,8 @@ function CharacterCreator() {
     dispatch(fetchClasses());
     dispatch(fetchBackgrounds());
   }, [dispatch]);
+
+  console.log('Races data:', races);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -66,7 +107,7 @@ function CharacterCreator() {
             <Tab.Group as="div" className="flex flex-col-reverse">
               <Tab.Panels className="aspect-h-1 aspect-w-1 w-full">
                 <Tab.Panel key="Character-Creator">
-                  {videoError ? ( 
+                  {videoError ? (
                     <img
                       className="h-full w-full object-cover object-center rounded-3xl"
                       src="/images/forge-2.jpg"
@@ -113,6 +154,7 @@ function CharacterCreator() {
                     </div>
                   </div>
                 </div>
+
                 <div className="mb-5 sm:col-span sm:w-1/3 w-full">
                   <label
                     htmlFor="races"
@@ -126,7 +168,9 @@ function CharacterCreator() {
                       name="races"
                       autoComplete="races-name"
                       className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 [&_*]:text-black"
+                      onChange={handleRaceChange}
                     >
+                      <option value="" disabled selected>Sélectionner une race</option>
                       {races.map((race) => (
                         <option key={race.id} value={race.id}>
                           {race.name}
@@ -135,6 +179,7 @@ function CharacterCreator() {
                     </select>
                   </div>
                 </div>
+
                 <div className="mb-5 sm:col-span-1 sm:w-1/3 w-full">
                   <label
                     htmlFor="classes"
@@ -149,6 +194,7 @@ function CharacterCreator() {
                       autoComplete="classes-name"
                       className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 [&_*]:text-black"
                     >
+                      <option value="" disabled selected>Sélectionner une classe</option>
                       {classes.map((classe) => (
                         <option key={classe.id} value={classe.id}>
                           {classe.name}
@@ -172,6 +218,7 @@ function CharacterCreator() {
                       autoComplete="backgrounds-name"
                       className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 [&_*]:text-black"
                     >
+                      <option value="" disabled selected>Sélectionner un historique</option>
                       {backgrounds.map((background) => (
                         <option key={background.id} value={background.id}>
                           {background.name}
@@ -194,6 +241,7 @@ function CharacterCreator() {
                       autoComplete="alignment"
                       className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 [&_*]:text-black"
                     >
+                      <option value="" disabled selected>Sélectionner un alignement</option>
                       {alignments.map((alignment) => (
                         <option key={alignment.index} value={alignment.name}>
                           {alignment.name}
@@ -204,127 +252,427 @@ function CharacterCreator() {
                 </div>
               </div>
 
-              <div className="w-1/2 mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 sm:grid-rows-3">
-                <div className="sm:col-span-1">
-                  <label
-                    htmlFor="jet-de-sauvegarde"
-                    className="block text-sm font-medium leading-6 text-white"
-                  >
-                    Force
-                  </label>
-                  <div className="mt-1 mb-1">
-                    <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
-                      <input
-                        type="number"
-                        name="strength"
-                        id="strength"
-                        autoComplete="strength"
-                        className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
-                        placeholder="10"
-                      />
+              <div className="w-2/3 mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 sm:grid-rows-3">
+                <div className="sm:col-span-1 grid grid-cols-2 grid-rows-2 gap-x-1 gap-y-1 sm:grid-cols-2 sm:grid-rows-2">
+                  <div className="col-span-2">
+                    <label
+                      htmlFor="jet-de-sauvegarde"
+                      className="block text-sm font-medium leading-6 text-white"
+                    >
+                      Force
+                    </label>
+                    <div className="mt-1 mb-1">
+                      <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                        <select
+                          name="strength"
+                          id="strength"
+                          autoComplete="strength"
+                          className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
+                          onChange={(e) => handleCaractChange(e, 'strength')}
+                        >
+                          <option value="" disabled>Sélectionner une valeur</option>
+                          {Array.from({ length: 18 }, (_, i) => i + 1).map((value) => (
+                            <option key={value} value={value}>
+                              {value}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="total"
+                      className="block text-sm font-medium leading-6 text-white"
+                    >
+                      Bonus Race
+                    </label>
+                    <div className="w-20 col-span-1">
+                      <div className="mt-1">
+                        <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                          <input
+                            type="text"
+                            readOnly
+                            className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
+                            value={selectedRace ? `+${selectedRace.strength_bonus}` : ''}
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="total"
+                      className="block text-sm font-medium leading-6 text-white"
+                    >
+                      Total
+                    </label>
+                    <div className="w-20 col-span-1">
+                      <div className="mt-1">
+                        <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                          <input
+                            type="text"
+                            readOnly
+                            className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
+                            value={strength + (selectedRace ? selectedRace.strength_bonus : 0)}
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div className="sm:col-span-1">
-                  <label
-                    htmlFor="jet-de-sauvegarde"
-                    className="block text-sm font-medium leading-6 text-white"
-                  >
-                    Dextérité
-                  </label>
-                  <div className="mt-1 mb-1">
-                    <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
-                      <input
-                        type="number"
-                        name="dexterity"
-                        id="dexterity"
-                        autoComplete="dexterity"
-                        className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
-                        placeholder="10"
-                      />
+
+                <div className="sm:col-span-1 grid grid-cols-2 grid-rows-2 gap-x-1 gap-y-1 sm:grid-cols-2 sm:grid-rows-2">
+                  <div className="col-span-2">
+                    <label
+                      htmlFor="jet-de-sauvegarde"
+                      className="block text-sm font-medium leading-6 text-white"
+                    >
+                      Dextérité
+                    </label>
+                    <div className="mt-1 mb-1">
+                      <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                        <select
+                          name="dexterity"
+                          id="dexterity"
+                          autoComplete="dexterity"
+                          className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
+                          onChange={(e) => handleCaractChange(e, 'dexterity')}
+                        >
+                          <option value="" disabled>Sélectionner une valeur</option>
+                          {Array.from({ length: 18 }, (_, i) => i + 1).map((value) => (
+                            <option key={value} value={value}>
+                              {value}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="total"
+                      className="block text-sm font-medium leading-6 text-white"
+                    >
+                      Bonus Race
+                    </label>
+                    <div className="w-20 col-span-1">
+                      <div className="mt-1">
+                        <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                          <input
+                            type="text"
+                            readOnly
+                            className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
+                            value={selectedRace ? `+${selectedRace.dexterity_bonus}` : ''}
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="total"
+                      className="block text-sm font-medium leading-6 text-white"
+                    >
+                      Total
+                    </label>
+                    <div className="w-20 col-span-1">
+                      <div className="mt-1">
+                        <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                          <input
+                            type="text"
+                            readOnly
+                            className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
+                            value={dexterity + (selectedRace ? selectedRace.dexterity_bonus : 0)}
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div className="sm:col-span-1">
-                  <label
-                    htmlFor="jet-de-sauvegarde"
-                    className="block text-sm font-medium leading-6 text-white"
-                  >
-                    Constitution
-                  </label>
-                  <div className="mt-1 mb-1">
-                    <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
-                      <input
-                        type="number"
-                        name="constitution"
-                        id="constitution"
-                        autoComplete="constitution"
-                        className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
-                        placeholder="10"
-                      />
+
+                <div className="sm:col-span-1 grid grid-cols-2 grid-rows-2 gap-x-1 gap-y-1 sm:grid-cols-2 sm:grid-rows-2">
+                  <div className="col-span-2">
+                    <label
+                      htmlFor="jet-de-sauvegarde"
+                      className="block text-sm font-medium leading-6 text-white"
+                    >
+                      Constitution
+                    </label>
+                    <div className="mt-1 mb-1">
+                      <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                        <select
+                          name="constitution"
+                          id="constitution"
+                          autoComplete="constitution"
+                          className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
+                          onChange={(e) => handleCaractChange(e, 'constitution')}
+                        >
+                          <option value="" disabled>Sélectionner une valeur</option>
+                          {Array.from({ length: 18 }, (_, i) => i + 1).map((value) => (
+                            <option key={value} value={value}>
+                              {value}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="total"
+                      className="block text-sm font-medium leading-6 text-white"
+                    >
+                      Bonus Race
+                    </label>
+                    <div className="w-20 col-span-1">
+                      <div className="mt-1">
+                        <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                          <input
+                            type="text"
+                            readOnly
+                            className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
+                            value={selectedRace ? `+${selectedRace.constitution_bonus}` : ''}
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="total"
+                      className="block text-sm font-medium leading-6 text-white"
+                    >
+                      Total
+                    </label>
+                    <div className="w-20 col-span-1">
+                      <div className="mt-1">
+                        <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                          <input
+                            type="text"
+                            readOnly
+                            className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
+                            value={constitution + (selectedRace ? selectedRace.constitution_bonus : 0)}
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div className="sm:col-span-1">
-                  <label
-                    htmlFor="jet-de-sauvegarde"
-                    className="block text-sm font-medium leading-6 text-white"
-                  >
-                    Intelligence
-                  </label>
-                  <div className="mt-1 mb-1">
-                    <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
-                      <input
-                        type="number"
-                        name="inteligence"
-                        id="inteligence"
-                        autoComplete="inteligence"
-                        className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
-                        placeholder="10"
-                      />
+
+                <div className="sm:col-span-1 grid grid-cols-2 grid-rows-2 gap-x-1 gap-y-1 sm:grid-cols-2 sm:grid-rows-2">
+                  <div className="col-span-2">
+                    <label
+                      htmlFor="jet-de-sauvegarde"
+                      className="block text-sm font-medium leading-6 text-white"
+                    >
+                      inteligence
+                    </label>
+                    <div className="mt-1 mb-1">
+                      <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                        <select
+                          name="inteligence"
+                          id="inteligence"
+                          autoComplete="inteligence"
+                          className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
+                          onChange={(e) => handleCaractChange(e, 'inteligence')}
+                        >
+                          <option value="" disabled>Sélectionner une valeur</option>
+                          {Array.from({ length: 18 }, (_, i) => i + 1).map((value) => (
+                            <option key={value} value={value}>
+                              {value}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="total"
+                      className="block text-sm font-medium leading-6 text-white"
+                    >
+                      Bonus Race
+                    </label>
+                    <div className="w-20 col-span-1">
+                      <div className="mt-1">
+                        <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                          <input
+                            type="text"
+                            readOnly
+                            className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
+                            value={selectedRace ? `+${selectedRace.inteligence_bonus}` : ''}
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="total"
+                      className="block text-sm font-medium leading-6 text-white"
+                    >
+                      Total
+                    </label>
+                    <div className="w-20 col-span-1">
+                      <div className="mt-1">
+                        <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                          <input
+                            type="text"
+                            readOnly
+                            className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
+                            value={inteligence + (selectedRace ? selectedRace.inteligence_bonus : 0)}
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div className="sm:col-span-1">
-                  <label
-                    htmlFor="jet-de-sauvegarde"
-                    className="block text-sm font-medium leading-6 text-white"
-                  >
-                    Sagesse
-                  </label>
-                  <div className="mt-1 mb-1">
-                    <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
-                      <input
-                        type="number"
-                        name="wisdom"
-                        id="wisdom"
-                        autoComplete="wisdom"
-                        className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
-                        placeholder="10"
-                      />
+
+                <div className="sm:col-span-1 grid grid-cols-2 grid-rows-2 gap-x-1 gap-y-1 sm:grid-cols-2 sm:grid-rows-2">
+                  <div className="col-span-2">
+                    <label
+                      htmlFor="jet-de-sauvegarde"
+                      className="block text-sm font-medium leading-6 text-white"
+                    >
+                      Sagesse
+                    </label>
+                    <div className="mt-1 mb-1">
+                      <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                        <select
+                          name="wisdom"
+                          id="wisdom"
+                          autoComplete="wisdom"
+                          className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
+                          onChange={(e) => handleCaractChange(e, 'wisdom')}
+                        >
+                          <option value="" disabled>Sélectionner une valeur</option>
+                          {Array.from({ length: 18 }, (_, i) => i + 1).map((value) => (
+                            <option key={value} value={value}>
+                              {value}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="total"
+                      className="block text-sm font-medium leading-6 text-white"
+                    >
+                      Bonus Race
+                    </label>
+                    <div className="w-20 col-span-1">
+                      <div className="mt-1">
+                        <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                          <input
+                            type="text"
+                            readOnly
+                            className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
+                            value={selectedRace ? `+${selectedRace.wisdom_bonus}` : ''}
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="total"
+                      className="block text-sm font-medium leading-6 text-white"
+                    >
+                      Total
+                    </label>
+                    <div className="w-20 col-span-1">
+                      <div className="mt-1">
+                        <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                          <input
+                            type="text"
+                            readOnly
+                            className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
+                            value={wisdom + (selectedRace ? selectedRace.wisdom_bonus : 0)}
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div className="sm:col-span-1">
-                  <label
-                    htmlFor="jet-de-sauvegarde"
-                    className="block text-sm font-medium leading-6 text-white"
-                  >
-                    Charisme
-                  </label>
-                  <div className="mt-1 mb-1">
-                    <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
-                      <input
-                        type="number"
-                        name="charisma"
-                        id="charisma"
-                        autoComplete="charisma"
-                        className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
-                        placeholder="10"
-                      />
+
+                <div className="sm:col-span-1 grid grid-cols-2 grid-rows-2 gap-x-1 gap-y-1 sm:grid-cols-2 sm:grid-rows-2">
+                  <div className="col-span-2">
+                    <label
+                      htmlFor="jet-de-sauvegarde"
+                      className="block text-sm font-medium leading-6 text-white"
+                    >
+                      Charisme
+                    </label>
+                    <div className="mt-1 mb-1">
+                      <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                        <select
+                          name="charisma"
+                          id="charisma"
+                          autoComplete="charisma"
+                          className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
+                          onChange={(e) => handleCaractChange(e, 'charisma')}
+                        >
+                          <option value="" disabled>Sélectionner une valeur</option>
+                          {Array.from({ length: 18 }, (_, i) => i + 1).map((value) => (
+                            <option key={value} value={value}>
+                              {value}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="total"
+                      className="block text-sm font-medium leading-6 text-white"
+                    >
+                      Bonus Race
+                    </label>
+                    <div className="w-20 col-span-1">
+                      <div className="mt-1">
+                        <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                          <input
+                            type="text"
+                            readOnly
+                            className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
+                            value={selectedRace ? `+${selectedRace.charisma_bonus}` : ''}
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="total"
+                      className="block text-sm font-medium leading-6 text-white"
+                    >
+                      Total
+                    </label>
+                    <div className="w-20 col-span-1">
+                      <div className="mt-1">
+                        <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                          <input
+                            type="text"
+                            readOnly
+                            className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
+                            value={charisma + (selectedRace ? selectedRace.charisma_bonus : 0)}
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
+
               </div>
               <div className="mt-8 flex items-center justify-start gap-x-6">
                 <button
@@ -338,7 +686,7 @@ function CharacterCreator() {
           </div>
         </div>
       </div>
-    </form>
+    </form >
   );
 }
 
