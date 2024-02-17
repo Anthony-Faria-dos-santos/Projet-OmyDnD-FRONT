@@ -1,40 +1,42 @@
-import alignments from "../../../data/alignments.json";
-
-import { Tab } from "@headlessui/react";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+// Importe les dépendances nécessaires, y compris les hooks React et les actions Redux.
+import { Tab } from "@headlessui/react"; // Importe le composant Tab de Headless UI pour une interface utilisateur interactive.
+import { useEffect, useState } from "react"; // Importe les hooks useEffect et useState de React pour gérer l'état et les effets de bord.
+import { useDispatch, useSelector } from "react-redux"; // Importe les hooks useDispatch et useSelector de Redux pour accéder au store et dispatcher des actions.
+import { useNavigate } from "react-router-dom"; // Importe le hook useNavigate de React Router pour la navigation programmée.
+import alignments from "../../../data/alignments.json"; // Importe les alignements depuis un fichier JSON local.
 import {
   createCharacter,
   fetchBackgrounds,
   fetchClasses,
   fetchRaces,
-} from "../../../store/slices/characterSlice.js";
+} from "../../../store/slices/characterSlice.js"; // Importe les actions asynchrones définies dans characterSlice.
 
+// Définit le composant fonctionnel CharacterCreator.
 function CharacterCreator() {
-  const [name, setName] = useState('');
-  const [selectedRace, setSelectedRace] = useState('');
-  const [selectedClass, setSelectedClass] = useState('');
-  const [selectedBackground, setSelectedBackground] = useState('');
-  const [alignment, setAlignment] = useState('');
+  // Initialise les états locaux pour stocker les entrées de l'utilisateur et les sélections du formulaire.
+  const [name, setName] = useState(''); // Stocke le nom du personnage.
+  const [selectedRace, setSelectedRace] = useState(''); // Stocke la race sélectionnée.
+  const [selectedClass, setSelectedClass] = useState(''); // Stocke la classe sélectionnée.
+  const [selectedBackground, setSelectedBackground] = useState(''); // Stocke le background sélectionné.
+  const [alignment, setAlignment] = useState(''); // Stocke l'alignement sélectionné.
+  // Initialise les états pour les caractéristiques du personnage.
   const [strength, setStrength] = useState(0);
   const [dexterity, setDexterity] = useState(0);
   const [constitution, setConstitution] = useState(0);
   const [inteligence, setinteligence] = useState(0);
   const [wisdom, setWisdom] = useState(0);
   const [charisma, setCharisma] = useState(0);
+  const [isFormValid, setIsFormValid] = useState(false); // Détermine si le formulaire est valide pour la soumission.
+  const [videoError, setVideoError] = useState(false); // Gère les erreurs de chargement de la vidéo de fond.
 
-  const [isFormValid, setIsFormValid] = useState(false);
-
-  const [videoError, setVideoError] = useState(false);
-
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // Utilise les hooks useDispatch et useSelector pour interagir avec le store Redux.
+  const navigate = useNavigate(); // Permet de naviguer entre les routes.
+  const dispatch = useDispatch(); // Permet de dispatcher des actions Redux.
+  // Sélectionne les données de l'utilisateur et les données nécessaires du store Redux.
   const { user } = useSelector((state) => state.auth);
-  const { races, classes, backgrounds } = useSelector(
-    (state) => state.character
-  );
+  const { races, classes, backgrounds } = useSelector((state) => state.character);
 
+  // Gère les changements des caractéristiques en mettant à jour l'état local correspondant.
   const handleCaractChange = (event, caract) => {
     const value = parseInt(event.target.value, 10);
     switch (caract) {
@@ -61,32 +63,36 @@ function CharacterCreator() {
     }
   };
 
+  // Gère le changement de sélection de la race et met à jour l'état local selectedRace.
   const handleRaceChange = (event) => {
     const raceId = parseInt(event.target.value, 10);
     const race = races.find((r) => r.id === raceId);
     setSelectedRace(race);
   };
 
+  // Fonction appelée en cas d'erreur de chargement de la vidéo de fond.
   const handleError = () => {
     setVideoError(true);
   };
 
+  // Utilise useEffect pour charger les races, classes et backgrounds au chargement du composant.
   useEffect(() => {
     dispatch(fetchRaces());
     dispatch(fetchClasses());
     dispatch(fetchBackgrounds());
   }, [dispatch]);
 
+  // Vérifie la validité du formulaire chaque fois que les états changent.
   useEffect(() => {
     const isValid = name && selectedRace && selectedClass && selectedBackground && alignment && strength && dexterity && constitution && inteligence && wisdom && charisma;
     setIsFormValid(isValid);
   }, [name, selectedRace, selectedClass, selectedBackground, alignment, strength, dexterity, constitution, inteligence, wisdom, charisma]);
 
-  console.log('Races data:', races);
-
+  // Gère la soumission du formulaire, créant un personnage avec les données saisies.
   const handleSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Empêche le rechargement de la page.
     const formData = new FormData(event.target);
+    // Construit l'objet characterData à partir des valeurs du formulaire et des états locaux.
     const characterData = {
       user_id: user.id,
       name: formData.get("name"),
@@ -94,6 +100,7 @@ function CharacterCreator() {
       classe_id: parseInt(formData.get("classes"), 10),
       background_id: parseInt(formData.get("backgrounds"), 10),
       alignment: formData.get("alignment"),
+      // Calcule les caractéristiques finales en ajoutant les bonus de race.
       strength: strength + (selectedRace ? selectedRace.strength_bonus : 0),
       dexterity: dexterity + (selectedRace ? selectedRace.dexterity_bonus : 0),
       constitution: constitution + (selectedRace ? selectedRace.constitution_bonus : 0),
@@ -101,13 +108,12 @@ function CharacterCreator() {
       wisdom: wisdom + (selectedRace ? selectedRace.wisdom_bonus : 0),
       charisma: charisma + (selectedRace ? selectedRace.charisma_bonus : 0),
     };
-    console.log("characterData:", characterData);
+    // Dispatch l'action createCharacter avec characterData et gère la réponse.
     dispatch(createCharacter(characterData))
       .unwrap()
       .then((createdCharacter) => {
-        console.log("Character created successfully:", createdCharacter);
-        console.log("Character name :", characterData.name);
-        navigate("/tool/character-creator/character-sheet");
+        // Redirige vers la feuille de personnage du personnage créé en cas de succès.
+        navigate("/tool/character-creator/character-sheet", { state: { characterId: createdCharacter.id } });
       })
       .catch((error) => console.error("Error creating character:", error));
   };
