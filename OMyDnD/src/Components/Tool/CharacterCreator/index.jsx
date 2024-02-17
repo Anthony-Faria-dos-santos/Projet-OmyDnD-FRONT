@@ -12,14 +12,22 @@ import {
 } from "../../../store/slices/characterSlice.js";
 
 function CharacterCreator() {
-  const [selectedRace, setSelectedRace] = useState(null);
-  const [strength, setStrength] = useState(10);
-  const [dexterity, setDexterity] = useState(10);
-  const [constitution, setConstitution] = useState(10);
-  const [inteligence, setinteligence] = useState(10);
-  const [wisdom, setWisdom] = useState(10);
-  const [charisma, setCharisma] = useState(10);
+  const [name, setName] = useState('');
+  const [selectedRace, setSelectedRace] = useState('');
+  const [selectedClass, setSelectedClass] = useState('');
+  const [selectedBackground, setSelectedBackground] = useState('');
+  const [alignment, setAlignment] = useState('');
+  const [strength, setStrength] = useState(0);
+  const [dexterity, setDexterity] = useState(0);
+  const [constitution, setConstitution] = useState(0);
+  const [inteligence, setinteligence] = useState(0);
+  const [wisdom, setWisdom] = useState(0);
+  const [charisma, setCharisma] = useState(0);
+
+  const [isFormValid, setIsFormValid] = useState(false);
+
   const [videoError, setVideoError] = useState(false);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
@@ -69,6 +77,11 @@ function CharacterCreator() {
     dispatch(fetchBackgrounds());
   }, [dispatch]);
 
+  useEffect(() => {
+    const isValid = name && selectedRace && selectedClass && selectedBackground && alignment && strength && dexterity && constitution && inteligence && wisdom && charisma;
+    setIsFormValid(isValid);
+  }, [name, selectedRace, selectedClass, selectedBackground, alignment, strength, dexterity, constitution, inteligence, wisdom, charisma]);
+
   console.log('Races data:', races);
 
   const handleSubmit = (event) => {
@@ -81,12 +94,12 @@ function CharacterCreator() {
       classe_id: parseInt(formData.get("classes"), 10),
       background_id: parseInt(formData.get("backgrounds"), 10),
       alignment: formData.get("alignment"),
-      strength: parseInt(formData.get("strength"), 10),
-      dexterity: parseInt(formData.get("dexterity"), 10),
-      constitution: parseInt(formData.get("constitution"), 10),
-      inteligence: parseInt(formData.get("inteligence"), 10),
-      wisdom: parseInt(formData.get("wisdom"), 10),
-      charisma: parseInt(formData.get("charisma"), 10),
+      strength: strength + (selectedRace ? selectedRace.strength_bonus : 0),
+      dexterity: dexterity + (selectedRace ? selectedRace.dexterity_bonus : 0),
+      constitution: constitution + (selectedRace ? selectedRace.constitution_bonus : 0),
+      inteligence: inteligence + (selectedRace ? selectedRace.inteligence_bonus : 0),
+      wisdom: wisdom + (selectedRace ? selectedRace.wisdom_bonus : 0),
+      charisma: charisma + (selectedRace ? selectedRace.charisma_bonus : 0),
     };
     console.log("characterData:", characterData);
     dispatch(createCharacter(characterData))
@@ -115,7 +128,7 @@ function CharacterCreator() {
                     />
                   ) : (
                     <video
-                      className="h-full w-full object-cover object-center rounded-3xl"
+                      className="h-full w-full object-cover object-center sm:rounded-3xl rounded-lg"
                       autoPlay
                       loop
                       muted
@@ -142,14 +155,15 @@ function CharacterCreator() {
                     Nom du personnage
                   </label>
                   <div className="mt-1 mb-1">
-                    <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                    <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
                       <input
                         type="text"
                         name="name"
                         id="name"
                         autoComplete="name"
-                        className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
-                        placeholder="Kirikou"
+                        className="w-full ml-1 flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
+                        placeholder="ex : Mandolphina"
+                        onChange={(e) => setName(e.target.value)}
                       />
                     </div>
                   </div>
@@ -167,7 +181,7 @@ function CharacterCreator() {
                       id="races"
                       name="races"
                       autoComplete="races-name"
-                      className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 [&_*]:text-black"
+                      className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:text-sm sm:leading-6 [&_*]:text-black"
                       onChange={handleRaceChange}
                     >
                       <option value="" disabled selected>Sélectionner une race</option>
@@ -192,7 +206,8 @@ function CharacterCreator() {
                       id="classes"
                       name="classes"
                       autoComplete="classes-name"
-                      className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 [&_*]:text-black"
+                      className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:text-sm sm:leading-6 [&_*]:text-black"
+                      onChange={(e) => setSelectedClass(e.target.value)}
                     >
                       <option value="" disabled selected>Sélectionner une classe</option>
                       {classes.map((classe) => (
@@ -216,7 +231,8 @@ function CharacterCreator() {
                       id="backgrounds"
                       name="backgrounds"
                       autoComplete="backgrounds-name"
-                      className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 [&_*]:text-black"
+                      className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:text-sm sm:leading-6 [&_*]:text-black"
+                      onChange={(e) => setSelectedBackground(e.target.value)}
                     >
                       <option value="" disabled selected>Sélectionner un historique</option>
                       {backgrounds.map((background) => (
@@ -239,7 +255,8 @@ function CharacterCreator() {
                       id="alignment"
                       name="alignment"
                       autoComplete="alignment"
-                      className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 [&_*]:text-black"
+                      className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:text-sm sm:leading-6 [&_*]:text-black"
+                      onChange={(e) => setAlignment(e.target.value)}
                     >
                       <option value="" disabled selected>Sélectionner un alignement</option>
                       {alignments.map((alignment) => (
@@ -262,15 +279,15 @@ function CharacterCreator() {
                       Force
                     </label>
                     <div className="mt-1 mb-1">
-                      <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                      <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
                         <select
                           name="strength"
                           id="strength"
                           autoComplete="strength"
-                          className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
+                          className="text-center block w-full rounded-md border-0 bg-gray-800 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:text-sm sm:leading-6 [&_*]:text-white"
                           onChange={(e) => handleCaractChange(e, 'strength')}
                         >
-                          <option value="" disabled>Sélectionner une valeur</option>
+                          <option value="" disabled selected>Sélectionner une valeur</option>
                           {Array.from({ length: 18 }, (_, i) => i + 1).map((value) => (
                             <option key={value} value={value}>
                               {value}
@@ -289,7 +306,7 @@ function CharacterCreator() {
                     </label>
                     <div className="w-20 col-span-1">
                       <div className="mt-1">
-                        <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                      <div className={`flex rounded-md ${selectedRace && selectedRace.strength_bonus > 0 ? "bg-green-500" : "bg-white/5"} ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500`}>
                           <input
                             type="text"
                             readOnly
@@ -310,7 +327,7 @@ function CharacterCreator() {
                     </label>
                     <div className="w-20 col-span-1">
                       <div className="mt-1">
-                        <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                      <div className={`flex rounded-md bg-red-500 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500`}>
                           <input
                             type="text"
                             readOnly
@@ -332,15 +349,15 @@ function CharacterCreator() {
                       Dextérité
                     </label>
                     <div className="mt-1 mb-1">
-                      <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                      <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
                         <select
                           name="dexterity"
                           id="dexterity"
                           autoComplete="dexterity"
-                          className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
+                          className="text-center block w-full rounded-md border-0 bg-gray-800 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:text-sm sm:leading-6 [&_*]:text-white"
                           onChange={(e) => handleCaractChange(e, 'dexterity')}
                         >
-                          <option value="" disabled>Sélectionner une valeur</option>
+                          <option value="" disabled selected>Sélectionner une valeur</option>
                           {Array.from({ length: 18 }, (_, i) => i + 1).map((value) => (
                             <option key={value} value={value}>
                               {value}
@@ -359,7 +376,7 @@ function CharacterCreator() {
                     </label>
                     <div className="w-20 col-span-1">
                       <div className="mt-1">
-                        <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                      <div className={`flex rounded-md ${selectedRace && selectedRace.dexterity_bonus > 0 ? "bg-green-500" : "bg-white/5"} ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500`}>
                           <input
                             type="text"
                             readOnly
@@ -380,7 +397,7 @@ function CharacterCreator() {
                     </label>
                     <div className="w-20 col-span-1">
                       <div className="mt-1">
-                        <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                      <div className={`flex rounded-md bg-red-500 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500`}>
                           <input
                             type="text"
                             readOnly
@@ -402,15 +419,15 @@ function CharacterCreator() {
                       Constitution
                     </label>
                     <div className="mt-1 mb-1">
-                      <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                      <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
                         <select
                           name="constitution"
                           id="constitution"
                           autoComplete="constitution"
-                          className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
+                          className="text-center block w-full rounded-md border-0 bg-gray-800 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:text-sm sm:leading-6 [&_*]:text-white"
                           onChange={(e) => handleCaractChange(e, 'constitution')}
                         >
-                          <option value="" disabled>Sélectionner une valeur</option>
+                          <option value="" disabled selected>Sélectionner une valeur</option>
                           {Array.from({ length: 18 }, (_, i) => i + 1).map((value) => (
                             <option key={value} value={value}>
                               {value}
@@ -429,7 +446,7 @@ function CharacterCreator() {
                     </label>
                     <div className="w-20 col-span-1">
                       <div className="mt-1">
-                        <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                      <div className={`flex rounded-md ${selectedRace && selectedRace.constitution_bonus > 0 ? "bg-green-500" : "bg-white/5"} ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500`}>
                           <input
                             type="text"
                             readOnly
@@ -450,7 +467,7 @@ function CharacterCreator() {
                     </label>
                     <div className="w-20 col-span-1">
                       <div className="mt-1">
-                        <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                      <div className={`flex rounded-md bg-red-500 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500`}>
                           <input
                             type="text"
                             readOnly
@@ -472,15 +489,15 @@ function CharacterCreator() {
                       inteligence
                     </label>
                     <div className="mt-1 mb-1">
-                      <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                      <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
                         <select
                           name="inteligence"
                           id="inteligence"
                           autoComplete="inteligence"
-                          className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
+                          className="text-center block w-full rounded-md border-0 bg-gray-800 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:text-sm sm:leading-6 [&_*]:text-white"
                           onChange={(e) => handleCaractChange(e, 'inteligence')}
                         >
-                          <option value="" disabled>Sélectionner une valeur</option>
+                          <option value="" disabled selected>Sélectionner une valeur</option>
                           {Array.from({ length: 18 }, (_, i) => i + 1).map((value) => (
                             <option key={value} value={value}>
                               {value}
@@ -499,7 +516,7 @@ function CharacterCreator() {
                     </label>
                     <div className="w-20 col-span-1">
                       <div className="mt-1">
-                        <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                      <div className={`flex rounded-md ${selectedRace && selectedRace.inteligence_bonus > 0 ? "bg-green-500" : "bg-white/5"} ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500`}>
                           <input
                             type="text"
                             readOnly
@@ -520,7 +537,7 @@ function CharacterCreator() {
                     </label>
                     <div className="w-20 col-span-1">
                       <div className="mt-1">
-                        <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                      <div className={`flex rounded-md bg-red-500 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500`}>
                           <input
                             type="text"
                             readOnly
@@ -542,15 +559,15 @@ function CharacterCreator() {
                       Sagesse
                     </label>
                     <div className="mt-1 mb-1">
-                      <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                      <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
                         <select
                           name="wisdom"
                           id="wisdom"
                           autoComplete="wisdom"
-                          className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
+                          className="text-center block w-full rounded-md border-0 bg-gray-800 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:text-sm sm:leading-6 [&_*]:text-white"
                           onChange={(e) => handleCaractChange(e, 'wisdom')}
                         >
-                          <option value="" disabled>Sélectionner une valeur</option>
+                          <option value="" disabled selected>Sélectionner une valeur</option>
                           {Array.from({ length: 18 }, (_, i) => i + 1).map((value) => (
                             <option key={value} value={value}>
                               {value}
@@ -569,7 +586,7 @@ function CharacterCreator() {
                     </label>
                     <div className="w-20 col-span-1">
                       <div className="mt-1">
-                        <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                      <div className={`flex rounded-md ${selectedRace && selectedRace.wisdom_bonus > 0 ? "bg-green-500" : "bg-white/5"} ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500`}>
                           <input
                             type="text"
                             readOnly
@@ -590,7 +607,7 @@ function CharacterCreator() {
                     </label>
                     <div className="w-20 col-span-1">
                       <div className="mt-1">
-                        <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                      <div className={`flex rounded-md bg-red-500 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500`}>
                           <input
                             type="text"
                             readOnly
@@ -612,15 +629,15 @@ function CharacterCreator() {
                       Charisme
                     </label>
                     <div className="mt-1 mb-1">
-                      <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                      <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
                         <select
                           name="charisma"
                           id="charisma"
                           autoComplete="charisma"
-                          className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
+                          className="text-center block w-full rounded-md border-0 bg-gray-800 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:text-sm sm:leading-6 [&_*]:text-white"
                           onChange={(e) => handleCaractChange(e, 'charisma')}
                         >
-                          <option value="" disabled>Sélectionner une valeur</option>
+                          <option value="" disabled selected>Sélectionner une valeur</option>
                           {Array.from({ length: 18 }, (_, i) => i + 1).map((value) => (
                             <option key={value} value={value}>
                               {value}
@@ -639,7 +656,7 @@ function CharacterCreator() {
                     </label>
                     <div className="w-20 col-span-1">
                       <div className="mt-1">
-                        <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                      <div className={`flex rounded-md ${selectedRace && selectedRace.charisma_bonus > 0 ? "bg-green-500" : "bg-white/5"} ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500`}>
                           <input
                             type="text"
                             readOnly
@@ -660,7 +677,7 @@ function CharacterCreator() {
                     </label>
                     <div className="w-20 col-span-1">
                       <div className="mt-1">
-                        <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                      <div className={`flex rounded-md bg-red-500 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500`}>
                           <input
                             type="text"
                             readOnly
@@ -677,9 +694,11 @@ function CharacterCreator() {
               <div className="mt-8 flex items-center justify-start gap-x-6">
                 <button
                   type="submit"
-                  className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                  disabled={!isFormValid}
+                  title={!isFormValid ? "Veuillez renseigner tous les champs pour continuer." : ""}
+                  className={`rounded-md px-3 py-2 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${isFormValid ? 'bg-blue-500 hover:bg-green-400 text-white' : 'bg-gray-200 text-gray-500 cursor-not-allowed'}`}
                 >
-                  Générer
+                  Valider
                 </button>
               </div>
             </div>
