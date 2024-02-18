@@ -8,6 +8,7 @@ import CharacterSheet from "../Tool/CharacterSheet/index.jsx";
 import ProtectedRoute from "../auth/ProtectedRoute/ProtectedRoute.jsx";
 import SignIn from "../auth/SignIn/SignIn.jsx";
 import SignUp from "../auth/SignUp/SignUp.jsx";
+import Characters from "../UserPanel/Characters";
 
 function App() {
   return (
@@ -19,21 +20,23 @@ function App() {
         <Route path="/sanctuary" element={<Sanctuary />} />
         <Route path="/sanctuary/:featureType" element={<CoreFeatures />} />
         <Route path="/sanctuary/:featureType/:featureId" element={<CoreFeature />} />
-        <Route
-          path="/tool/character-creator"
-          element={
-            <ProtectedRoute>
-              <CharacterCreator />
-            </ProtectedRoute>
-          }
+        <Route path="/tool/character-creator" element={
+          <ProtectedRoute>
+            <CharacterCreator />
+          </ProtectedRoute>
+        }
         />
-        <Route
-          path="/tool/character-creator/character-sheet"
-          element={
-            <ProtectedRoute>
-              <CharacterSheet />
-            </ProtectedRoute>
-          }
+        <Route path="/tool/character-creator/character-sheet" element={
+          <ProtectedRoute>
+            <CharacterSheet />
+          </ProtectedRoute>
+        }
+        />
+        <Route path="/characters" element={
+          <ProtectedRoute>
+            <Characters />
+          </ProtectedRoute>
+        }
         />
       </Routes>
     </Router>
