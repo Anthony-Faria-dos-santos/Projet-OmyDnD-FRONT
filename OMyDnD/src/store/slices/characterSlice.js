@@ -8,6 +8,7 @@ const initialState = {
     classes: [],
     backgrounds: [],
     characters: [],
+    selectedCharacter: null,
     status: 'idle',
     error: null,
 };
@@ -35,6 +36,49 @@ export const createCharacter = createAsyncThunk(
             return response.data;
         } catch (error) {
             return rejectWithValue(error.response.data);
+        }
+    }
+);
+
+export const fetchCharactersByUser = createAsyncThunk(
+    'character/fetchCharactersByUser',
+    async (userId, { rejectWithValue }) => {
+        try {
+            const response = await axios.get(`${API_URL}/api/users/${userId}/characters`);
+            return response.data;
+        } catch (error) {
+            return rejectWithValue(error.response.data);
+        }
+    }
+);
+
+export const fetchCharacter = createAsyncThunk(
+    'character/fetchCharacter',
+    async ({ userId, characterId }, { rejectWithValue }) => {
+        console.log('fetchCharacter called with:', { userId, characterId });
+        try {
+            const response = await axios.get(`${API_URL}/api/users/${userId}/characters/${characterId}`);
+            return response.data;
+        } catch (error) {
+            return rejectWithValue(error.response.data);
+        }
+    }
+);
+
+export const deleteCharacter = createAsyncThunk(
+    'character/deleteCharacter',
+    async ({userId, characterId}, { getState, rejectWithValue }) => {
+        const token = getState().auth.token;
+        if (!token) {
+            return rejectWithValue('Token non trouvé');
+        }
+        try {
+            const response = await axios.delete(`${API_URL}/api/users/${userId}/characters/${characterId}`, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            return characterId;
+        } catch (error) {
+            return rejectWithValue(error.toString());
         }
     }
 );
@@ -88,8 +132,40 @@ const characterSlice = createSlice({
             .addCase(createCharacter.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.payload ? action.payload.error : action.error.message;
+            })
+            .addCase(fetchCharacter.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(fetchCharacter.fulfilled, (state, action) => {
+                state.status = 'succeeded';
+                state.selectedCharacter = action.payload;
+            })
+            .addCase(fetchCharacter.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.payload ? action.payload.error : action.error.message;
+            })
+            .addCase(fetchCharactersByUser.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(fetchCharactersByUser.fulfilled, (state, action) => {
+                state.status = 'succeeded';
+                state.characters = action.payload;
+            })
+            .addCase(fetchCharactersByUser.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.payload ? action.payload.error : action.error.message;
+            })
+            .addCase(deleteCharacter.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(deleteCharacter.fulfilled, (state, action) => {
+                state.status = 'succeeded';
+                state.characters = state.characters.filter((character) => character.id !== action.payload);
+            })
+            .addCase(deleteCharacter.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.payload ? action.payload.error : action.error.message;
             });
-            // const characters = useSelector(state => state.character.characters); // Récupère les personnages.// À utiliser dans le composant profil.
     },
 });
 
