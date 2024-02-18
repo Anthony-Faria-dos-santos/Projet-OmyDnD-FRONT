@@ -185,12 +185,13 @@ function CharacterCreator() {
                   <div className="mt-2">
                     <select
                       id="races"
+                      value={selectedRace?.id || ""}
                       name="races"
                       autoComplete="races-name"
                       className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:text-sm sm:leading-6 [&_*]:text-black"
                       onChange={handleRaceChange}
                     >
-                      <option value="" disabled selected>Sélectionner une race</option>
+                      <option value="" disabled>Sélectionner une race</option>
                       {races.map((race) => (
                         <option key={race.id} value={race.id}>
                           {race.name}
@@ -211,11 +212,12 @@ function CharacterCreator() {
                     <select
                       id="classes"
                       name="classes"
+                      value={selectedClass || ""}
                       autoComplete="classes-name"
                       className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:text-sm sm:leading-6 [&_*]:text-black"
                       onChange={(e) => setSelectedClass(e.target.value)}
                     >
-                      <option value="" disabled selected>Sélectionner une classe</option>
+                      <option value="" disabled>Sélectionner une classe</option>
                       {classes.map((classe) => (
                         <option key={classe.id} value={classe.id}>
                           {classe.name}
@@ -236,11 +238,12 @@ function CharacterCreator() {
                     <select
                       id="backgrounds"
                       name="backgrounds"
+                      value={selectedBackground || ""}
                       autoComplete="backgrounds-name"
                       className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:text-sm sm:leading-6 [&_*]:text-black"
                       onChange={(e) => setSelectedBackground(e.target.value)}
                     >
-                      <option value="" disabled selected>Sélectionner un historique</option>
+                      <option value="" disabled>Sélectionner un historique</option>
                       {backgrounds.map((background) => (
                         <option key={background.id} value={background.id}>
                           {background.name}
@@ -260,11 +263,12 @@ function CharacterCreator() {
                     <select
                       id="alignment"
                       name="alignment"
+                      value={alignment || ""}
                       autoComplete="alignment"
                       className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:text-sm sm:leading-6 [&_*]:text-black"
                       onChange={(e) => setAlignment(e.target.value)}
                     >
-                      <option value="" disabled selected>Sélectionner un alignement</option>
+                      <option value="" disabled>Sélectionner un alignement</option>
                       {alignments.map((alignment) => (
                         <option key={alignment.index} value={alignment.name}>
                           {alignment.name}
@@ -287,13 +291,14 @@ function CharacterCreator() {
                     <div className="mt-1 mb-1">
                       <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
                         <select
-                          name="strength"
                           id="strength"
+                          name="strength"
+                          value={strength || ""}
                           autoComplete="strength"
                           className="text-center block w-full rounded-md border-0 bg-gray-800 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:text-sm sm:leading-6 [&_*]:text-white"
                           onChange={(e) => handleCaractChange(e, 'strength')}
                         >
-                          <option value="" disabled selected>Sélectionner une valeur</option>
+                          <option value="" disabled>Sélectionner une valeur</option>
                           {Array.from({ length: 18 }, (_, i) => i + 1).map((value) => (
                             <option key={value} value={value}>
                               {value}
@@ -357,13 +362,14 @@ function CharacterCreator() {
                     <div className="mt-1 mb-1">
                       <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
                         <select
-                          name="dexterity"
                           id="dexterity"
+                          name="dexterity"
+                          value={dexterity || ""}
                           autoComplete="dexterity"
                           className="text-center block w-full rounded-md border-0 bg-gray-800 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:text-sm sm:leading-6 [&_*]:text-white"
                           onChange={(e) => handleCaractChange(e, 'dexterity')}
                         >
-                          <option value="" disabled selected>Sélectionner une valeur</option>
+                          <option value="" disabled>Sélectionner une valeur</option>
                           {Array.from({ length: 18 }, (_, i) => i + 1).map((value) => (
                             <option key={value} value={value}>
                               {value}
@@ -427,13 +433,14 @@ function CharacterCreator() {
                     <div className="mt-1 mb-1">
                       <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
                         <select
-                          name="constitution"
                           id="constitution"
+                          name="constitution"
+                          value={constitution || ""}
                           autoComplete="constitution"
                           className="text-center block w-full rounded-md border-0 bg-gray-800 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:text-sm sm:leading-6 [&_*]:text-white"
                           onChange={(e) => handleCaractChange(e, 'constitution')}
                         >
-                          <option value="" disabled selected>Sélectionner une valeur</option>
+                          <option value="" disabled>Sélectionner une valeur</option>
                           {Array.from({ length: 18 }, (_, i) => i + 1).map((value) => (
                             <option key={value} value={value}>
                               {value}
@@ -497,13 +504,14 @@ function CharacterCreator() {
                     <div className="mt-1 mb-1">
                       <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
                         <select
-                          name="inteligence"
                           id="inteligence"
+                          name="inteligence"
+                          value={inteligence || ""}
                           autoComplete="inteligence"
                           className="text-center block w-full rounded-md border-0 bg-gray-800 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:text-sm sm:leading-6 [&_*]:text-white"
                           onChange={(e) => handleCaractChange(e, 'inteligence')}
                         >
-                          <option value="" disabled selected>Sélectionner une valeur</option>
+                          <option value="" disabled>Sélectionner une valeur</option>
                           {Array.from({ length: 18 }, (_, i) => i + 1).map((value) => (
                             <option key={value} value={value}>
                               {value}
@@ -567,13 +575,14 @@ function CharacterCreator() {
                     <div className="mt-1 mb-1">
                       <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
                         <select
-                          name="wisdom"
                           id="wisdom"
+                          name="wisdom"
+                          value={wisdom || ""}
                           autoComplete="wisdom"
                           className="text-center block w-full rounded-md border-0 bg-gray-800 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:text-sm sm:leading-6 [&_*]:text-white"
                           onChange={(e) => handleCaractChange(e, 'wisdom')}
                         >
-                          <option value="" disabled selected>Sélectionner une valeur</option>
+                          <option value="" disabled>Sélectionner une valeur</option>
                           {Array.from({ length: 18 }, (_, i) => i + 1).map((value) => (
                             <option key={value} value={value}>
                               {value}
@@ -637,13 +646,14 @@ function CharacterCreator() {
                     <div className="mt-1 mb-1">
                       <div className="w-full flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
                         <select
-                          name="charisma"
                           id="charisma"
+                          name="charisma"
+                          value={charisma || ""}
                           autoComplete="charisma"
                           className="text-center block w-full rounded-md border-0 bg-gray-800 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:text-sm sm:leading-6 [&_*]:text-white"
                           onChange={(e) => handleCaractChange(e, 'charisma')}
                         >
-                          <option value="" disabled selected>Sélectionner une valeur</option>
+                          <option value="" disabled>Sélectionner une valeur</option>
                           {Array.from({ length: 18 }, (_, i) => i + 1).map((value) => (
                             <option key={value} value={value}>
                               {value}
