@@ -10,7 +10,7 @@ function AttributeAbility() {
       <img src="../images/abilities/ability.jpg" className="h-full w-8/12 object-cover object-center sm:rounded-lg mx-auto" />
 
 
-    <div className="grid grid-cols-2 place-content-around mt-10">
+    <div className="lg:grid lg:grid-cols-2 lg:gap-x-8 place-content-around mt-10">
       {jsonData.map((item, index) => (
         <div className="bg-gray-800 rounded-lg p-2 m-2" key={index}>
           <div className="text-gray-50 bg-gray-900 rounded-lg p-2 font-semibold uppercase text-center">{item.full_name}</div>

@@ -166,16 +166,28 @@ function CoreFeatureClass() {
           </section>
           <div className="mt-10 bg-gradient-to-r from-gray-900 via-gray-600 to-gray-900 w-full h-1"></div>
 
-          {/*<div className="mt-1">
-                <h3 className="sr-only">Description</h3>
-                <p className="text-md p-2 text-gray-50 text-justify">
-                {Object.keys(feature.tables.table_1.choices).map(key => (
-          <li className="list-none mb-2" key={key}>
-            <div className="p-1 bg-gray-600 font-semibold rounded-lg">{formatKey(key)} :</div><br /> {feature.tables.tables_1.choices.choices_[key]}
-          </li>
-        ))}
-        </p>
-                </div>*/}
+          <img
+                    src={feature.class_abilities.leveling_table}
+                    alt={feature.alt}
+                    className="h-full w-full object-cover object-center sm:rounded-lg mt-6"
+                  />
+
+
+      {Object.keys(feature.tables).map((tableName, index) => (
+       <div className="bg-gray-800 text-gray-50 rounded-lg p-2 mt-6"> <div key={index}>
+          <div className="bg-gray-900 rounded-lg p-2 m-1 font-semibold uppercase text-center text-xl">{feature.tables[tableName].name}</div>
+          <ul className="text-justify p-2">
+            {feature.tables[tableName].choices[0] && Object.keys(feature.tables[tableName].choices[0]).map((choiceKey, choiceIndex) => (
+              <li key={choiceIndex} className="bg-gray-700 p-2 m-2 rounded-lg">
+                <p className="font-semibold text-lg underline underline-offset-4">{feature.tables[tableName].choices[0][choiceKey].value} :</p> {feature.tables[tableName].choices[0][choiceKey].effect}
+              </li>
+            ))}
+          </ul>
+        </div></div>
+      ))}
+    
+
+                
 
         </div>
       </main>
