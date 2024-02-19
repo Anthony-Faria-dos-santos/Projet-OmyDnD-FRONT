@@ -96,8 +96,8 @@ function Search() {
           <h2 style={{ fontWeight: "bold", textAlign: "center" }}>
             {selectedSpell.name}
           </h2>
-          {/* Affichage des détails du sort */}
-          {Object.entries(selectedSpell).map(([key, value]) => (
+          {/* Affichage des détails du sort et traduction des keys en francais via la fonction keyTranslation */}          
+          {Object.entries(keyTranslation(selectedSpell)).map(([key, value]) => (
             <p key={key}>
               <strong>{key}</strong>:{" "}
               {typeof value === "object" ? JSON.stringify(value) : value}
@@ -170,6 +170,37 @@ function Search() {
     </div>
   );
 }
+
+// Dictionnaire pour traduire les clés de l'objet sort en français
+const dictionaryFR = {
+  name: "Nom",
+  level: "Niveau",
+  desc: "Description",
+  range: "Portée",
+  components: "Composants",
+  material: "Matériel",
+  ritual: "Rituel",
+  duration: "Durée",
+  concentration: "Concentration",
+  casting_time: "Temps d'incantation",
+  school: "École",
+  class: "classes",
+  archetype: "Archétype",
+  domains: "Domaines",
+  higher_level : "Niveau supérieur",
+  oaths: "Serments",
+  circles: "Cercles",
+};
+
+// Fonction pour traduire les clés de l'objet sort en français
+const keyTranslation = (object) => {
+  const translatedObject = {};
+  Object.entries(object).forEach(([key, value]) => {
+    const translatedKey = dictionaryFR[key] || key;
+    translatedObject[translatedKey] = value;
+  });
+  return translatedObject;
+  }
 
 // Styles réutilisés pour les différents éléments de notre composant
 
