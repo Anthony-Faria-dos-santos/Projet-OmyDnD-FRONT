@@ -72,73 +72,87 @@ function CoreFeatureClass() {
             </div>
           </div>
 
-          <section aria-labelledby="details-heading" className="mt-12 p-3 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
-
+          <section
+            aria-labelledby="details-heading"
+            className="mt-12 p-3 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8"
+          >
             {/*Infos abilities*/}
             <h2 id="details-heading" className="sr-only">
               Spécificités classes
             </h2>
             <div>
-
               {/* Info classe stuff */}
-          <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0 bg-gray-700 rounded-lg">
-              <div className="bg-gray-800 rounded-lg text-xl font-bold tracking-tight text-gray-50 text-center uppercase">
-                Point de vie
-              </div>
+              <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0 bg-gray-700 rounded-lg">
+                <div className="bg-gray-800 rounded-lg text-xl font-bold tracking-tight text-gray-50 text-center uppercase">
+                  Point de vie
+                </div>
 
-              <div className="mt-1">
-                <h3 className="sr-only">Description</h3>
-                <p className="text-md p-2 text-gray-50 text-justify">
-                {Object.keys(feature.class_abilities.health).map(key => (
-          <li className="list-none mb-2" key={key}>
-            <div className="p-1 bg-gray-600 font-semibold rounded-lg">{formatKey(key)} :</div><br /> {feature.class_abilities.health[key]}
-          </li>
-        ))}
-                </p>
+                <div className="mt-1">
+                  <h3 className="sr-only">Description</h3>
+                  <p className="text-md p-2 text-gray-50 text-justify">
+                    {Object.keys(feature.class_abilities.health).map((key) => (
+                      <li className="list-none mb-2" key={key}>
+                        <div className="p-1 bg-gray-600 font-semibold rounded-lg">
+                          {formatKey(key)} :
+                        </div>
+                        <br /> {feature.class_abilities.health[key]}
+                      </li>
+                    ))}
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-4 bg-gray-700 rounded-lg">
-              <div className="text-xl font-bold tracking-tight text-gray-50 bg-gray-800 rounded-lg text-center uppercase">
-                Maîtrises
-              </div>
+              <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-4 bg-gray-700 rounded-lg">
+                <div className="text-xl font-bold tracking-tight text-gray-50 bg-gray-800 rounded-lg text-center uppercase">
+                  Maîtrises
+                </div>
 
-              <div className="mt-1">
-                <h3 className="sr-only">Description</h3>
-                <p className="text-md p-2 text-gray-50 text-justify">
-                {Object.keys(feature.class_abilities.masteries).map(key => (
-          <li className="list-none mb-2" key={key}>
-            <div className="p-1 bg-gray-600 font-semibold rounded-lg">{formatKey(key)} :</div><br /> {feature.class_abilities.masteries[key]}
-          </li>
-        ))}
-                </p>
+                <div className="mt-1">
+                  <h3 className="sr-only">Description</h3>
+                  <p className="text-md p-2 text-gray-50 text-justify">
+                    {Object.keys(feature.class_abilities.masteries).map(
+                      (key) => (
+                        <li className="list-none mb-2" key={key}>
+                          <div className="p-1 bg-gray-600 font-semibold rounded-lg">
+                            {formatKey(key)} :
+                          </div>
+                          <br /> {feature.class_abilities.masteries[key]}
+                        </li>
+                      )
+                    )}
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="mt-10 px-4 pb-3 sm:mt-16 sm:px-0 lg:mt-4 bg-gray-700 rounded-lg">
-              <div className="text-xl font-bold tracking-tight text-gray-50 bg-gray-800 rounded-lg text-center uppercase">
-                Équipement
-              </div>
+              <div className="mt-10 px-4 pb-3 sm:mt-16 sm:px-0 lg:mt-4 bg-gray-700 rounded-lg">
+                <div className="text-xl font-bold tracking-tight text-gray-50 bg-gray-800 rounded-lg text-center uppercase">
+                  Équipement
+                </div>
 
-              <div className="mt-1">
-                <h2 className="sr-only">feature information</h2>
-                <p className="text-md p-2 tracking-tight text-gray-50">
-                  {feature.class_abilities.equipement.description}
-                </p>
-              </div>
+                <div className="mt-1">
+                  <h2 className="sr-only">feature information</h2>
+                  <p className="text-md p-2 tracking-tight text-gray-50">
+                    {feature.class_abilities.equipement.description}
+                  </p>
+                </div>
 
-              <div className="mt-1">
-                <h3 className="sr-only">Description</h3>
-                <p className="text-md p-2 text-gray-50 text-justify">
-                {Object.keys(feature.class_abilities.equipement.choices).map(key => (
-          <li className="list-none p-1 bg-gray-600 rounded-lg mt-1" key={key}>
-            {feature.class_abilities.equipement.choices[key]}
-          </li>
-        ))}
-                </p>
+                <div className="mt-1">
+                  <h3 className="sr-only">Description</h3>
+                  <p className="text-md p-2 text-gray-50 text-justify">
+                    {Object.keys(
+                      feature.class_abilities.equipement.choices
+                    ).map((key) => (
+                      <li
+                        className="list-none p-1 bg-gray-600 rounded-lg mt-1"
+                        key={key}
+                      >
+                        {feature.class_abilities.equipement.choices[key]}
+                      </li>
+                    ))}
+                  </p>
+                </div>
               </div>
-            </div>
             </div>
             <div className="lg:grid lg:items-start lg:gap-x-8 mt-6">
-             {Object.entries(feature.class_abilities).map(
+              {Object.entries(feature.class_abilities).map(
                 ([key, item]) =>
                   item.name && (
                     <Disclosure key={key} as="div" className="mt-2">
@@ -167,28 +181,44 @@ function CoreFeatureClass() {
           <div className="mt-10 bg-gradient-to-r from-gray-900 via-gray-600 to-gray-900 w-full h-1"></div>
 
           <img
-                    src={feature.class_abilities.leveling_table}
-                    alt={feature.alt}
-                    className="h-full w-full object-cover object-center sm:rounded-lg mt-6"
-                  />
+            src={feature.class_abilities.leveling_table}
+            alt={feature.alt}
+            className="h-full w-full object-cover object-center sm:rounded-lg mt-6"
+          />
 
-
-      {Object.keys(feature.tables).map((tableName, index) => (
-       <div className="bg-gray-800 text-gray-50 rounded-lg p-2 mt-6"> <div key={index}>
-          <div className="bg-gray-900 rounded-lg p-2 m-1 font-semibold uppercase text-center text-xl">{feature.tables[tableName].name}</div>
-          <ul className="text-justify p-2">
-            {feature.tables[tableName].choices[0] && Object.keys(feature.tables[tableName].choices[0]).map((choiceKey, choiceIndex) => (
-              <li key={choiceIndex} className="bg-gray-700 p-2 m-2 rounded-lg">
-                <p className="font-semibold text-lg underline underline-offset-4">{feature.tables[tableName].choices[0][choiceKey].value} :</p> {feature.tables[tableName].choices[0][choiceKey].effect}
-              </li>
-            ))}
-          </ul>
-        </div></div>
-      ))}
-    
-
-                
-
+          {Object.keys(feature.tables).map((tableName, index) => (
+            <div className="bg-gray-800 text-gray-50 rounded-lg p-2 mt-6">
+              {" "}
+              <div key={index}>
+                <div className="bg-gray-900 rounded-lg p-2 m-1 font-semibold uppercase text-center text-xl">
+                  {feature.tables[tableName].name}
+                </div>
+                <ul className="text-justify p-2">
+                  {feature.tables[tableName].choices[0] &&
+                    Object.keys(feature.tables[tableName].choices[0]).map(
+                      (choiceKey, choiceIndex) => (
+                        <li
+                          key={choiceIndex}
+                          className="bg-gray-700 p-2 m-2 rounded-lg"
+                        >
+                          <p className="font-semibold text-lg underline underline-offset-4">
+                            {
+                              feature.tables[tableName].choices[0][choiceKey]
+                                .value
+                            }{" "}
+                            :
+                          </p>{" "}
+                          {
+                            feature.tables[tableName].choices[0][choiceKey]
+                              .effect
+                          }
+                        </li>
+                      )
+                    )}
+                </ul>
+              </div>
+            </div>
+          ))}
         </div>
       </main>
     </div>
