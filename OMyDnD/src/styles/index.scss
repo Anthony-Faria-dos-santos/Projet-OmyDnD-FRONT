@@ -44,3 +44,38 @@ Header {
         display: none !important;
     }
 }
+
+/* Hide the default file input button */
+input[type="file"] {
+    display: none;
+}
+
+/* Style the container of the file input */
+.file-input-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+/* Style the custom button to mimic the file input button */
+.custom-file-input {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Style the label for the custom file input */
+.custom-file-label {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 5px 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
