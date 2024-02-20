@@ -14,12 +14,13 @@ function TableNotes() {
     const [editingNoteId, setEditingNoteId] = useState(null);
     const [editingNoteContent, setEditingNoteContent] = useState('');
 
-    // Fonction pour analyser la structure de la note "{id,contenu}"
     function parseNote(noteStr) {
         if (typeof noteStr === 'string') {
-            const parts = noteStr.slice(1, -1).split(',');
-            if (parts.length === 2) {
-                return { id: parts[0], content: parts[1] };
+            const commaIndex = noteStr.indexOf(',');
+            if (commaIndex !== -1) {
+                const id = noteStr.substring(1, commaIndex);
+                const content = noteStr.substring(commaIndex + 1, noteStr.length - 1);
+                return { id, content };
             }
         }
         return null;
@@ -35,16 +36,14 @@ function TableNotes() {
         }
     }, [character]);
 
-    // Dans votre composant TableNotes, après l'ajout de la note
     const handleAddNote = async () => {
         if (!newNoteContent.trim()) return;
         await dispatch(addCharacterNote({
-            userId: character.user_id, // Assurez-vous que l'ID de l'utilisateur est correct
+            userId: character.user_id,
             characterId: character.id,
             noteData: { content: newNoteContent }
         }));
         setNewNoteContent('');
-        // Optionnel : Rafraîchir les notes
         dispatch(fetchCharacter({ userId: character.user_id, characterId: character.id }));
     };
 
@@ -80,35 +79,37 @@ function TableNotes() {
     return (
 
 
-        <div className="pl-8 pr-8 pt-3 pb-10 flex flex-col">
-            <textarea
-                type="text"
-                rows={5}
-                value={newNoteContent}
-                onChange={(e) => setNewNoteContent(e.target.value)}
-                className="mx-auto block p-4 pt-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Ajouter une nouvelle note..." />
-            <button
-                type="button"
-                onClick={handleAddNote}
-                className="mx-auto m-5 rounded-md inline-flex items-center bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
-            >
-                Ajouter
-            </button>
+        <div className="pt-3 pb-10 flex flex-col flex-wrap">
+            <div className='flex flex-col'>
+                <textarea
+                    type="text"
+                    rows={5}
+                    value={newNoteContent}
+                    onChange={(e) => setNewNoteContent(e.target.value)}
+                    className="w-1/2 mt-28 flex-col mx-auto block p-4 pt-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    placeholder="Ajouter une nouvelle note..." />
+                <button
+                    type="button"
+                    onClick={handleAddNote}
+                    className="mx-auto m-5 rounded-md inline-flex items-center bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
+                >
+                    Ajouter
+                </button>
+            </div>
 
-            <ul className='mx-auto mt-10 grid max-w-3xl grid-cols-1 gap-6 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-4 lg:gap-8'>
+            <ul className='p-10 flex flex-wrap gap-10 mt-10 justify-center'>
                 {character.notes && character.notes.map((noteStr, index) => {
                     const note = parseNote(noteStr);
                     if (!note) return null;
 
                     return (
                         <li key={index}
-                        className='rounded-2xl bg-gray-800 px-8 py-10 flex flex-col'>
+                        className='w-1/3 rounded-2xl bg-gray-800 px-8 py-10 flex flex-col'>
                             {editingNoteId === note.id ? (
                                 <>
                                     <textarea
                                         value={editingNoteContent}
-                                        rows={4}
+                                        rows={5}
                                         className="block p-4 pt-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         onChange={(e) => setEditingNoteContent(e.target.value)} />
 
@@ -125,7 +126,7 @@ function TableNotes() {
                                     
                                     <textarea
                                         value={note.content}
-                                        rows={6}
+                                        rows={5}
                                         readOnly
                                         className="block p-4 pt-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         onChange={(e) => setEditingNoteContent(e.target.value)} />
