@@ -4,13 +4,13 @@ import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 import classes from "../../../data/classes.json";
 
-
-  function formatKey(key) {
-    // Remplace les underscores par des espaces et met en majuscule la première lettre de chaque mot
-    return key.split('_')
-              .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-              .join(' ');
-  }
+function formatKey(key) {
+  // Remplace les underscores par des espaces et met en majuscule la première lettre de chaque mot
+  return key
+    .split("_")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
 
 function CoreFeatureClass() {
   const { featureType, featureId } = useParams();
