@@ -55,13 +55,12 @@ function Search() {
 
   // Recherche de weapons properties, permet de définir un état initial pour la barre de recherche et le menu déroulant
   const [queryWeaponProperty, setQueryWeaponProperty] = useState("");
-  const [showDropdownWeaponProperty, setShowDropdownWeaponProperty] =
-    useState(false);
+  const [showDropdownWeaponProperty, setShowDropdownWeaponProperty] = useState(false);
 
   // Recherche de talents, permet de définir un état initial pour la barre de recherche et le menu déroulant
   const [queryTalent, setQueryTalent] = useState("");
   const [showDropdownTalent, setShowDropdownTalent] = useState(false);
-
+  
   // Fonctions pour gérer la sélection d'un sort dans le menu déroulant
   const handleSelectSpell = (spell) => {
     // cible le sort sélectionné via la fonction setSelectedSpell
@@ -307,7 +306,7 @@ function Search() {
       {/* Barre de recherche pour les abilities */}
       <input
         type="search"
-        placeholder="Rechercher une ability..."
+        placeholder="Rechercher une abilitée..."
         value={queryAbility}
         autoComplete="off"
         onChange={(e) => setQueryAbility(e.target.value)}
@@ -607,10 +606,10 @@ const dropdownStyle = {
   border: "1px solid #ccc",
   width: "100%",
   maxWidth: "500px",
-  position: "absolute", 
+  position: "absolute",
   zIndex: 1000,
   top: "0%", // Décaler juste en dessous de la barre de recherche
-  left: "70%", 
+  left: "50%",
   // transform: "translateX(100%)",
   maxHeight: "600px",
   overflowY: "auto",
