@@ -4,10 +4,9 @@
     "name": "Bâton",
     "weapon_range": "Corps-à-corps",
     "cost": "2 pa",
-    "damage": {
+    
       "damage_dice": "1d6",
-      "damage_type": "Contondant"
-    },
+      "damage_type": "Contondant",
     "weight": 2,
     "properties": "Polyvalente (1d8)"
   },
@@ -16,10 +15,9 @@
     "name": "Dague",
     "weapon_range": "Corps-à-corps",
     "cost": "2 po",
-    "damage": {
+    
       "damage_dice": "1d4",
-      "damage_type": "Perforant"
-    },
+      "damage_type": "Perforant",
     "weight": 0.5,
     "properties": "Finesse, légère, lancer (portée 6 m/18 m)"
   },
@@ -28,10 +26,9 @@
     "name": "Gourdin",
     "weapon_range": "Corps-à-corps",
     "cost": "1 pa",
-    "damage": {
+    
       "damage_dice": "1d4",
-      "damage_type": "Contondant"
-    },
+      "damage_type": "Contondant",
     "weight": 1,
     "properties": "Légère"
   },
@@ -40,10 +37,9 @@
     "name": "Hachette",
     "weapon_range": "Corps-à-corps",
     "cost": "5 po",
-    "damage": {
+    
       "damage_dice": "1d6",
-      "damage_type": "Tranchant"
-    },
+      "damage_type": "Tranchant",
     "weight": 1,
     "properties": "Légère, lancer (portée 6 m/18 m)"
   },
@@ -52,10 +48,9 @@
     "name": "Javeline",
     "weapon_range": "Corps-à-corps",
     "cost": "5 pa",
-    "damage": {
+    
       "damage_dice": "1d6",
-      "damage_type": "Perforant"
-    },
+      "damage_type": "Perforant",
     "weight": 1,
     "properties": "Lancer (portée 9 m/36 m)"
   },
@@ -64,10 +59,9 @@
     "name": "Lance",
     "weapon_range": "Corps-à-corps",
     "cost": "1 po",
-    "damage": {
+    
       "damage_dice": "1d6",
-      "damage_type": "Perforant"
-    },
+      "damage_type": "Perforant",
     "weight": 1.5,
     "properties": "Lancer (portée 6 m/18 m), polyvalente (1d8)"
   },
@@ -76,10 +70,9 @@
     "name": "Marteau léger",
     "weapon_range": "Corps-à-corps",
     "cost": "2 po",
-    "damage": {
+    
       "damage_dice": "1d4",
-      "damage_type": "Contondant"
-    },
+      "damage_type": "Contondant",
     "weight": 1,
     "properties": "Légère, lancer (portée 6 m/18 m)"
   },
@@ -88,10 +81,9 @@
     "name": "Masse d'armes",
     "weapon_range": "Corps-à-corps",
     "cost": "5 po",
-    "damage": {
+    
       "damage_dice": "1d6",
-      "damage_type": "Contondant"
-    },
+      "damage_type": "Contondant",
     "weight": 2,
     "properties": ""
   },
@@ -100,10 +92,9 @@
     "name": "Massue",
     "weapon_range": "Corps-à-corps",
     "cost": "2 pa",
-    "damage": {
+    
       "damage_dice": "1d8",
-      "damage_type": "Contondant"
-    },
+      "damage_type": "Contondant",
     "weight": 5,
     "properties": "À deux mains"
   },
@@ -112,10 +103,9 @@
     "name": "Serpe",
     "weapon_range": "Corps-à-corps",
     "cost": "1 po",
-    "damage": {
+    
       "damage_dice": "1d4",
-      "damage_type": "Tranchant"
-    },
+      "damage_type": "Tranchant",
     "weight": 1,
     "properties": "Légère"
   },
@@ -124,10 +114,9 @@
     "name": "Arbalète légère",
     "weapon_range": "À distance",
     "cost": "25 po",
-    "damage": {
+    
       "damage_dice": "1d8",
-      "damage_type": "Perforant"
-    },
+      "damage_type": "Perforant",
     "weight": 2.5,
     "properties": "Munitions (portée 24 m/96 m), chargement, à deux mains"
   },
@@ -136,10 +125,9 @@
     "name": "Arc court",
     "weapon_range": "À distance",
     "cost": "25 po",
-    "damage": {
+    
       "damage_dice": "1d6",
-      "damage_type": "Perforant"
-    },
+      "damage_type": "Perforant",
     "weight": 1,
     "properties": "Munitions (portée 24 m/96 m), à deux mains"
   },
@@ -148,10 +136,9 @@
     "name": "Fléchette",
     "weapon_range": "À distance",
     "cost": "5 pc",
-    "damage": {
+    
       "damage_dice": "1d4",
-      "damage_type": "Perforant"
-    },
+      "damage_type": "Perforant",
     "weight": 0.1,
     "properties": "Finesse, lancer (portée 6 m/18 m)"
   },
@@ -160,10 +147,9 @@
     "name": "Fronde",
     "weapon_range": "À distance",
     "cost": "1 pa",
-    "damage": {
+    
       "damage_dice": "1d4",
-      "damage_type": "Contondant"
-    },
+      "damage_type": "Contondant",
     "weight": 0,
     "properties": "Munitions (portée 9 m/36 m)"
   }

@@ -5,6 +5,11 @@ import Header from "../Header/index.jsx";
 import Sanctuary from "../Sanctuary/Sanctuary.jsx";
 import CoreFeatures from "../Sanctuary/CoreFeatures/CoreFeatures.jsx";
 import CoreFeature from "../Sanctuary/CoreFeature/CoreFeature.jsx";
+import AttributeAbility from "../Sanctuary/Attributes/AttributeAbility.jsx";
+import AttributeEquipment from "../Sanctuary/Attributes/AttributeEquipment.jsx";
+import AttributeCondition from "../Sanctuary/Attributes/AttributeCondition.jsx";
+import AttributeSpell from "../Sanctuary/Attributes/AttributeSpell.jsx";
+import AttributeSkill from "../Sanctuary/Attributes/AttributeSkill.jsx";
 
 function App() {
   return (
@@ -15,6 +20,11 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/sanctuary" element={<Sanctuary />} />
         <Route path="/sanctuary/:featureType" element={<CoreFeatures />} />
+        <Route path="/sanctuary/abilities" element={<AttributeAbility />} />
+        <Route path="/sanctuary/equipments" element={<AttributeEquipment />} />
+        <Route path="/sanctuary/conditions" element={<AttributeCondition />} />
+        <Route path="/sanctuary/spells" element={<AttributeSpell />} />
+        <Route path="/sanctuary/skills" element={<AttributeSkill/>} />
         <Route path="/sanctuary/:featureType/:featureId" element={<CoreFeature />} />
       </Routes>
     </Router>

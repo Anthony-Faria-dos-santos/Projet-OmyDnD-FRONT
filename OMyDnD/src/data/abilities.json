@@ -1,4 +1,4 @@
-[
+[ 
   {
     "index": "strength",
     "name": "FRC",
@@ -8,7 +8,7 @@
       {
         "index": "athletics",
         "name": "Athlétisme",
-        "description:": "Un jet de Force (Athlétisme) couvre les situations difficiles que vous rencontrez en grimpant, en sautant ou nageant. Cela inclut les activités suivantes : Vous essayez de grimper une falaise abrupte ou glissante, d'éviter les pièges tout en escaladant un mur, ou de vous accrocher à une surface alors que quelque chose essaie de vous faire lâcher. Vous essayez de sauter une distance inhabituellement longue. Vous luttez pour nager ou rester à flot en présence de courants contraires, de vagues houleuses ou dans une zone avec d'épaisses algues. Ou bien une autre créature essaie de vous noyer ou de vous sortir de l'eau, ou toute autre chose qui peut interférer avec votre nage."
+        "description": "Un jet de Force (Athlétisme) couvre les situations difficiles que vous rencontrez en grimpant, en sautant ou nageant. Cela inclut les activités suivantes : Vous essayez de grimper une falaise abrupte ou glissante, d'éviter les pièges tout en escaladant un mur, ou de vous accrocher à une surface alors que quelque chose essaie de vous faire lâcher. Vous essayez de sauter une distance inhabituellement longue. Vous luttez pour nager ou rester à flot en présence de courants contraires, de vagues houleuses ou dans une zone avec d'épaisses algues. Ou bien une autre créature essaie de vous noyer ou de vous sortir de l'eau, ou toute autre chose qui peut interférer avec votre nage."
       }
     ]
   },
@@ -46,7 +46,7 @@
     "index": "intelligence",
     "name": "INT",
     "full_name": "Intelligence",
-    "desc": "L'intelligence détermine l'acuité mentale, la précision de la mémoire et la capacité à raisonner. Un test d'intelligence entre en jeu lorsque vous devez faire appel à la logique, à l'éducation, à la mémoire ou au raisonnement déductif. Les compétences Arcanes, Histoire, Enquête, Nature et Religion reflètent l'aptitude à certains types de tests d'Intelligence.",
+    "description": "L'intelligence détermine l'acuité mentale, la précision de la mémoire et la capacité à raisonner. Un test d'intelligence entre en jeu lorsque vous devez faire appel à la logique, à l'éducation, à la mémoire ou au raisonnement déductif. Les compétences Arcanes, Histoire, Enquête, Nature et Religion reflètent l'aptitude à certains types de tests d'Intelligence.",
     "skills": [
       {
         "index": "arcana",
@@ -79,7 +79,7 @@
     "index": "wisdom",
     "name": "SAG",
     "full_name": "Sagesse",
-    "desc": "La sagesse reflète à quel point vous êtes en phase avec le monde qui vous entoure et représente la perspicacité et l’intuition. Un test de sagesse peut refléter un effort pour lire le langage corporel, comprendre les sentiments de quelqu'un, remarquer des choses sur l'environnement ou prendre soin d'une personne blessée. Les compétences de manipulation des animaux, de perspicacité, de médecine, de perception et de survie reflètent l'aptitude à certains types de tests de sagesse.",
+    "description": "La sagesse reflète à quel point vous êtes en phase avec le monde qui vous entoure et représente la perspicacité et l’intuition. Un test de sagesse peut refléter un effort pour lire le langage corporel, comprendre les sentiments de quelqu'un, remarquer des choses sur l'environnement ou prendre soin d'une personne blessée. Les compétences de manipulation des animaux, de perspicacité, de médecine, de perception et de survie reflètent l'aptitude à certains types de tests de sagesse.",
     "skills": [
       {
         "index": "animal-handling",
@@ -136,4 +136,5 @@
       }
     ]
   }
+
 ]

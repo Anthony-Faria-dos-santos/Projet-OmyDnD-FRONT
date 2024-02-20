@@ -14,49 +14,43 @@ import { useSelector } from "react-redux";
 const sanctuaries = [
   {
     name: "Races",
-    description: "Get a better understanding of your traffic",
+
     href: "/sanctuary/races",
     icon: `/images/sanctuary/races-logo-2.png`,
   },
   {
     name: "Classes",
-    description: "Speak directly to your customers",
+
     href: "/sanctuary/classes",
     icon: `/images/sanctuary/classes-logo-2.png`,
   },
   {
     name: "Personnalités et historiques",
-    description: "Your customers’ data will be safe and secure",
     href: "/sanctuary/backgrounds",
     icon: `/images/sanctuary/background-logo.png`,
   },
   {
     name: "Caractéristiques",
-    description: "Connect with third-party tools",
     href: "/sanctuary/abilities",
     icon: `/images/sanctuary/caracteristiques-logo.png`,
   },
   {
     name: "Équipements",
-    description: "Build strategic funnels that will convert",
     href: "/sanctuary/equipments",
     icon: `/images/sanctuary/equipements-logo-2.png`,
   },
   {
     name: "Altérations d'état",
-    description: "Build strategic funnels that will convert",
     href: "/sanctuary/conditions",
     icon: `/images/sanctuary/alterations-logo.png`,
   },
   {
     name: "Sorts",
-    description: "Build strategic funnels that will convert",
     href: "/sanctuary/spells",
     icon: `/images/sanctuary/sorts-logo-3.png`,
   },
   {
     name: "Dons",
-    description: "Build strategic funnels that will convert",
     href: "/sanctuary/skills",
     icon: `/images/sanctuary/dons-logo-3.png`,
   },
@@ -171,7 +165,6 @@ function Header() {
                           {item.name}
                           <span className="absolute inset-0" />
                         </Link>
-                        <p className="mt-1 text-gray-50">{item.description}</p>
                       </div>
                     </div>
                   ))}
