@@ -9,7 +9,7 @@ import ProtectedRoute from "../auth/ProtectedRoute/ProtectedRoute.jsx";
 import SignIn from "../auth/SignIn/SignIn.jsx";
 import SignUp from "../auth/SignUp/SignUp.jsx";
 import Characters from "../UserPanel/Characters";
-import ContainerCharacterSheet from "../Tool/CharacterSheet/index.jsx";
+import ContainerCharacterSheet from "../Tool/CharacterSheet/ContainerCharacterSheet.jsx";
 
 function App() {
   return (

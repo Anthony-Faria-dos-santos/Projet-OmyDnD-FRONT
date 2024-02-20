@@ -51,7 +51,7 @@ function CharacterSheet() {
     <form className="pl-8 pr-8 pt-3" onSubmit={handleSubmit}>
       <div className="pb-10 mx-auto sm:px-6 sm:pt-16 lg:px-8">
         <div className="mx-auto max-w-2xl lg:max-w-none">
-          <div className="lg:grid md:grid-cols-2 md:items-start md:gap-x-8">
+          <div className="lg:grid md:grid-cols-1 md:items-start md:gap-x-8">
             <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0 ">
               <TableCharacters />
 
@@ -108,7 +108,7 @@ function CharacterSheet() {
                       htmlFor="jet-de-sauvegarde"
                       className="block text-sm font-medium leading-6 text-white"
                     >
-                      Dextérité
+                      Dext..
                     </label>
                     <div className="mt-1 mb-1">
                       <div className="flex rounded-md bg-blue-500 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
@@ -152,7 +152,7 @@ function CharacterSheet() {
                       htmlFor="jet-de-sauvegarde"
                       className="block text-sm font-medium leading-6 text-white"
                     >
-                      Constitution
+                      Const..
                     </label>
                     <div className="mt-1 mb-1">
                       <div className="flex rounded-md bg-blue-500 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
@@ -197,7 +197,7 @@ function CharacterSheet() {
                       htmlFor="jet-de-sauvegarde"
                       className="block text-sm font-medium leading-6 text-white"
                     >
-                      inteligence
+                      intel..
                     </label>
                     <div className="mt-1 mb-1">
                       <div className="flex rounded-md bg-blue-500 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
@@ -242,7 +242,7 @@ function CharacterSheet() {
                       htmlFor="jet-de-sauvegarde"
                       className="block text-sm font-medium leading-6 text-white"
                     >
-                      Sagesse
+                      Sage..
                     </label>
                     <div className="mt-1 mb-1">
                       <div className="flex rounded-md bg-blue-500 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
@@ -287,7 +287,7 @@ function CharacterSheet() {
                       htmlFor="jet-de-sauvegarde"
                       className="block text-sm font-medium leading-6 text-white"
                     >
-                      Charisme
+                      Char..
                     </label>
                     <div className="mt-1 mb-1">
                       <div className="flex rounded-md bg-blue-500 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
