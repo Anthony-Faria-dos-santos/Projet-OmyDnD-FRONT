@@ -4,6 +4,7 @@ import { fetchCharacter, deleteCharacter } from '../../../store/slices/character
 import { useLocation, useNavigate } from 'react-router-dom';
 import { caractBonusCalculator } from '../../../utils/bonusCalculator.js';
 import TableCharacters from "./TableCharacters.jsx";
+import TableSkills from "./TableSkills.jsx"
 
 const handleSubmit = (e) => {
   e.preventDefault();
@@ -33,7 +34,7 @@ function CharacterSheet() {
 
   const handleDeleteCharacter = (characterId) => {
     if (window.confirm("Êtes-vous sûr de vouloir supprimer ce personnage ?")) {
-      dispatch(deleteCharacter({userId, characterId}))
+      dispatch(deleteCharacter({ userId, characterId }))
         .unwrap()
         .then(() => {
           navigate("/characters");
@@ -42,7 +43,7 @@ function CharacterSheet() {
           alert("Erreur lors de la suppression du personnage: " + error);
         });
     }
-};
+  };
 
   if (status === 'loading') return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -327,16 +328,53 @@ function CharacterSheet() {
                 </div>
               </div>
             </div>
-            <div className="mt-8 flex items-center justify-start gap-x-6">
+            <div className='sm:col-span-1'>
+              <label
+                htmlFor="total"
+                className="block text-sm font-medium leading-6 text-white"
+              >
+                Équipement de départ de classe
+              </label>
+              <div className="mb-8 col-span-1">
+                <div className="mt-1">
+                  <div className="flex rounded-md bg-white ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
+                    <div className="m-2 w-full text-center flex-1 py-1.5 pl-1 text-black sm:text-sm sm:leading-6 rounded-md bg-white ring-1 ring-inset ring-white/10">
+                      {character?.classe_starting_equipment_options}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='sm:col-span-1'>
+              <label
+                htmlFor="total"
+                className="block text-sm font-medium leading-6 text-white"
+              >
+                Équipement de départ d&apos;Historique
+              </label>
+              <div className="mb-8 col-span-1">
+                <div className="mt-1">
+                  <div className="flex rounded-md bg-white ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
+                    <div className="m-2 w-full text-center flex-1 py-1.5 pl-1 text-black sm:text-sm sm:leading-6 rounded-md bg-white ring-1 ring-inset ring-white/10">
+                      {character?.background_starting_equipment}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <TableSkills />
+            
+            <div className="mt-8 flex items-center justify-center gap-x-6">
               <button
                 type="submit"
                 className="rounded-md bg-gray-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-500"
               >
-                Générer
+                Sauvegarder
               </button>
-              <button 
-              onClick={() => handleDeleteCharacter(character.id)} 
-              className="rounded-md bg-gray-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-500"
+              <button
+                onClick={() => handleDeleteCharacter(character.id)}
+                className="rounded-md bg-gray-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-500"
               >
                 Supprimer
               </button>
