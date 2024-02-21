@@ -11,6 +11,7 @@ import AttributeCondition from "../Sanctuary/Attributes/AttributeCondition.jsx";
 import AttributeSpell from "../Sanctuary/Attributes/AttributeSpell.jsx";
 import AttributeSkill from "../Sanctuary/Attributes/AttributeSkill.jsx";
 import Search from "../Search/index.jsx";
+import Contact from "../Contact/index.jsx";
 
 function App() {
   return (
@@ -27,7 +28,8 @@ function App() {
         <Route path="/sanctuary/spells" element={<AttributeSpell />} />
         <Route path="/sanctuary/skills" element={<AttributeSkill/>} />
         <Route path="/sanctuary/:featureType/:featureId" element={<CoreFeature />} />
-        <Route path="/search" element={<Search />} />        
+        <Route path="/search" element={<Search />} />
+        <Route path="/contact" element={<Contact/>} />        
       </Routes>
     </Router>
   );
