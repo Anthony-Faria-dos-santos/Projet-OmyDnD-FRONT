@@ -104,7 +104,7 @@ function TableNotes() {
 
                     return (
                         <li key={index}
-                        className='w-1/3 rounded-2xl bg-gray-800 px-8 py-10 flex flex-col'>
+                            className='md:w-1/3 rounded-2xl bg-gray-800 px-8 py-10 flex flex-col'>
                             {editingNoteId === note.id ? (
                                 <>
                                     <textarea
@@ -123,7 +123,7 @@ function TableNotes() {
                                 </>
                             ) : (
                                 <>
-                                    
+
                                     <textarea
                                         value={note.content}
                                         rows={5}
@@ -131,7 +131,7 @@ function TableNotes() {
                                         className="block p-4 pt-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         onChange={(e) => setEditingNoteContent(e.target.value)} />
 
-                                    <span className="isolate inline-flex rounded-md shadow-sm">
+                                    <span className="flex flex-wrap isolate inline-flex rounded-md shadow-sm">
                                         <button
                                             type="button"
                                             onClick={() => handleStartEditing(note)}
