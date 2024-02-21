@@ -55,12 +55,13 @@ function Search() {
 
   // Recherche de weapons properties, permet de définir un état initial pour la barre de recherche et le menu déroulant
   const [queryWeaponProperty, setQueryWeaponProperty] = useState("");
-  const [showDropdownWeaponProperty, setShowDropdownWeaponProperty] = useState(false);
+  const [showDropdownWeaponProperty, setShowDropdownWeaponProperty] =
+    useState(false);
 
   // Recherche de talents, permet de définir un état initial pour la barre de recherche et le menu déroulant
   const [queryTalent, setQueryTalent] = useState("");
   const [showDropdownTalent, setShowDropdownTalent] = useState(false);
-  
+
   // Fonctions pour gérer la sélection d'un sort dans le menu déroulant
   const handleSelectSpell = (spell) => {
     // cible le sort sélectionné via la fonction setSelectedSpell
@@ -127,7 +128,7 @@ function Search() {
 
   // Fonctions pour gérer la sélection d'une ability dans le menu déroulant
   const handleSelectAbility = (ability) => {
-    const abilityUrl = `/sanctuary/abilitie/${ability.index}`;
+    const abilityUrl = `/sanctuary/abilities/`;
     window.open(abilityUrl, "_blank");
     setShowDropdownAbility(false);
     setQueryAbility("");
@@ -135,7 +136,7 @@ function Search() {
 
   // Fonctions pour gérer la sélection d'une armor dans le menu déroulant
   const handleSelectArmor = (armor) => {
-    const armorUrl = `/sanctuary/armor/${armor.index}`;
+    const armorUrl = `/sanctuary/equipments`;
     window.open(armorUrl, "_blank");
     setShowDropdownArmor(false);
     setQueryArmor("");
@@ -143,7 +144,7 @@ function Search() {
 
   // Fonctions pour gérer la sélection d'un background dans le menu déroulant
   const handleSelectBackground = (background) => {
-    const backgroundUrl = `/sanctuary/background/${background.index}`;
+    const backgroundUrl = `/sanctuary/backgrounds/${background.index}`;
     window.open(backgroundUrl, "_blank");
     setShowDropdownBackground(false);
     setQueryBackground("");
@@ -151,7 +152,7 @@ function Search() {
 
   // Fonctions pour gérer la sélection d'une condition dans le menu déroulant
   const handleSelectCondition = (condition) => {
-    const conditionUrl = `/sanctuary/condition/${condition.index}`;
+    const conditionUrl = `/sanctuary/conditions/`;
     window.open(conditionUrl, "_blank");
     setShowDropdownCondition(false);
     setQueryCondition("");
@@ -159,7 +160,7 @@ function Search() {
 
   // Fonctions pour gérer la sélection d'une simple weapon dans le menu déroulant
   const handleSelectSimpleWeapon = (simpleWeapon) => {
-    const simpleWeaponUrl = `/sanctuary/simpleWeapons/${simpleWeapon.index}`;
+    const simpleWeaponUrl = `/sanctuary/equipments/`;
     window.open(simpleWeaponUrl, "_blank");
     setShowDropdownSimpleWeapon(false);
     setQuerySimpleWeapon("");
@@ -167,7 +168,7 @@ function Search() {
 
   // Fonctions pour gérer la sélection d'une war weapon dans le menu déroulant
   const handleSelectWarWeapon = (warWeapon) => {
-    const warWeaponUrl = `/sanctuary/warWeapons/${warWeapon.index}`;
+    const warWeaponUrl = `/sanctuary/equipments/`;
     window.open(warWeaponUrl, "_blank");
     setShowDropdownWarWeapon(false);
     setQueryWarWeapon("");
@@ -175,7 +176,7 @@ function Search() {
 
   // Fonctions pour gérer la sélection d'une weapon property dans le menu déroulant
   const handleSelectWeaponProperty = (weaponProperty) => {
-    const weaponPropertyUrl = `/sanctuary/weaponProperties/${weaponProperty.index}`;
+    const weaponPropertyUrl = `/sanctuary/weaponProperties/equipments/`;
     window.open(weaponPropertyUrl, "_blank");
     setShowDropdownWeaponProperty(false);
     setQueryWeaponProperty("");
@@ -183,7 +184,7 @@ function Search() {
 
   // Fonctions pour gérer la sélection d'un talent dans le menu déroulant
   const handleSelectTalent = (talent) => {
-    const talentUrl = `/sanctuary/talents/${talent.index}`;
+    const talentUrl = `/sanctuary/skills/`;
     window.open(talentUrl, "_blank");
     setShowDropdownTalent(false);
     setQueryTalent("");
