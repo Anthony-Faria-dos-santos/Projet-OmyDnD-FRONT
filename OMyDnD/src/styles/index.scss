@@ -39,6 +39,10 @@ Header {
     color: #009C95 !important;
 }
 
+.custom-border {
+    border: 1px solid #ffffff;    
+}
+
 @media (min-width: 640px) and (max-width: 1024px) {
     .custom-link {
         display: none !important;
