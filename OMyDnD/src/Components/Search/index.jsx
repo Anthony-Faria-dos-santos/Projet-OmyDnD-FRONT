@@ -176,7 +176,7 @@ function Search() {
 
   // Fonctions pour gérer la sélection d'une weapon property dans le menu déroulant
   const handleSelectWeaponProperty = (weaponProperty) => {
-    const weaponPropertyUrl = `/sanctuary/weaponProperties/equipments/`;
+    const weaponPropertyUrl = `/sanctuary/equipments/`;
     window.open(weaponPropertyUrl, "_blank");
     setShowDropdownWeaponProperty(false);
     setQueryWeaponProperty("");
