@@ -1,8 +1,13 @@
 import express from 'express';
-import { join } from 'path';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
 const app = express();
 
-// Utilisez directement express.static et join importé
+// Convertir l'URL du fichier actuel en chemin
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 app.use(express.static(join(__dirname, 'dist')));
 
 app.get('*', (req, res) => {
