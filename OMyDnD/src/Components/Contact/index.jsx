@@ -1,9 +1,11 @@
+import Form from "./Form";
 
-
-function Contact () {
-
+function Contact() {
   return (
-    <div>Contact</div>
+    <div>
+      Contact
+      <Form />
+    </div>
   );
 }
 
