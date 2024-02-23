@@ -176,23 +176,19 @@ function Header() {
           </Popover>
 
           {isLoggedIn && (
-            <button className="rounded-md bg-gray-700 px-7 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600">
               <Link
-                to="#"
-                className="text-sm font-semibold leading-6 text-[#fff] hover:text-[#fff]"
+                to="/tool/character-creator"
+                className="inline-flex items-center justify-center rounded-md bg-gray-700 px-7 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600 text-[#fff] hover:text-[#fff]"
               >
                 Outil
               </Link>
-            </button>
           )}
-          <button className="rounded-md bg-gray-700 px-7 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600">
             <Link
               to="#"
-              className="text-sm font-semibold leading-6 text-[#fff] hover:text-[#fff]"
+              className="inline-flex items-center justify-center rounded-md bg-gray-700 px-7 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600 text-[#fff] hover:text-[#fff]"
             >
               Contact
             </Link>
-          </button>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link
@@ -286,7 +282,7 @@ function Header() {
                 </Disclosure>
                 {isLoggedIn && (
                   <Link
-                    to="#"
+                    to="/tool/character-creator"
                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-50 hover:bg-gray-500 hover:text-gray-900"
                   >
                     Outil
