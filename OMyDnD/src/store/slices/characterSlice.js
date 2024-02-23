@@ -73,8 +73,20 @@ export const updateCharacter = createAsyncThunk(
         if (!token) {
             return rejectWithValue('Token non trouvé');
         }
+
+        const dataToSend = {
+            ...characterData,
+            "name": characterData.name,
+            "armor_class": characterData.armor_class,
+            "level": characterData.level,
+            "experience": characterData.experience,
+            "health": characterData.health,
+            "bonus_health": characterData.bonus_health,
+            "inspiration": characterData.inspiration,
+        };
+
         try {
-            const response = await axios.patch(`${API_URL}/api/users/${userId}/characters/${characterId}`, characterData, {
+            const response = await axios.patch(`${API_URL}/api/users/${userId}/characters/${characterId}`, dataToSend, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             return response.data;
@@ -151,7 +163,35 @@ export const deleteCharacterNote = createAsyncThunk(
     }
 );
 
+export const addCharacterSkill = createAsyncThunk(
+    'character/addCharacterSkill',
+    async ({ userId, characterId, skillId }, { getState, rejectWithValue }) => {
+        const token = getState().auth.token;
+        try {
+            await axios.post(`${API_URL}/api/users/${userId}/characters/${characterId}/skills/${skillId}`, {}, {
+                headers: { Authorization: `Bearer ${token}` },
+            });
+            return skillId;
+        } catch (error) {
+            return rejectWithValue(error.response.data);
+        }
+    }
+);
 
+export const deleteCharacterSkill = createAsyncThunk(
+    'character/deleteCharacterSkill',
+    async ({ userId, characterId, skillId }, { getState, rejectWithValue }) => {
+        const token = getState().auth.token;
+        try {
+            await axios.delete(`${API_URL}/api/users/${userId}/characters/${characterId}/skills/${skillId}`, {
+                headers: { Authorization: `Bearer ${token}` },
+            });
+            return { skillId };
+        } catch (error) {
+            return rejectWithValue(error.response.data);
+        }
+    }
+);
 
 const characterSlice = createSlice({
     name: 'character',
@@ -281,6 +321,34 @@ const characterSlice = createSlice({
                 state.selectedCharacter.notes = state.selectedCharacter.notes.filter((note) => note.id !== action.payload);
             })
             .addCase(deleteCharacterNote.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.payload ? action.payload.error : action.error.message;
+            })
+            .addCase(addCharacterSkill.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(addCharacterSkill.fulfilled, (state, action) => {
+                const skillId = action.payload;
+                if (state.selectedCharacter && !state.selectedCharacter.skills.includes(skillId)) {
+                    state.selectedCharacter.skills.push(skillId);
+                }
+                state.status = 'succeeded';
+            })
+            .addCase(addCharacterSkill.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.payload ? action.payload.error : action.error.message;
+            })
+            .addCase(deleteCharacterSkill.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(deleteCharacterSkill.fulfilled, (state, action) => {
+                const { skillId } = action.payload;
+                if (state.selectedCharacter) {
+                    state.selectedCharacter.skills = state.selectedCharacter.skills.filter(id => id !== skillId);
+                }
+                state.status = 'succeeded';
+            })
+            .addCase(deleteCharacterSkill.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.payload ? action.payload.error : action.error.message;
             });
