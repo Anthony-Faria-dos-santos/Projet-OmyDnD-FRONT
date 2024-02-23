@@ -455,7 +455,9 @@ function CharacterSheet() {
                         id="initiative"
                         autoComplete="initiative"
                         className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
-                        defaultValue={character?.race_dexterity_bonus}
+                        defaultValue={caractBonusCalculator(
+                          character?.dexterity
+                        )}
                       />
                     </div>
                   </div>
@@ -497,7 +499,7 @@ function CharacterSheet() {
                         id="perception"
                         autoComplete="perception"
                         className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
-                        defaultValue={10 + character?.race_wisdom_bonus}
+                        defaultValue={caractBonusCalculator(character?.wisdom) + 10}
                       />
                     </div>
                   </div>
