@@ -4,7 +4,6 @@ import CoreFeature from "../Sanctuary/CoreFeature/CoreFeature.jsx";
 import CoreFeatures from "../Sanctuary/CoreFeatures/CoreFeatures.jsx";
 import Sanctuary from "../Sanctuary/Sanctuary.jsx";
 import CharacterCreator from "../Tool/CharacterCreator";
-// import CharacterSheet from "../Tool/CharacterSheet/index.jsx";
 import ProtectedRoute from "../auth/ProtectedRoute/ProtectedRoute.jsx";
 import SignIn from "../auth/SignIn/SignIn.jsx";
 import SignUp from "../auth/SignUp/SignUp.jsx";
