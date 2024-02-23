@@ -1,3 +1,4 @@
+import forms from '@tailwindcss/forms';
 export const content = ['./index.html', './src/**/*.{js,jsx,ts,tsx}'];
 export const media = false;
 export const theme = {
@@ -6,4 +7,4 @@ export const theme = {
 export const variants = {
   extend: {},
 };
-export const plugins = [];
+export const plugins = [forms];
