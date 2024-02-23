@@ -48,17 +48,17 @@ function skillBonusCalculator (check, currentCaractBonus, currentMasteryBonus) {
 
 /* ----------------------------------------------------------------------------------------- */
 
-const currentMasteryBonus = masteryBonusCalculator(lvl);
+// const currentMasteryBonus = masteryBonusCalculator(lvl);
 
-const currentCaractBonus = caractBonusCalculator(strenghValue);
+// const currentCaractBonus = caractBonusCalculator(strenghValue);
 
-console.log("Bonus de maîtrise:" + masteryBonusCalculator(lvl));
+// console.log("Bonus de maîtrise:" + masteryBonusCalculator(lvl));
 
-console.log("Bonus de caractéristiques:" + caractBonusCalculator(strenghValue));
+// console.log("Bonus de caractéristiques:" + caractBonusCalculator(strenghValue));
 
-console.log("Bonus de compétence si uncheck:" + skillBonusCalculator(false, currentCaractBonus, currentMasteryBonus));
+// console.log("Bonus de compétence si uncheck:" + skillBonusCalculator(false, currentCaractBonus, currentMasteryBonus));
 
-console.log("Bonus de compétence si check:" + skillBonusCalculator(true, currentCaractBonus, currentMasteryBonus));
+// console.log("Bonus de compétence si check:" + skillBonusCalculator(true, currentCaractBonus, currentMasteryBonus));
 
 export {masteryBonusCalculator, caractBonusCalculator, skillBonusCalculator};
 export {strenghValue, dexterityValue, constitutionValue, inteligenceValue, wisdomValue, charismaValue, lvl};

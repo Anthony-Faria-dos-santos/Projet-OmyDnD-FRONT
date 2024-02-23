@@ -56,7 +56,6 @@ export const fetchCharactersByUser = createAsyncThunk(
 export const fetchCharacter = createAsyncThunk(
     'character/fetchCharacter',
     async ({ userId, characterId }, { rejectWithValue }) => {
-        console.log('fetchCharacter called with:', { userId, characterId });
         try {
             const response = await axios.get(`${API_URL}/api/users/${userId}/characters/${characterId}`);
             return response.data;

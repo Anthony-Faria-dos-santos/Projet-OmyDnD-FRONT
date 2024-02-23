@@ -32,10 +32,6 @@ function CharacterSheet() {
   const [bonusHealth, setBonusHealth] = useState('');
   const [experience, setExperience] = useState('');
 
-  console.log("UserID:", userId);
-  console.log("CharacterID:", characterId);
-  console.log("Character:", character);
-
   useEffect(() => {
     if (characterId && userId) {
       dispatch(fetchCharacter({ userId, characterId }));

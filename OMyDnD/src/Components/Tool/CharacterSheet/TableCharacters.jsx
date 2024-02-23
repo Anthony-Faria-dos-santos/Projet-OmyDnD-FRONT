@@ -5,8 +5,6 @@ function TableCharacters({ setName, setLevel, setHealth, setBonusHealth, setExpe
 
     const character = useSelector((state) => state.character.selectedCharacter);
 
-    console.log('Character:', character);
-
     const characterAttributes = [
         { label: "Nom du personnage", id: "name", value: character?.name, type: "text", readOnly: false, colSpan: "sm:col-span-3" },
         { label: "Race", id: "race_name", value: character?.race_name, type: "text", readOnly: true, colSpan: "sm:col-span-3 sm:col-start-1" },
