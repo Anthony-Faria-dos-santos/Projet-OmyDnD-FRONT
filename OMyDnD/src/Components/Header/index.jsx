@@ -120,6 +120,12 @@ function Header() {
         </div>
 
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
+        <Link
+              to="/"
+              className="inline-flex items-center justify-center rounded-md bg-gray-700 px-7 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600 text-[#fff] hover:text-[#fff]"
+            >
+              Accueil
+            </Link>
           <Popover className="relative">
             <Popover.Button className="flex items-center gap-x-1 rounded-md bg-gray-700 px-7 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600">
               Sanctuaire
