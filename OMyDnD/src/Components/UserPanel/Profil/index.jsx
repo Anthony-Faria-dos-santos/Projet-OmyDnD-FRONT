@@ -101,7 +101,11 @@ const handleSubmitDelete = (event) => {
   }
 
     // Show the modal for confirmation
-    $('.ui.basic.modal').modal('show');
+    $('.ui.basic.modal')
+    .modal({
+      onApprove: handleConfirmDelete
+    })
+    .modal('show');
   };
 
 const handleConfirmDelete = () => {
@@ -209,22 +213,24 @@ const handleSubmit = (event) => {
                 /></div>
                 
           <button type="submit" className="bg-gray-50 rounded-lg text-gray-900 p-2 m-2 hover:bg-gray-800 hover:text-gray-50 duration-300">Supprimer son compte</button>
-          <div className="ui basic modal">
-            <div class="content">
-    <p>Êtes-vous sûr de vouloir supprimer votre compte ?</p>
-  </div>
-  <div class="actions">
-    <div class="ui red basic cancel inverted button">
-      <i class="remove icon"></i>
-      Non
-    </div>
-    <div class="ui green ok inverted button" onClick={handleConfirmDelete}>
-      <i class="checkmark icon"></i>
-      Oui
-    </div>
-  </div>
-  </div>
           </form>
+
+        {/* Modal for confirmation */}
+        <div className="ui basic modal">
+          <div className="content">
+            <p>Êtes-vous sûr de vouloir supprimer votre compte ?</p>
+          </div>
+          <div className="actions">
+            <div className="ui red basic cancel inverted button">
+              <i className="remove icon"></i>
+              Non
+            </div>
+            <div className="ui green ok inverted button" onClick={handleConfirmDelete}>
+              <i className="checkmark icon"></i>
+              Oui
+            </div>
+          </div>
+        </div>
       </div>
       ):( 
         <div></div>
