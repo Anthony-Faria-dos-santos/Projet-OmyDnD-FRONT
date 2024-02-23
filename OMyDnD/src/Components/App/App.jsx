@@ -18,6 +18,7 @@ import CoreFeature from "../Sanctuary/CoreFeature/CoreFeature.jsx";
 import Search from "../Search/index.jsx";
 import NotFound from "../NotFound/NotFound.jsx";
 import Footer from "../Footer/index.jsx";
+import Contact from "../Contact/index.jsx";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/sanctuary/conditions" element={<AttributeCondition />} />
         <Route path="/sanctuary/spells" element={<AttributeSpell />} />
         <Route path="/sanctuary/skills" element={<AttributeSkill />} />
+        <Route path="/contact" element={<Contact/>} ></Route>
         <Route
           path="/sanctuary/:featureType/:featureId"
           element={<CoreFeature />}

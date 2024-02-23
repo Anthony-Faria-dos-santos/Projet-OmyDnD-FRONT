@@ -3,12 +3,8 @@ import spellsData from "../../data/spells.json";
 import classesData from "../../data/classes.json";
 import raceData from "../../data/races.json";
 import abilitiesData from "../../data/abilities.json";
-import armorData from "../../data/armors.json";
 import backgroundData from "../../data/backgrounds.json";
 import conditionsData from "../../data/conditions.json";
-import simpleWeaponsData from "../../data/simple.weapons.json";
-import warWeaponsData from "../../data/war.weapons.json";
-import weaponPropertiesData from "../../data/weapons.properties.json";
 import talentsData from "../../data/talents.json";
 
 // Composant dédié à la recherche d'informations dans le sanctuaire au moyen de barres de recherche.
@@ -32,10 +28,6 @@ function Search() {
   const [queryAbility, setQueryAbility] = useState("");
   const [showDropdownAbility, setShowDropdownAbility] = useState(false);
 
-  // Recherche de armor, permet de définir un état initial pour la barre de recherche et le menu déroulant
-  const [queryArmor, setQueryArmor] = useState("");
-  const [showDropdownArmor, setShowDropdownArmor] = useState(false);
-
   // Recherche de background, permet de définir un état initial pour la barre de recherche et le menu déroulant
   const [queryBackground, setQueryBackground] = useState("");
   const [showDropdownBackground, setShowDropdownBackground] = useState(false);
@@ -43,20 +35,6 @@ function Search() {
   // Recherche de conditions, permet de définir un état initial pour la barre de recherche et le menu déroulant
   const [queryCondition, setQueryCondition] = useState("");
   const [showDropdownCondition, setShowDropdownCondition] = useState(false);
-
-  // Recherche de simple weapons, permet de définir un état initial pour la barre de recherche et le menu déroulant
-  const [querySimpleWeapon, setQuerySimpleWeapon] = useState("");
-  const [showDropdownSimpleWeapon, setShowDropdownSimpleWeapon] =
-    useState(false);
-
-  // Recherche de war weapons, permet de définir un état initial pour la barre de recherche et le menu déroulant
-  const [queryWarWeapon, setQueryWarWeapon] = useState("");
-  const [showDropdownWarWeapon, setShowDropdownWarWeapon] = useState(false);
-
-  // Recherche de weapons properties, permet de définir un état initial pour la barre de recherche et le menu déroulant
-  const [queryWeaponProperty, setQueryWeaponProperty] = useState("");
-  const [showDropdownWeaponProperty, setShowDropdownWeaponProperty] =
-    useState(false);
 
   // Recherche de talents, permet de définir un état initial pour la barre de recherche et le menu déroulant
   const [queryTalent, setQueryTalent] = useState("");
@@ -127,20 +105,14 @@ function Search() {
   };
 
   // Fonctions pour gérer la sélection d'une ability dans le menu déroulant
-  const handleSelectAbility = (ability) => {
+  const handleSelectAbility = () => {
     const abilityUrl = `/sanctuary/abilities/`;
     window.open(abilityUrl, "_blank");
     setShowDropdownAbility(false);
     setQueryAbility("");
   };
 
-  // Fonctions pour gérer la sélection d'une armor dans le menu déroulant
-  const handleSelectArmor = (armor) => {
-    const armorUrl = `/sanctuary/equipments`;
-    window.open(armorUrl, "_blank");
-    setShowDropdownArmor(false);
-    setQueryArmor("");
-  };
+
 
   // Fonctions pour gérer la sélection d'un background dans le menu déroulant
   const handleSelectBackground = (background) => {
@@ -151,39 +123,17 @@ function Search() {
   };
 
   // Fonctions pour gérer la sélection d'une condition dans le menu déroulant
-  const handleSelectCondition = (condition) => {
+  const handleSelectCondition = () => {
     const conditionUrl = `/sanctuary/conditions/`;
     window.open(conditionUrl, "_blank");
     setShowDropdownCondition(false);
     setQueryCondition("");
   };
 
-  // Fonctions pour gérer la sélection d'une simple weapon dans le menu déroulant
-  const handleSelectSimpleWeapon = (simpleWeapon) => {
-    const simpleWeaponUrl = `/sanctuary/equipments/`;
-    window.open(simpleWeaponUrl, "_blank");
-    setShowDropdownSimpleWeapon(false);
-    setQuerySimpleWeapon("");
-  };
 
-  // Fonctions pour gérer la sélection d'une war weapon dans le menu déroulant
-  const handleSelectWarWeapon = (warWeapon) => {
-    const warWeaponUrl = `/sanctuary/equipments/`;
-    window.open(warWeaponUrl, "_blank");
-    setShowDropdownWarWeapon(false);
-    setQueryWarWeapon("");
-  };
-
-  // Fonctions pour gérer la sélection d'une weapon property dans le menu déroulant
-  const handleSelectWeaponProperty = (weaponProperty) => {
-    const weaponPropertyUrl = `/sanctuary/equipments/`;
-    window.open(weaponPropertyUrl, "_blank");
-    setShowDropdownWeaponProperty(false);
-    setQueryWeaponProperty("");
-  };
 
   // Fonctions pour gérer la sélection d'un talent dans le menu déroulant
-  const handleSelectTalent = (talent) => {
+  const handleSelectTalent = () => {
     const talentUrl = `/sanctuary/skills/`;
     window.open(talentUrl, "_blank");
     setShowDropdownTalent(false);
@@ -335,36 +285,7 @@ function Search() {
         </ul>
       )}
 
-      {/* Barre de recherche pour les armures */}
-      <input
-        type="search"
-        placeholder="Rechercher une armure..."
-        value={queryArmor}
-        autoComplete="off"
-        onChange={(e) => setQueryArmor(e.target.value)}
-        onFocus={() => setShowDropdownArmor(true)}
-        style={inputStyle}
-      />
 
-      {/* Menu déroulant pour les armures */}
-      {showDropdownArmor && queryArmor && (
-        <ul style={dropdownStyle}>
-          {armorData
-            .filter((armor) =>
-              armor.name.toLowerCase().includes(queryArmor.toLowerCase())
-            )
-            .slice(0, 20)
-            .map((armor, index) => (
-              <li
-                key={index}
-                onClick={() => handleSelectArmor(armor)}
-                style={itemStyle}
-              >
-                {armor.name}
-              </li>
-            ))}
-        </ul>
-      )}
 
       {/* Barre de recherche pour les backgrounds */}
       <input
@@ -432,104 +353,7 @@ function Search() {
         </ul>
       )}
 
-      {/* Barre de recherche pour les simple weapons */}
-      <input
-        type="search"
-        placeholder="Rechercher une arme simple..."
-        value={querySimpleWeapon}
-        autoComplete="off"
-        onChange={(e) => setQuerySimpleWeapon(e.target.value)}
-        onFocus={() => setShowDropdownSimpleWeapon(true)}
-        style={inputStyle}
-      />
 
-      {/* Menu déroulant pour les simple weapons */}
-      {showDropdownSimpleWeapon && querySimpleWeapon && (
-        <ul style={dropdownStyle}>
-          {simpleWeaponsData
-            .filter((simpleWeapon) =>
-              simpleWeapon.name
-                .toLowerCase()
-                .includes(querySimpleWeapon.toLowerCase())
-            )
-            .slice(0, 20)
-            .map((simpleWeapon, index) => (
-              <li
-                key={index}
-                onClick={() => handleSelectSimpleWeapon(simpleWeapon)}
-                style={itemStyle}
-              >
-                {simpleWeapon.name}
-              </li>
-            ))}
-        </ul>
-      )}
-
-      {/* Barre de recherche pour les war weapons */}
-      <input
-        type="search"
-        placeholder="Rechercher une arme de guerre..."
-        value={queryWarWeapon}
-        autoComplete="off"
-        onChange={(e) => setQueryWarWeapon(e.target.value)}
-        onFocus={() => setShowDropdownWarWeapon(true)}
-        style={inputStyle}
-      />
-
-      {/* Menu déroulant pour les war weapons */}
-      {showDropdownWarWeapon && queryWarWeapon && (
-        <ul style={dropdownStyle}>
-          {warWeaponsData
-            .filter((warWeapon) =>
-              warWeapon.name
-                .toLowerCase()
-                .includes(queryWarWeapon.toLowerCase())
-            )
-            .slice(0, 20)
-            .map((warWeapon, index) => (
-              <li
-                key={index}
-                onClick={() => handleSelectWarWeapon(warWeapon)}
-                style={itemStyle}
-              >
-                {warWeapon.name}
-              </li>
-            ))}
-        </ul>
-      )}
-
-      {/* Barre de recherche pour les weapon properties */}
-      <input
-        type="search"
-        placeholder="Rechercher une propriété d'arme..."
-        value={queryWeaponProperty}
-        autoComplete="off"
-        onChange={(e) => setQueryWeaponProperty(e.target.value)}
-        onFocus={() => setShowDropdownWeaponProperty(true)}
-        style={inputStyle}
-      />
-
-      {/* Menu déroulant pour les weapon properties */}
-      {showDropdownWeaponProperty && queryWeaponProperty && (
-        <ul style={dropdownStyle}>
-          {weaponPropertiesData
-            .filter((weaponProperty) =>
-              weaponProperty.name
-                .toLowerCase()
-                .includes(queryWeaponProperty.toLowerCase())
-            )
-            .slice(0, 20)
-            .map((weaponProperty, index) => (
-              <li
-                key={index}
-                onClick={() => handleSelectWeaponProperty(weaponProperty)}
-                style={itemStyle}
-              >
-                {weaponProperty.name}
-              </li>
-            ))}
-        </ul>
-      )}
 
       {/* Barre de recherche pour les talents */}
       <input

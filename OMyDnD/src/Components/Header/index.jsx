@@ -94,9 +94,8 @@ function Header() {
           >
             <span className="sr-only">Ouvrir bar latérale</span>
             <UserCircleIcon
-              className={`text-gray-400 hover:text-gray-600 h-10 w-10 ${
-                isLoggedIn ? "connexion-color" : "text-gray-400"
-              }`}
+              className={`text-gray-400 hover:text-gray-600 h-10 w-10 ${isLoggedIn ? "connexion-color" : "text-gray-400"
+                }`}
               aria-hidden="true"
             />
           </button>
@@ -176,19 +175,19 @@ function Header() {
           </Popover>
 
           {isLoggedIn && (
-              <Link
-                to="/tool/character-creator"
-                className="inline-flex items-center justify-center rounded-md bg-gray-700 px-7 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600 text-[#fff] hover:text-[#fff]"
-              >
-                Outil
-              </Link>
-          )}
             <Link
-              to="#"
+              to="/tool/character-creator"
               className="inline-flex items-center justify-center rounded-md bg-gray-700 px-7 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600 text-[#fff] hover:text-[#fff]"
             >
-              Contact
+              Outil
             </Link>
+          )}
+          <Link
+            to="/contact"
+            className="inline-flex items-center justify-center rounded-md bg-gray-700 px-7 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600 text-[#fff] hover:text-[#fff]"
+          >
+            Contact
+          </Link>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link
