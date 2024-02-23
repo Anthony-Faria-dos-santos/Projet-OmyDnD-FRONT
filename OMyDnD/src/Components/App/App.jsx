@@ -16,12 +16,8 @@ import Sanctuary from "../Sanctuary/Sanctuary.jsx";
 import CoreFeatures from "../Sanctuary/CoreFeatures/CoreFeatures.jsx";
 import CoreFeature from "../Sanctuary/CoreFeature/CoreFeature.jsx";
 import Search from "../Search/index.jsx";
-<<<<<<< HEAD
 import NotFound from "../NotFound/NotFound.jsx";
 import Footer from "../Footer/index.jsx";
-=======
-import Contact from "../Contact/index.jsx";
->>>>>>> Feature/Contact
 
 function App() {
   return (
@@ -37,8 +33,7 @@ function App() {
         <Route path="/sanctuary/equipments" element={<AttributeEquipment />} />
         <Route path="/sanctuary/conditions" element={<AttributeCondition />} />
         <Route path="/sanctuary/spells" element={<AttributeSpell />} />
-        <Route path="/sanctuary/skills" element={<AttributeSkill/>} />
-<<<<<<< HEAD
+        <Route path="/sanctuary/skills" element={<AttributeSkill />} />
         <Route
           path="/sanctuary/:featureType/:featureId"
           element={<CoreFeature />}
@@ -67,13 +62,8 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="/search" element={<Search />} />    
-        <Route path="*" element={<NotFound />} />    
-=======
-        <Route path="/sanctuary/:featureType/:featureId" element={<CoreFeature />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/contact" element={<Contact/>} />        
->>>>>>> Feature/Contact
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </Router>
