@@ -216,11 +216,11 @@ const handleSubmit = (event) => {
   <div class="actions">
     <div class="ui red basic cancel inverted button">
       <i class="remove icon"></i>
-      No
+      Non
     </div>
     <div class="ui green ok inverted button" onClick={handleConfirmDelete}>
       <i class="checkmark icon"></i>
-      Yes
+      Oui
     </div>
   </div>
   </div>
