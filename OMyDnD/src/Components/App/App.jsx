@@ -19,8 +19,17 @@ import Search from "../Search/index.jsx";
 import NotFound from "../NotFound/NotFound.jsx";
 import Footer from "../Footer/index.jsx";
 import Contact from "../Contact/index.jsx";
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { initializeAuth } from '../../store/slices/authSlice.js';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(initializeAuth());
+}, [dispatch]);
+
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
@@ -77,4 +86,3 @@ function App() {
 }
 
 export default App;
-
