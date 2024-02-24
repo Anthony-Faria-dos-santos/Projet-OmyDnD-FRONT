@@ -68,6 +68,8 @@ function Header() {
   const user = useSelector((state) => state.auth.user);
   const isLoggedIn = Boolean(token && user);
   const [showPopupLoggedIn, setshowPopupLoggedIn] = useState(false);
+  
+  
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -79,6 +81,8 @@ function Header() {
       return () => clearTimeout(timer);
     }
   }, [isLoggedIn]);
+
+  
 
   return (
     <header className="bg-white border-solid border-b-gray-700 border-b-4">
@@ -103,10 +107,11 @@ function Header() {
 
           {/* Popup */}
           {isLoggedIn && showPopupLoggedIn && (
-            <Label as="a" open={showPopupLoggedIn} color="teal" tag>
-              Vous êtes maintenant connecté !
+            <Label open={showPopupLoggedIn} color="teal">
+              Bonjour {user.pseudo} !
             </Label>
           )}
+          
         </div>
         <div className="flex lg:hidden">
           <Button
