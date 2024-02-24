@@ -43,6 +43,17 @@ Header {
     border: 1px solid #ffffff;    
 }
 
+
+.modalCustom {
+    text-align: center !important;
+    background-color: #4B5563 !important; /* Fond gris */
+    color: white !important; /* Texte en blanc */
+    border-radius: 10px !important; /* Coins arrondis */
+    padding: 20px !important; /* Espacement intérieur */
+    
+}
+
+
 @media (min-width: 640px) and (max-width: 1024px) {
     .custom-link {
         display: none !important;
