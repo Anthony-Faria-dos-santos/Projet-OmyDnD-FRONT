@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "heroku_config":"heroku git:remote -a ohmydnd-front",
+    "heroku_deploy":"git push heroku main"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.18",
