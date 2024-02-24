@@ -1,28 +1,50 @@
-import { useState } from "react"; // Importe React et le Hook useState pour gérer l'état local du composant.
+import { useState, useEffect } from "react"; // Importe React et les Hooks useState et useEffect pour gérer l'état local du composant.
 import { useDispatch, useSelector } from "react-redux"; // Importe le Hook useDispatch pour permettre l'envoi d'actions Redux.
-import { signInUser } from "../../../store/slices/authSlice.js"; // Importe l'action signInUser depuis le slice d'authentification.
+import { signInUser, initializeAuth } from "../../../store/slices/authSlice.js"; // Importe l'action signInUser pour permettre la connexion d'un utilisateur.
 import { useNavigate } from 'react-router-dom';
+import { Label } from "semantic-ui-react";
 
 function SignIn() {
   // Déclare le composant fonctionnel SignIn.
   const dispatch = useDispatch(); // Initialise useDispatch pour envoyer des actions à l'état global Redux.
   const [email, setEmail] = useState(""); // Crée un état local pour l'email avec un setter, initialisé à une chaîne vide.
   const [password, setPassword] = useState(""); // Crée un état local pour le mot de passe avec un setter, initialisé à une chaîne vide.
-  const errorMessage = useSelector((state) => state.auth.error); // Récupère le message d'erreur depuis le state global Redux.
+  const { error, isAuthenticated, status } = useSelector((state) => state.auth); // Extrait l'erreur, l'état d'authentification et le statut de l'état global Redux.
   const navigate = useNavigate();
+  const [showSignupSuccess, setShowSignupSuccess] = useState(false);
+  
 
   const handleSubmit = (e) => {
-    // Définit la fonction handleSubmit appelée lors de la soumission du formulaire.
-    e.preventDefault(); // Empêche le comportement par défaut du formulaire (rechargement de la page).
-    dispatch(signInUser({ email, password })); // Envoie l'action signInUser avec email, nom d'utilisateur, et mot de passe comme payload.
-    setEmail(""); // Réinitialise l'état de l'email à une chaîne vide.
-    setPassword(""); // Réinitialise l'état du mot de passe à une chaîne vide.
-    navigate("/sanctuary");
+    e.preventDefault();
+    dispatch(signInUser({ email, password }));
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("signupSuccess")) {
+      setShowSignupSuccess(true);
+      setTimeout(() => {
+        setShowSignupSuccess(false);
+        localStorage.removeItem("signupSuccess");
+      }, 5000);
+    }
+  }, []);
+
+  useEffect(() => {
+    dispatch(initializeAuth()); // Initialise l'authentification au montage du composant
+    if (isAuthenticated) {
+      navigate("/"); // Redirige si déjà authentifié
+    }
+  }, [isAuthenticated, dispatch, navigate]);
 
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+      {showSignupSuccess && (
+            <Label open={showSignupSuccess} color="teal">
+              Inscription réussie !
+            </Label>
+          )}
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-50">
           Se connecter
         </h2>
@@ -89,7 +111,8 @@ function SignIn() {
             </button>
           </div>
         </form>
-        {errorMessage && <p className="error">{errorMessage}</p>}
+        {status === 'loading' && <p className="text-green-500">Connexion en cours...</p>}
+      {error && <p className="text-red-500">{error}</p>}
       </div>
     </div>
   );
