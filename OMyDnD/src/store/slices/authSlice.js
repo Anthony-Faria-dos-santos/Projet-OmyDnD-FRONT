@@ -35,7 +35,10 @@ export const signInUser = createAsyncThunk(
             localStorage.setItem("token", response.data.token); // Stocke le token reçu dans le localStorage.
             return response.data; // Renvoie les données de l'utilisateur et le token.
         } catch (error) {
-            return rejectWithValue("Échec de la connexion. Vérifiez vos identifiants."); // Gère les erreurs en renvoyant les données d'erreur.
+            const message = error.response && error.response.data && error.response.data.message
+                ? error.response.data.message
+                : "Échec de la connexion. Vérifiez vos identifiants.";
+            return rejectWithValue(message);
         }
     }
 );
@@ -72,16 +75,16 @@ const authSlice = createSlice({
         },
         // Nouvelle action pour initialiser l'état d'authentification
         initializeAuth(state) {
-          const storedToken = localStorage.getItem("token");
-          const storedUserInfo = localStorage.getItem("userInfo");
-          if (storedToken) {
-            state.token = storedToken;
-            state.isAuthenticated = true;
+            const storedToken = localStorage.getItem("token");
+            const storedUserInfo = localStorage.getItem("userInfo");
+            if (storedToken) {
+                state.token = storedToken;
+                state.isAuthenticated = true;
+            }
+            if (storedUserInfo) {
+                state.user = JSON.parse(storedUserInfo);
+            }
         }
-        if (storedUserInfo) {
-            state.user = JSON.parse(storedUserInfo);
-        }
-      }
     },
     extraReducers: (builder) => { // Traite les actions asynchrones.
         builder
@@ -105,24 +108,24 @@ const authSlice = createSlice({
             })
             // Gère l'état après une connexion réussie.
             .addCase(signInUser.fulfilled, (state, action) => {
-              state.user = {                      // Met à jour l'utilisateur.
-                id: action.payload.id,
-                slug: action.payload.slug,
-                pseudo: action.payload.pseudo,
-                email: action.payload.email,
-              };
-              state.token = action.payload.token; // Met à jour le token.
-              state.isAuthenticated = true; // Indique qu'un utilisateur est connecté.
-              state.status = "succeeded"; // Indique que l'action a réussi.
-              state.error = null; // Réinitialise l'erreur.
+                state.user = {                      // Met à jour l'utilisateur.
+                    id: action.payload.id,
+                    slug: action.payload.slug,
+                    pseudo: action.payload.pseudo,
+                    email: action.payload.email,
+                };
+                state.token = action.payload.token; // Met à jour le token.
+                state.isAuthenticated = true; // Indique qu'un utilisateur est connecté.
+                state.status = "succeeded"; // Indique que l'action a réussi.
+                state.error = null; // Réinitialise l'erreur.
 
-              localStorage.setItem("token", action.payload.token); // Stocke le token dans le localStorage.
-              localStorage.setItem("userInfo", JSON.stringify(state.user)); // Stocke les informations utilisateur dans le localStorage.
+                localStorage.setItem("token", action.payload.token); // Stocke le token dans le localStorage.
+                localStorage.setItem("userInfo", JSON.stringify(state.user)); // Stocke les informations utilisateur dans le localStorage.
             })
             // Gère l'état après une connexion échouée.
             .addCase(signInUser.rejected, (state, action) => {
                 state.status = "failed"; // Indique que l'action a échoué.
-                state.error = action.payload.message; // Met à jour l'erreur.
+                state.error = action.payload; // Met à jour l'erreur.
             })
             .addCase(deleteUser.pending, (state) => { // Gère l'état pendant la suppression de compte.
                 state.status = "loading"; // Indique que l'action est en cours.
