@@ -3,20 +3,20 @@ import './style.scss';
 
 // Tableau contenant les chemins des images
 const images = [
-  "../images/notfound/1.jpg",
-  "../images/notfound/2.jpg",
-  "../images/notfound/3.jpg",
-  "../images/notfound/4.jpg",
-  "../images/notfound/5.jpg",
-  "../images/notfound/6.jpg",
-  "../images/notfound/7.jpg",
-  "../images/notfound/8.jpg",
-  "../images/notfound/9.jpg",
-  "../images/notfound/10.jpg",
-  "../images/notfound/11.jpg",
-  "../images/notfound/12.jpg",
-  "../images/notfound/13.jpg",
-  "../images/notfound/14.jpg",
+  "/images/notfound/1.jpg",
+  "/images/notfound/2.jpg",
+  "/images/notfound/3.jpg",
+  "/images/notfound/4.jpg",
+  "/images/notfound/5.jpg",
+  "/images/notfound/6.jpg",
+  "/images/notfound/7.jpg",
+  "/images/notfound/8.jpg",
+  "/images/notfound/9.jpg",
+  "/images/notfound/10.jpg",
+  "/images/notfound/11.jpg",
+  "/images/notfound/12.jpg",
+  "/images/notfound/13.jpg",
+  "/images/notfound/14.jpg",
 ];
 
 const NotFound = () => {
