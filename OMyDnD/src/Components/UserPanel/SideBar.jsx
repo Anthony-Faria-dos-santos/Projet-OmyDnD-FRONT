@@ -28,6 +28,10 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
     navigate("/signin");
   };
 
+  const closeSidebarOnClick = () => {
+    setSidebarOpen(false);
+  };
+
   return (
     <Transition.Root show={sidebarOpen} as={Fragment}>
       <Dialog as="div" className="relative z-40" onClose={setSidebarOpen}>
@@ -61,6 +65,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                       <Link
                         to="/profile"
                         className="pt-2 group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-50 hover:bg-gray-500 hover:text-gray-900"
+                        onClick={closeSidebarOnClick}
                       >
                         <UserIcon
                           className="mr-4 flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-50"
@@ -74,6 +79,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                       <Link
                         to="/characters"
                         className="group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-50 hover:bg-gray-500 hover:text-gray-900"
+                        onClick={closeSidebarOnClick}
                       >
                         <UserGroupIcon
                           className="mr-4 flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-50"
@@ -88,6 +94,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                         <ArrowLeftStartOnRectangleIcon
                           className="mr-4 h-6 w-6 text-gray-400 group-hover:text-gray-50"
                           aria-hidden="true"
+                          onClick={closeSidebarOnClick}
                         />
                         Se déconnecter
                       </button>
@@ -97,6 +104,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                       <Link
                         to="/signup"
                         className="group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-50 hover:bg-gray-500 hover:text-gray-900"
+                        onClick={closeSidebarOnClick}
                       >
                         <DevicePhoneMobileIcon
                           className="mr-4 flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-50"
@@ -107,6 +115,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                       <Link
                         to="/signin"
                         className="group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-50 hover:bg-gray-500 hover:text-gray-900"
+                        onClick={closeSidebarOnClick}
                       >
                         <ArrowRightEndOnRectangleIcon
                           className="mr-4 flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-50"
