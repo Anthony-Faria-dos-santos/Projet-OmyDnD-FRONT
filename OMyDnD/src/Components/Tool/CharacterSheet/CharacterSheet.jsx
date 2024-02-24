@@ -132,7 +132,7 @@ function CharacterSheet() {
                           id="strength"
                           autoComplete="strength"
                           className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
-                          defaultValue={character?.strength}
+                          defaultValue={character?.strength || ""}
                         />
                       </div>
                     </div>
@@ -153,7 +153,7 @@ function CharacterSheet() {
                             readOnly
                             className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
                             defaultValue={caractBonusCalculator(
-                              character?.strength
+                              character?.strength || ""
                             )}
                           />
                         </div>
@@ -178,7 +178,7 @@ function CharacterSheet() {
                           id="dexterity"
                           autoComplete="dexterity"
                           className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
-                          defaultValue={character?.dexterity}
+                          defaultValue={character?.dexterity || ""}
                         />
                       </div>
                     </div>
@@ -199,7 +199,7 @@ function CharacterSheet() {
                             readOnly
                             className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
                             defaultValue={caractBonusCalculator(
-                              character?.dexterity
+                              character?.dexterity || ""
                             )}
                           />
                         </div>
@@ -225,7 +225,7 @@ function CharacterSheet() {
                           id="constitution"
                           autoComplete="constitution"
                           className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
-                          defaultValue={character?.constitution}
+                          defaultValue={character?.constitution || ""}
                         />
                       </div>
                     </div>
@@ -246,7 +246,7 @@ function CharacterSheet() {
                             readOnly
                             className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
                             defaultValue={caractBonusCalculator(
-                              character?.constitution
+                              character?.constitution || ""
                             )}
                           />
                         </div>
@@ -272,7 +272,7 @@ function CharacterSheet() {
                           id="inteligence"
                           autoComplete="inteligence"
                           className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
-                          defaultValue={character?.inteligence}
+                          defaultValue={character?.inteligence || ""}
                         />
                       </div>
                     </div>
@@ -293,7 +293,7 @@ function CharacterSheet() {
                             readOnly
                             className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
                             defaultValue={caractBonusCalculator(
-                              character?.inteligence
+                              character?.inteligence || ""
                             )}
                           />
                         </div>
@@ -319,7 +319,7 @@ function CharacterSheet() {
                           id="wisdom"
                           autoComplete="wisdom"
                           className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
-                          defaultValue={character?.wisdom}
+                          defaultValue={character?.wisdom || ""}
                         />
                       </div>
                     </div>
@@ -340,7 +340,7 @@ function CharacterSheet() {
                             readOnly
                             className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
                             defaultValue={caractBonusCalculator(
-                              character?.wisdom
+                              character?.wisdom || ""
                             )}
                           />
                         </div>
@@ -366,7 +366,7 @@ function CharacterSheet() {
                           id="charisma"
                           autoComplete="charisma"
                           className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
-                          defaultValue={character?.charisma}
+                          defaultValue={character?.charisma || ""}
                         />
                       </div>
                     </div>
@@ -387,7 +387,7 @@ function CharacterSheet() {
                             readOnly
                             className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
                             defaultValue={caractBonusCalculator(
-                              character?.charisma
+                              character?.charisma || ""
                             )}
                           />
                         </div>
@@ -413,7 +413,7 @@ function CharacterSheet() {
                         id="bonus_maitrise"
                         autoComplete="bonus_maitrise"
                         className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
-                        defaultValue={masteryBonus}
+                        defaultValue={masteryBonus || ""}
                       />
                     </div>
                   </div>
@@ -456,7 +456,7 @@ function CharacterSheet() {
                         autoComplete="initiative"
                         className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
                         defaultValue={caractBonusCalculator(
-                          character?.dexterity
+                          character?.dexterity || ""
                         )}
                       />
                     </div>
@@ -478,7 +478,7 @@ function CharacterSheet() {
                         id="race_speed"
                         autoComplete="race_speed"
                         className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
-                        defaultValue={character?.race_speed}
+                        defaultValue={character?.race_speed || ""}
                       />
                     </div>
                   </div>
@@ -499,7 +499,7 @@ function CharacterSheet() {
                         id="perception"
                         autoComplete="perception"
                         className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
-                        defaultValue={caractBonusCalculator(character?.wisdom) + 10}
+                        defaultValue={caractBonusCalculator(character?.wisdom) + 10 || ""}
                       />
                     </div>
                   </div>

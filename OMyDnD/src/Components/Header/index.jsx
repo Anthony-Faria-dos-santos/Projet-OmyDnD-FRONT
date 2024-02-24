@@ -69,6 +69,8 @@ function Header() {
   const isLoggedIn = Boolean(token && user);
   const [showPopupLoggedIn, setshowPopupLoggedIn] = useState(false);
 
+
+
   useEffect(() => {
     if (isLoggedIn) {
       setshowPopupLoggedIn(true);
@@ -79,6 +81,12 @@ function Header() {
       return () => clearTimeout(timer);
     }
   }, [isLoggedIn]);
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+  };
+
+
 
   return (
     <header className="bg-white border-solid border-b-gray-700 border-b-4">
@@ -103,10 +111,11 @@ function Header() {
 
           {/* Popup */}
           {isLoggedIn && showPopupLoggedIn && (
-            <Label as="a" open={showPopupLoggedIn} color="teal" tag>
-              Vous êtes maintenant connecté !
+            <Label open={showPopupLoggedIn} color="teal">
+              Bonjour {user.pseudo} !
             </Label>
           )}
+
         </div>
         <div className="flex lg:hidden">
           <Button
@@ -120,6 +129,12 @@ function Header() {
         </div>
 
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
+          <Link
+            to="/"
+            className="inline-flex items-center justify-center rounded-md bg-gray-700 px-7 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600 text-[#fff] hover:text-[#fff]"
+          >
+            Accueil
+          </Link>
           <Popover className="relative">
             <Popover.Button className="flex items-center gap-x-1 rounded-md bg-gray-700 px-7 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600">
               Sanctuaire
@@ -245,6 +260,13 @@ function Header() {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
+              <Link
+            to="/"
+            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-50 hover:bg-gray-500 hover:text-gray-900"
+            onClick={closeMobileMenu}
+          >
+            Accueil
+          </Link>
                 <Disclosure as="div" className="-mx-3">
                   {({ open }) => (
                     <>
@@ -262,15 +284,17 @@ function Header() {
                         <Link
                           to="/sanctuary"
                           className="font-semibold text-gray-50 hover:text-gray-900 flex justify-center text-sm"
+                          onClick={closeMobileMenu}
                         >
                           Voir tout
                         </Link>
                         {[...sanctuaries].map((item) => (
                           <Disclosure.Button
                             key={item.name}
-                            as="a"
-                            href={item.href}
+                            as={Link}
+                            to={item.href}
                             className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-50 hover:bg-gray-500 hover:text-gray-900"
+                            onClick={closeMobileMenu}
                           >
                             {item.name}
                           </Disclosure.Button>
@@ -283,13 +307,15 @@ function Header() {
                   <Link
                     to="/tool/character-creator"
                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-50 hover:bg-gray-500 hover:text-gray-900"
+                    onClick={closeMobileMenu}
                   >
                     Outil
                   </Link>
                 )}
                 <Link
-                  to="#"
+                  to="/contact"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-50 hover:bg-gray-500 hover:text-gray-900"
+                  onClick={closeMobileMenu}
                 >
                   Contact
                 </Link>

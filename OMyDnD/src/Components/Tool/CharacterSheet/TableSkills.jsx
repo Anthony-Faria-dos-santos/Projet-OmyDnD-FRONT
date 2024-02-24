@@ -63,9 +63,10 @@ function TableSkills({ masteryBonus, userId, caractBonusCalculator }) {
     };
 
     const calculateTotalBonus = (skill) => {
-        const attributeBonus = caractBonusCalculator ? caractBonusCalculator(character?.[skill.attribute]) : 0;
+        const attributeBonus = caractBonusCalculator && character?.[skill.attribute] ? caractBonusCalculator(character[skill.attribute]) : 0;
         const isSkillChecked = !!checkedSkills[skill.id];
-        return attributeBonus + (isSkillChecked ? masteryBonus : 0);
+        const masteryBonusValue = isNaN(masteryBonus) ? 0 : masteryBonus;
+        return attributeBonus + (isSkillChecked ? masteryBonusValue : 0);
     };
 
     const determineInputClass = (skill) => {

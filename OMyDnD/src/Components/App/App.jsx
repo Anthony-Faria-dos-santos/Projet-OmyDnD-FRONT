@@ -19,55 +19,68 @@ import Search from "../Search/index.jsx";
 import NotFound from "../NotFound/NotFound.jsx";
 import Footer from "../Footer/index.jsx";
 import Contact from "../Contact/index.jsx";
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { initializeAuth } from '../../store/slices/authSlice.js';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(initializeAuth());
+}, [dispatch]);
+
   return (
     <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/sanctuary" element={<Sanctuary />} />
-        <Route path="/sanctuary/:featureType" element={<CoreFeatures />} />
-        <Route path="/sanctuary/abilities" element={<AttributeAbility />} />
-        <Route path="/sanctuary/equipments" element={<AttributeEquipment />} />
-        <Route path="/sanctuary/conditions" element={<AttributeCondition />} />
-        <Route path="/sanctuary/spells" element={<AttributeSpell />} />
-        <Route path="/sanctuary/skills" element={<AttributeSkill />} />
-        <Route path="/contact" element={<Contact/>} ></Route>
-        <Route
-          path="/sanctuary/:featureType/:featureId"
-          element={<CoreFeature />}
-        />
-        <Route
-          path="/tool/character-creator"
-          element={
-            <ProtectedRoute>
-              <CharacterCreator />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/tool/character-creator/character-sheet"
-          element={
-            <ProtectedRoute>
-              <ContainerCharacterSheet />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/characters"
-          element={
-            <ProtectedRoute>
-              <Characters />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="/search" element={<Search />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <Footer />
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-1">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/sanctuary" element={<Sanctuary />} />
+            <Route path="/sanctuary/:featureType" element={<CoreFeatures />} />
+            <Route path="/sanctuary/abilities" element={<AttributeAbility />} />
+            <Route path="/sanctuary/equipments" element={<AttributeEquipment />} />
+            <Route path="/sanctuary/conditions" element={<AttributeCondition />} />
+            <Route path="/sanctuary/spells" element={<AttributeSpell />} />
+            <Route path="/sanctuary/skills" element={<AttributeSkill />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route
+              path="/sanctuary/:featureType/:featureId"
+              element={<CoreFeature />}
+            />
+            <Route
+              path="/tool/character-creator"
+              element={
+                <ProtectedRoute>
+                  <CharacterCreator />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/tool/character-creator/character-sheet"
+              element={
+                <ProtectedRoute>
+                  <ContainerCharacterSheet />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/characters"
+              element={
+                <ProtectedRoute>
+                  <Characters />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/search" element={<Search />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </Router>
   );
 }
