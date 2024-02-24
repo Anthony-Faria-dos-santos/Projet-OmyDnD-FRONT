@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { Disclosure, Tab } from "@headlessui/react";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
+import NotFound from "../../NotFound/NotFound.jsx";
 
 import backgrounds from "../../../data/backgrounds.json";
 
@@ -22,7 +23,7 @@ function CoreFeatureBackground() {
   feature = data.find((item) => item.index === featureId);
 
   if (!feature) {
-    return <div>Caractéristique non trouvée</div>;
+    return <NotFound />;
   }
 
   return ( <div className="bg-gray-900">

@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { Disclosure, Tab } from "@headlessui/react";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
+import NotFound from "../../NotFound/NotFound.jsx";
 
 import classes from "../../../data/classes.json";
 
@@ -30,7 +31,7 @@ function CoreFeatureClass() {
   feature = data.find((item) => item.index === featureId);
 
   if (!feature) {
-    return <div>Caractéristique non trouvée</div>;
+    return <NotFound />;
   }
 
   return (
