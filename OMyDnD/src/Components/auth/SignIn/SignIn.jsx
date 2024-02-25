@@ -2,7 +2,6 @@ import { useState, useEffect } from "react"; // Importe React et les Hooks useSt
 import { useDispatch, useSelector } from "react-redux"; // Importe le Hook useDispatch pour permettre l'envoi d'actions Redux.
 import { signInUser, initializeAuth } from "../../../store/slices/authSlice.js"; // Importe l'action signInUser pour permettre la connexion d'un utilisateur.
 import { useNavigate } from 'react-router-dom';
-import { Label } from "semantic-ui-react";
 
 function SignIn() {
   // Déclare le composant fonctionnel SignIn.
@@ -10,41 +9,22 @@ function SignIn() {
   const [email, setEmail] = useState(""); // Crée un état local pour l'email avec un setter, initialisé à une chaîne vide.
   const [password, setPassword] = useState(""); // Crée un état local pour le mot de passe avec un setter, initialisé à une chaîne vide.
   const { error, isAuthenticated, status } = useSelector((state) => state.auth); // Extrait l'erreur, l'état d'authentification et le statut de l'état global Redux.
-  const navigate = useNavigate();
-  const [showSignupSuccess, setShowSignupSuccess] = useState(false);
-  
+  const navigate = useNavigate();  
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(signInUser({ email, password }));
+    navigate("/");
   };
 
   useEffect(() => {
-    if (localStorage.getItem("signupSuccess")) {
-      setShowSignupSuccess(true);
-      setTimeout(() => {
-        setShowSignupSuccess(false);
-        localStorage.removeItem("signupSuccess");
-      }, 5000);
-    }
-  }, []);
-
-  useEffect(() => {
     dispatch(initializeAuth()); // Initialise l'authentification au montage du composant
-    if (isAuthenticated) {
-      navigate("/"); // Redirige si déjà authentifié
-    }
   }, [isAuthenticated, dispatch, navigate]);
 
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
       
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-      {showSignupSuccess && (
-            <Label open={showSignupSuccess} color="teal">
-              Inscription réussie !
-            </Label>
-          )}
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-50">
           Se connecter
         </h2>
