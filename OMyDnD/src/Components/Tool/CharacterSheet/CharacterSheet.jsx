@@ -12,6 +12,7 @@ import {
 } from "../../../utils/bonusCalculator.js";
 import TableCharacters from "./TableCharacters.jsx";
 import TableSkills from "./TableSkills.jsx";
+import Loader from "../../Loader/index.jsx";
 
 function CharacterSheet() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function CharacterSheet() {
   const [health, setHealth] = useState('');
   const [bonusHealth, setBonusHealth] = useState('');
   const [experience, setExperience] = useState('');
+  const [alignment, setAlignment] = useState('');
 
   useEffect(() => {
     if (characterId && userId) {
@@ -47,6 +49,7 @@ function CharacterSheet() {
       setHealth(character.health || '');
       setBonusHealth(character.bonus_health || '');
       setExperience(character.experience || '');
+      setAlignment(character.alignment || '');
     }
   }, [character]);
 
@@ -82,6 +85,7 @@ function CharacterSheet() {
       bonus_health: parseInt(bonusHealth),
       experience: parseInt(experience),
       inspiration: parseInt(inspiration),
+      alignment,
     };
     try {
       await dispatch(updateCharacter({
@@ -96,7 +100,7 @@ function CharacterSheet() {
   };
 
 
-  if (status === "loading") return <div>Loading...</div>;
+  if (status === "loading") return <Loader />;
   if (error) return <div>Error: {error}</div>;
 
   return (
@@ -112,6 +116,7 @@ function CharacterSheet() {
                 setBonusHealth={setBonusHealth}
                 setExperience={setExperience}
                 setInspiration={setInspiration}
+                setAlignment={setAlignment}
               />
 
               <div className=" mt-10 grid grid-cols-2 gap-x-6 sm:grid-cols-3 sm:grid-rows-2 sm:w-1/2 sm:mx-auto">
@@ -174,6 +179,7 @@ function CharacterSheet() {
                       <div className="flex rounded-md bg-blue-500 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
                         <input
                           type="text"
+                          readOnly
                           name="dexterity"
                           id="dexterity"
                           autoComplete="dexterity"
