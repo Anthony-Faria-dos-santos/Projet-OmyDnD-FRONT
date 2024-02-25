@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { fetchCharactersByUser } from '../../../store/slices/characterSlice.js';
+import Loader from '../../Loader/index.jsx';
 
 function Characters() {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ function Characters() {
   };
 
   if (status === 'loading') {
-    return <div>Loading characters...</div>;
+    return <Loader />;
   }
 
   if (status === 'failed') {
