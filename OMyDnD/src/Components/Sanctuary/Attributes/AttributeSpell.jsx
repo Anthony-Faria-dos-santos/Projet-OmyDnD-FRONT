@@ -84,7 +84,7 @@ const SearchForm = () => {
                 {item.name}
               </div>
               <div className="bg-gray-700 text-gray-50 rounded-lg m-2 p-2 text-justify">
-                {item.desc}
+                {item.description}
               </div>
 
               {item.higher_level && (
