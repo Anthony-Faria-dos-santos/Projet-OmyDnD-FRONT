@@ -155,24 +155,25 @@ function Search() {
       />
 
       {/* Menu déroulant pour les sorts */}
-      {showDropdownSpell && querySpell && (
-        <ul style={dropdownStyle}>
-          {spellsData
-            .filter((spell) =>
-              spell.name.toLowerCase().includes(querySpell.toLowerCase())
-            )
-            .slice(0, 20)
-            .map((spell, index) => (
-              <li
-                key={index}
-                onClick={() => handleSelectSpell(spell)}
-                style={itemStyle}
-              >
-                {spell.name}
-              </li>
-            ))}
-        </ul>
-      )}
+      {showDropdownSpell && querySpell && spellsData
+        .filter((spell) => spell.name.toLowerCase().includes(querySpell.toLowerCase())).length > 0 && (
+          <ul style={dropdownStyle}>
+            {spellsData
+              .filter((spell) =>
+                spell.name.toLowerCase().includes(querySpell.toLowerCase())
+              )
+              .slice(0, 20)
+              .map((spell, index) => (
+                <li
+                  key={index}
+                  onClick={() => handleSelectSpell(spell)}
+                  style={itemStyle}
+                >
+                  {spell.name}
+                </li>
+              ))}
+          </ul>
+        )}
 
       {/* Affichage du sort sélectionné  */}
       {selectedSpell && (
@@ -204,24 +205,25 @@ function Search() {
       />
 
       {/* Menu déroulant pour les classes */}
-      {showDropdownClass && queryClass && (
-        <ul style={dropdownStyle}>
-          {classesData
-            .filter((cls) =>
-              cls.name.toLowerCase().includes(queryClass.toLowerCase())
-            )
-            .slice(0, 20)
-            .map((cls, index) => (
-              <li
-                key={index}
-                onClick={() => handleSelectClass(cls)}
-                style={itemStyle}
-              >
-                {cls.name}
-              </li>
-            ))}
-        </ul>
-      )}
+      {showDropdownClass && queryClass && classesData
+        .filter((cls) => cls.name.toLowerCase().includes(queryClass.toLowerCase())).length > 0 && (
+          <ul style={dropdownStyle}>
+            {classesData
+              .filter((cls) =>
+                cls.name.toLowerCase().includes(queryClass.toLowerCase())
+              )
+              .slice(0, 20)
+              .map((cls, index) => (
+                <li
+                  key={index}
+                  onClick={() => handleSelectClass(cls)}
+                  style={itemStyle}
+                >
+                  {cls.name}
+                </li>
+              ))}
+          </ul>
+        )}
 
       {/* Barre de recherche pour les races */}
       <input
@@ -235,24 +237,25 @@ function Search() {
       />
 
       {/* Menu déroulant pour les races */}
-      {showDropdownRace && queryRace && (
-        <ul style={dropdownStyle}>
-          {raceData
-            .filter((race) =>
-              race.name.toLowerCase().includes(queryRace.toLowerCase())
-            )
-            .slice(0, 20)
-            .map((race, index) => (
-              <li
-                key={index}
-                onClick={() => handleSelectRace(race)}
-                style={itemStyle}
-              >
-                {race.name}
-              </li>
-            ))}
-        </ul>
-      )}
+      {showDropdownRace && queryRace && raceData
+        .filter((race) => race.name.toLowerCase().includes(queryRace.toLowerCase())).length > 0 && (
+          <ul style={dropdownStyle}>
+            {raceData
+              .filter((race) =>
+                race.name.toLowerCase().includes(queryRace.toLowerCase())
+              )
+              .slice(0, 20)
+              .map((race, index) => (
+                <li
+                  key={index}
+                  onClick={() => handleSelectRace(race)}
+                  style={itemStyle}
+                >
+                  {race.name}
+                </li>
+              ))}
+          </ul>
+        )}
 
       {/* Barre de recherche pour les abilities */}
       <input
@@ -266,24 +269,25 @@ function Search() {
       />
 
       {/* Menu déroulant pour les abilities */}
-      {showDropdownAbility && queryAbility && (
-        <ul style={dropdownStyle}>
-          {abilitiesData
-            .filter((ability) =>
-              ability.name.toLowerCase().includes(queryAbility.toLowerCase())
-            )
-            .slice(0, 20)
-            .map((ability, index) => (
-              <li
-                key={index}
-                onClick={() => handleSelectAbility(ability)}
-                style={itemStyle}
-              >
-                {ability.name}
-              </li>
-            ))}
-        </ul>
-      )}
+      {showDropdownAbility && queryAbility && abilitiesData
+        .filter((ability) => ability.name.toLowerCase().includes(queryAbility.toLowerCase())).length > 0 && (
+          <ul style={dropdownStyle}>
+            {abilitiesData
+              .filter((ability) =>
+                ability.name.toLowerCase().includes(queryAbility.toLowerCase())
+              )
+              .slice(0, 20)
+              .map((ability, index) => (
+                <li
+                  key={index}
+                  onClick={() => handleSelectAbility(ability)}
+                  style={itemStyle}
+                >
+                  {ability.name}
+                </li>
+              ))}
+          </ul>
+        )}
 
 
 
@@ -299,26 +303,27 @@ function Search() {
       />
 
       {/* Menu déroulant pour les backgrounds */}
-      {showDropdownBackground && queryBackground && (
-        <ul style={dropdownStyle}>
-          {backgroundData
-            .filter((background) =>
-              background.name
-                .toLowerCase()
-                .includes(queryBackground.toLowerCase())
-            )
-            .slice(0, 20)
-            .map((background, index) => (
-              <li
-                key={index}
-                onClick={() => handleSelectBackground(background)}
-                style={itemStyle}
-              >
-                {background.name}
-              </li>
-            ))}
-        </ul>
-      )}
+      {showDropdownBackground && queryBackground && backgroundData
+        .filter((background) => background.name.toLowerCase().includes(queryBackground.toLowerCase())).length > 0 && (
+          <ul style={dropdownStyle}>
+            {backgroundData
+              .filter((background) =>
+                background.name
+                  .toLowerCase()
+                  .includes(queryBackground.toLowerCase())
+              )
+              .slice(0, 20)
+              .map((background, index) => (
+                <li
+                  key={index}
+                  onClick={() => handleSelectBackground(background)}
+                  style={itemStyle}
+                >
+                  {background.name}
+                </li>
+              ))}
+          </ul>
+        )}
 
       {/* Barre de recherche pour les conditions */}
       <input
@@ -332,26 +337,27 @@ function Search() {
       />
 
       {/* Menu déroulant pour les conditions */}
-      {showDropdownCondition && queryCondition && (
-        <ul style={dropdownStyle}>
-          {conditionsData
-            .filter((condition) =>
-              condition.name
-                .toLowerCase()
-                .includes(queryCondition.toLowerCase())
-            )
-            .slice(0, 20)
-            .map((condition, index) => (
-              <li
-                key={index}
-                onClick={() => handleSelectCondition(condition)}
-                style={itemStyle}
-              >
-                {condition.name}
-              </li>
-            ))}
-        </ul>
-      )}
+      {showDropdownCondition && queryCondition && conditionsData
+        .filter((condition) => condition.name.toLowerCase().includes(queryCondition.toLowerCase())).length > 0 && (
+          <ul style={dropdownStyle}>
+            {conditionsData
+              .filter((condition) =>
+                condition.name
+                  .toLowerCase()
+                  .includes(queryCondition.toLowerCase())
+              )
+              .slice(0, 20)
+              .map((condition, index) => (
+                <li
+                  key={index}
+                  onClick={() => handleSelectCondition(condition)}
+                  style={itemStyle}
+                >
+                  {condition.name}
+                </li>
+              ))}
+          </ul>
+        )}
 
 
 
@@ -367,24 +373,25 @@ function Search() {
       />
 
       {/* Menu déroulant pour les talents */}
-      {showDropdownTalent && queryTalent && (
-        <ul style={dropdownStyle}>
-          {talentsData
-            .filter((talent) =>
-              talent.name.toLowerCase().includes(queryTalent.toLowerCase())
-            )
-            .slice(0, 20)
-            .map((talent, index) => (
-              <li
-                key={index}
-                onClick={() => handleSelectTalent(talent)}
-                style={itemStyle}
-              >
-                {talent.name}
-              </li>
-            ))}
-        </ul>
-      )}
+      {showDropdownTalent && queryTalent && talentsData
+        .filter((talent) => talent.name.toLowerCase().includes(queryTalent.toLowerCase())).length > 0 && (
+          <ul style={dropdownStyle}>
+            {talentsData
+              .filter((talent) =>
+                talent.name.toLowerCase().includes(queryTalent.toLowerCase())
+              )
+              .slice(0, 20)
+              .map((talent, index) => (
+                <li
+                  key={index}
+                  onClick={() => handleSelectTalent(talent)}
+                  style={itemStyle}
+                >
+                  {talent.name}
+                </li>
+              ))}
+          </ul>
+        )}
     </div>
   );
 }
@@ -411,6 +418,7 @@ const closeButtonStyle = {
   cursor: "pointer", // Changer le curseur pour indiquer que l'élément est cliquable
   fontWeight: "bold", // Mettre en gras
   fontSize: "20px", // Augmenter la taille de la croix
+  fontFamily: "great vibes", // Changer la police d'écriture
 };
 
 const inputStyle = {
