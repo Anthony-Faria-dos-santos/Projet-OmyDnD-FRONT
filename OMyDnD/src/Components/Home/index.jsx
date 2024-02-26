@@ -7,7 +7,10 @@ function HomePage() {
         <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
 
           <div className="flex flex-col-reverse m-2">
-            <img src="../images/home/home.jpg" className="h-full w-full object-cover object-center sm:rounded-lg" />
+            <img src="/images/home/home.jpg" 
+            alt="Illustration d'une assemblée hétéroclite autour d'une table de jeu de rôles, passionnée par une partie disputée."
+            aria-label="Une assemblée hétéroclite de races humanoïdes issues du jeu Donjons et Dragons semble disputer une partie enflammée de leur propre jeu de rôle autour d'une table en bois rustique."
+            className="h-full w-full object-cover object-center sm:rounded-lg" />
           </div>
 
           <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">

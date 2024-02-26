@@ -13,7 +13,10 @@ function AttributeEquipment() {
   return ( 
     <div className="bg-gray-900">
     <main className="pb-10 mx-auto max-w-7xl sm:px-6 sm:pt-16 lg:px-8">
-      <img src="/images/equipment/equipment.jpg" className="h-full w-8/12 object-cover object-center sm:rounded-lg mx-auto mb-8" />
+      <img src="/images/equipment/equipment.jpg"
+      alt="Illustration d'une salle remplie d'armes médiévales disposées le long des murs, ainsi que d'étagères garnies de livres." 
+      aria-label="C'est une image représentant une salle médiévale avec une table en bois au centre, entourée d'armes et de livres accrochés aux murs."
+      className="h-full w-8/12 object-cover object-center sm:rounded-lg mx-auto mb-8" />
 
    <div className="lg:grid">
    

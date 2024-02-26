@@ -7,7 +7,10 @@ function AttributeAbility() {
   return ( 
     <div className="bg-gray-900">
     <main className="pb-10 mx-auto max-w-7xl sm:px-6 sm:pt-16 lg:px-8">
-      <img src="/images/abilities/ability.jpg" className="h-full w-8/12 object-cover object-center sm:rounded-lg mx-auto" />
+      <img src="/images/abilities/ability.jpg" 
+      alt="Illustration d'une femme encapuchonnée de turquoise qui traverse une route pavée, un sac en bandoulière et une potion à la main. Des passants l'observent."
+      aria-label="Une image représentant une jeune femme agile qui traverse une allée" 
+      className="h-full w-8/12 object-cover object-center sm:rounded-lg mx-auto" />
 
 
     <div className="lg:grid lg:grid-cols-2 lg:gap-x-8 place-content-around mt-10">

@@ -7,7 +7,10 @@ function AttributeSkill() {
   return ( 
     <div className="bg-gray-900">
     <main className="pb-10 mx-auto max-w-7xl sm:px-6 sm:pt-16 lg:px-8">
-      <img src="/images/talents/talents.jpg" className="h-full w-8/12 object-cover object-center sm:rounded-lg mx-auto" />
+      <img src="/images/talents/talents.jpg" 
+      alt="Illustration d'une jeune elfe aux cheveux blancs, vêtue d'une armure et portant un arc dans le dos. Sa cape blanche flotte au vent tandis qu'elle chevauche un étalon blanc." 
+      aria-label="Une fière elfe en armure majestueuse est représenté sur son cheval blanc."
+      className="h-full w-8/12 object-cover object-center sm:rounded-lg mx-auto" />
 
 
     <div className="p-2 bg-gray-800 rounded-lg mt-8">
