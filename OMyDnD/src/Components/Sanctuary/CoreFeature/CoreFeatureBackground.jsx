@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
-import { Disclosure, Tab } from "@headlessui/react";
-import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
+import { Tab } from "@headlessui/react";
 import NotFound from "../../NotFound/NotFound.jsx";
 
 import backgrounds from "../../../data/backgrounds.json";
@@ -106,7 +105,7 @@ function CoreFeatureBackground() {
 
       <section aria-labelledby="details-heading" className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8 mt-6">
                 <h2 id="details-heading" className="sr-only">
-                  Bonus de l'historique
+                  Bonus de l&apos;historique
                 </h2>
               <div className="mt-4">
                 <p className="text-3xl tracking-tight text-gray-500 p-2">
@@ -131,7 +130,7 @@ function CoreFeatureBackground() {
               {/* Les choix de liens, passifs */}
 
               <section aria-labelledby="details-heading" className="lg:grid lg:grid-cols-3 lg:items-start lg:gap-x-4 mt-6">
-            <h2 id="details-heading" className="sr-only">Choix d'historique</h2>
+            <h2 id="details-heading" className="sr-only">Choix d&apos;historique</h2>
             <div className="bg-gray-600 rounded-lg mt-10 m-2">
             <div className="bg-gray-700 rounded-lg text-xl font-bold tracking-tight text-gray-50 text-center uppercase leading-4 p-1">Idéaux <br /> <span className= "text-sm lowercase">(Choisissez en {feature.ideals.choose})</span></div>
             <div className="p-1 text-gray-50"><ol>
