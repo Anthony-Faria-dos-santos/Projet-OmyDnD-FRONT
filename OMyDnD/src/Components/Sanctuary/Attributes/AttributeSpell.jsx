@@ -147,11 +147,6 @@ const SearchForm = () => {
                   Cercle: {item.circles}
                 </div>
               )}
-              {item.archetype && (
-                <div className="bg-gray-700 text-gray-50 rounded-lg m-2 p-2 text-justify">
-                  Archètype: {item.archetype}
-                </div>
-              )}
               {item.patrons && (
                 <div className="bg-gray-700 text-gray-50 rounded-lg m-2 p-2 text-justify">
                   Patron: {item.patrons}
