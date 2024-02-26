@@ -7,7 +7,7 @@ function AttributeCondition() {
   return ( 
     <div className="bg-gray-900">
     <main className="pb-10 mx-auto max-w-7xl sm:px-6 sm:pt-16 lg:px-8">
-      <img src="../images/conditions/alteration.jpg" className="h-full w-8/12 object-cover object-center sm:rounded-lg mx-auto" />
+      <img src="/images/conditions/alteration.jpg" className="h-full w-8/12 object-cover object-center sm:rounded-lg mx-auto" />
 
       <div className="lg:grid">
       <div className="text-gray-50 p-2 m-3 lg:grid lg:grid-cols-2 lg:gap-x-8 grid place-content-around">

@@ -13,7 +13,7 @@ function AttributeEquipment() {
   return ( 
     <div className="bg-gray-900">
     <main className="pb-10 mx-auto max-w-7xl sm:px-6 sm:pt-16 lg:px-8">
-      <img src="../images/equipment/equipment.jpg" className="h-full w-8/12 object-cover object-center sm:rounded-lg mx-auto mb-8" />
+      <img src="/images/equipment/equipment.jpg" className="h-full w-8/12 object-cover object-center sm:rounded-lg mx-auto mb-8" />
 
    <div className="lg:grid">
    
