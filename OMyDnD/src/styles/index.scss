@@ -49,8 +49,14 @@ Header {
     background-color: #4B5563 !important; /* Fond gris */
     color: white !important; /* Texte en blanc */
     border-radius: 10px !important; /* Coins arrondis */
-    padding: 20px !important; /* Espacement intérieur */
-    
+    padding: 20px !important; /* Espacement intérieur */    
+    font-family: cursive !important; /* Police cursive */
+    font-size: larger !important; /* Taille de la police */
+    text-shadow:
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000; /* Ombres portées pour créer l'effet de contour */
 }
 
 
@@ -58,4 +64,39 @@ Header {
     .custom-link {
         display: none !important;
     }
+}
+
+/* Hide the default file input button */
+input[type="file"] {
+    display: none;
+}
+
+/* Style the container of the file input */
+.file-input-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+/* Style the custom button to mimic the file input button */
+.custom-file-input {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Style the label for the custom file input */
+.custom-file-label {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 5px 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
 }

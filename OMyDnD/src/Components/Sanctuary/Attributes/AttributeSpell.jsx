@@ -30,7 +30,10 @@ const SearchForm = () => {
   return (
     <div className="bg-gray-900 m-2">
       <main className="pb-10 mx-auto max-w-7xl sm:px-6 sm:pt-16 lg:px-8 flex flex-col place-items-center">
-        <img src="../images/spells/spells.jpg" className="h-full w-8/12 object-cover object-center sm:rounded-lg mx-auto" />
+        <img src="/images/spells/spells.jpg" 
+        alt="Illustration d'un vieux magicien en robe et cape majestueuses, invoquant des flammes dansantes sous ses pieds. Sa main droite tendue projette une boule de feu incandescente, tandis que sa main gauche enserre une sphère flamboyante." 
+        aria-label="C'est une image représentant un puissant magicien qui invoque des flammes de ses mains."
+        className="h-full w-8/12 object-cover object-center sm:rounded-lg mx-auto" />
 
         <div className="p-2 bg-gray-800 rounded-lg mt-8 w-2/6">
 
@@ -84,7 +87,7 @@ const SearchForm = () => {
                 {item.name}
               </div>
               <div className="bg-gray-700 text-gray-50 rounded-lg m-2 p-2 text-justify">
-                {item.desc}
+                {item.description}
               </div>
 
               {item.higher_level && (
@@ -116,7 +119,7 @@ const SearchForm = () => {
                 Concentration: {item.concentration}
               </div>
               <div className="bg-gray-700 text-gray-50 rounded-lg m-2 p-2 text-justify">
-                Temps d'incantation: {item.casting_time}
+                Temps d&apos;incantation: {item.casting_time}
               </div>
               <div className="bg-gray-700 text-gray-50 rounded-lg m-2 p-2 text-justify">
                 Niveau requis: {item.level}
@@ -145,11 +148,6 @@ const SearchForm = () => {
               {item.circles && (
                 <div className="bg-gray-700 text-gray-50 rounded-lg m-2 p-2 text-justify">
                   Cercle: {item.circles}
-                </div>
-              )}
-              {item.archetype && (
-                <div className="bg-gray-700 text-gray-50 rounded-lg m-2 p-2 text-justify">
-                  Archètype: {item.archetype}
                 </div>
               )}
               {item.patrons && (

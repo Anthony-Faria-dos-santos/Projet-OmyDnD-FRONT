@@ -130,7 +130,8 @@ function CharacterCreator() {
                     <img
                       className="h-full w-full object-cover object-center rounded-3xl"
                       src="/images/forge-2.jpg"
-                      alt=""
+                      alt="Illustration d'une salle de forgeron donnant sur un four allumé"
+                      aria-label="C'est image au cœur d'une forge médiévale, où un four incandescent illumine la scène et donne vie au travail du forgeron."
                     />
                   ) : (
                     <video
@@ -140,6 +141,8 @@ function CharacterCreator() {
                       muted
                       src="/f1d4f024-a7f4-499e-8f09-25d29fc9f551.mp4"
                       onError={handleError}
+                      alt="Vidéo d'une salle de forgeron donnant sur un four allumé"
+                      aria-label="Une vidéo immersive au cœur d'une forge médiévale, où un four incandescent illumine la scène et donne vie au travail du forgeron."
                     >
                     </video>
                   )}

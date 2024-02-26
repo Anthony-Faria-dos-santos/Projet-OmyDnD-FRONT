@@ -16,6 +16,7 @@ import Sanctuary from "../Sanctuary/Sanctuary.jsx";
 import CoreFeatures from "../Sanctuary/CoreFeatures/CoreFeatures.jsx";
 import CoreFeature from "../Sanctuary/CoreFeature/CoreFeature.jsx";
 import Search from "../Search/index.jsx";
+import Profile from "../UserPanel/Profil"
 import NotFound from "../NotFound/NotFound.jsx";
 import Footer from "../Footer/index.jsx";
 import Contact from "../Contact/index.jsx";
@@ -77,6 +78,7 @@ function App() {
             />
             <Route path="/search" element={<Search />} />
             <Route path="*" element={<NotFound />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </main>
         <Footer />

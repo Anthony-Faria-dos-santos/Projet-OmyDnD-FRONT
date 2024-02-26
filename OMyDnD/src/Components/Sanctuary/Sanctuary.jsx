@@ -8,7 +8,7 @@ const pages = [
         imageSrc:
         "/images/sanctuary/races-logo-2.png",
         imageAlt:
-        "",
+        `C'est l'image d'un personnage de fantaisie de l'univers Donjon et Dragon fait par une IA`,
     },
     {
         id: 2,

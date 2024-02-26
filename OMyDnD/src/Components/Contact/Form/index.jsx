@@ -19,6 +19,7 @@ function Form() {
     phone: '',
     firstname: '',
     lastname: '',
+    country: '',
   });
 
   const [showModal, setShowModal] = useState(false);
@@ -71,7 +72,18 @@ function Form() {
     }
   };
 
-
+  // Gestion du changement de pays
+  const handleCountryChange = (e) => {
+    const country = e.target.value;
+    let phonePrefix = ''; // Initialiser avec une chaîne vide
+    switch (country) {
+      case 'US': phonePrefix = '+1'; break;
+      case 'CA': phonePrefix = '+1'; break;
+      case 'EU': phonePrefix = '+33'; break;
+      default: phonePrefix = '';
+    }
+    setFormState({ ...formState, country: country, phone: phonePrefix });
+  };
 
 
   if (state.succeeded) {
@@ -171,19 +183,20 @@ function Form() {
               >
                 Téléphone
               </label>
-              <div className="relative mt-2.5">
-                <div className="absolute inset-y-0 left-0 flex items-center">
+              <div className="flex relative mt-2.5">
+                <div className="flex-grow absolute inset-y-0 left-0 flex items-center">
                   <label htmlFor="country" className="sr-only">
                     Pays
                   </label>
                   <select
                     id="country"
                     name="country"
-                    className="h-full rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-3 text-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+                    className=" form-select block w-full h-full rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-3 text-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+                    onChange={handleCountryChange}
                   >
-                    <option>US</option>
-                    <option>CA</option>
-                    <option>EU</option>
+                    <option value="US">US</option>
+                    <option value="CA">CA</option>
+                    <option value="EU">EU</option>
                   </select>
 
                 </div>

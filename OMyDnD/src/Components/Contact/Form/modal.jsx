@@ -33,7 +33,7 @@ function ModalContact() {
             setTimeout(() => {
                 dispatch({ type: 'CLOSE_MODAL' });
                 navigate('/');
-            }, 5000);
+            }, 10000);
             return () => clearTimeout();
         }
     }, [open, navigate]);
@@ -47,7 +47,10 @@ function ModalContact() {
                 onClose={() => dispatch({ type: 'CLOSE_MODAL' })}
                 className="modalCustom"
             >
-                <ModalHeader className="modalCustom" >Merci de l&apos;intérêt que vous nous portez. </ModalHeader>
+                <ModalHeader className="modalCustom" >
+                    <img src="/images/contact/messsenger.jpg" alt="Un messager sur son cheval galope  " style={{ borderRadius: "200em", display: 'block', marginLeft: 'auto', marginRight: 'auto', width: '30em', marginBottom: "2em", }} />
+                    Merci de l&apos;intérêt que vous nous portez.
+                </ModalHeader>
                 <ModalContent className="modalCustom">
                     Votre missive se trouve entre les main de notre meilleur coursier, nous vous promettons de la traiter dans les meilleurs délais.
                 </ModalContent>

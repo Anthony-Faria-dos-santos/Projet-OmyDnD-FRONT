@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useSelector } from 'react-redux';
+import alignments from "../../../data/alignments.json";
 
-function TableCharacters({ setName, setLevel, setHealth, setBonusHealth, setExperience, setInspiration }) {
+function TableCharacters({ setName, setLevel, setHealth, setBonusHealth, setExperience, setInspiration, setAlignment }) {
 
     const character = useSelector((state) => state.character.selectedCharacter);
 
@@ -10,7 +11,7 @@ function TableCharacters({ setName, setLevel, setHealth, setBonusHealth, setExpe
         { label: "Race", id: "race_name", value: character?.race_name, type: "text", readOnly: true, colSpan: "sm:col-span-3 sm:col-start-1" },
         { label: "Personnalité et Historique", id: "background_name", value: character?.background_name, type: "text", readOnly: true, colSpan: "sm:col-span-3" },
         { label: "Classe", id: "classe_name", value: character?.classe_name, type: "text", readOnly: true, colSpan: "sm:col-span-3" },
-        { label: "Alignement", id: "alignment", value: character?.alignment, type: "text", readOnly: true, colSpan: "sm:col-span-2" },
+        { label: "Alignement", id: "alignment", value: character?.alignment, type: "text", readOnly: false, colSpan: "sm:col-span-2", isSelect: true },
         { label: "Level", id: "level", value: character?.level, type: "number", readOnly: false, colSpan: "sm:col-span-1" },
         { label: "Experience", id: "experience", value: character?.experience, type: "number", readOnly: false, colSpan: "sm:col-span-1" },
         { label: "Vie de départ", id: "starting_health", value: character?.classe_starting_health, type: "number", readOnly: true, colSpan: "sm:col-span-1" },
@@ -33,30 +34,50 @@ function TableCharacters({ setName, setLevel, setHealth, setBonusHealth, setExpe
                                 {attr.label}
                             </label>
                             <div className="mt-2 rounded-md ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
-                                <input
-                                    type={attr.type}
-                                    name={attr.id}
-                                    id={attr.id}
-                                    autoComplete={attr.id}
-                                    readOnly={attr.readOnly}
-                                    className={`text-center block w-full rounded-md border-gray-300 py-1.5 text-gray-900 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${attr.readOnly === false ? 'bg-green-500' : 'text-white bg-white/5'}`}
-                                    defaultValue={attr.value || ''}
-                                    onChange={(e) => {
-                                        if (attr.id === "name") {
-                                            setName(e.target.value);
-                                        } else if (attr.id === "level") {
-                                            setLevel(e.target.value);
-                                        } else if (attr.id === "health") {
-                                            setHealth(e.target.value);
-                                        } else if (attr.id === "bonus_health") {
-                                            setBonusHealth(e.target.value);
-                                        } else if (attr.id === "experience") {
-                                            setExperience(e.target.value);
-                                        } else if (attr.id === "inspiration") {
-                                            setInspiration(e.target.value);
-                                        }
-                                    }}
-                                />
+                                {attr.isSelect ? (
+                                    <select
+                                        id={attr.id}
+                                        name={attr.id}
+                                        autoComplete={attr.id}
+                                        readOnly={attr.readOnly}
+                                        className={`text-center block w-full rounded-md border-gray-300 py-1.5 text-gray-900 shadow-sm   sm:text-sm bg-green-500 ring-1 ring-inset  [&_*]:text-black [&_*]:bg-white`}
+                                        defaultValue={attr.value || ''}
+                                        onChange={(e) => {
+                                            if (attr.id === "alignment") {
+                                                setAlignment(e.target.value);
+                                            }
+                                        }}
+                                    >
+                                        {alignments.map((alignment, index) => (
+                                            <option className='text-white bg-white/5' key={index} value={alignment.name}>{alignment.name}</option>
+                                        ))}
+                                    </select>
+                                ) : (
+                                    <input
+                                        type={attr.type}
+                                        name={attr.id}
+                                        id={attr.id}
+                                        autoComplete={attr.id}
+                                        readOnly={attr.readOnly}
+                                        className={`text-center block w-full rounded-md border-gray-300 py-1.5 text-gray-900 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${attr.readOnly === false ? 'bg-green-500' : 'text-white bg-white/5'}`}
+                                        defaultValue={attr.value || ''}
+                                        onChange={(e) => {
+                                            if (attr.id === "name") {
+                                                setName(e.target.value);
+                                            } else if (attr.id === "level") {
+                                                setLevel(e.target.value);
+                                            } else if (attr.id === "health") {
+                                                setHealth(e.target.value);
+                                            } else if (attr.id === "bonus_health") {
+                                                setBonusHealth(e.target.value);
+                                            } else if (attr.id === "experience") {
+                                                setExperience(e.target.value);
+                                            } else if (attr.id === "inspiration") {
+                                                setInspiration(e.target.value);
+                                            }
+                                        }}
+                                    />
+                                )}
                             </div>
                         </div>
                     ))}

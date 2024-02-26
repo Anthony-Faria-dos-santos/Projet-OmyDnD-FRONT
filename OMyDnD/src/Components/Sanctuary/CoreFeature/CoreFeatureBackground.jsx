@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
-import { Disclosure, Tab } from "@headlessui/react";
-import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
+import { Tab } from "@headlessui/react";
 import NotFound from "../../NotFound/NotFound.jsx";
 
 import backgrounds from "../../../data/backgrounds.json";
@@ -30,7 +29,7 @@ function CoreFeatureBackground() {
   <main className="pb-10 mx-auto max-w-7xl sm:px-6 sm:pt-16 lg:px-8">
     <div className="mx-auto max-w-2xl lg:max-w-none">
       <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
-        <Tab.Group as="div" className="flex flex-col-reverse">
+        <Tab.Group as="div" className="flex flex-col-reverse m-2">
           <Tab.Panels className="aspect-h-1 aspect-w-1 w-full">
             <Tab.Panel key={feature.index}>
               <img
@@ -106,7 +105,7 @@ function CoreFeatureBackground() {
 
       <section aria-labelledby="details-heading" className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8 mt-6">
                 <h2 id="details-heading" className="sr-only">
-                  Bonus de l'historique
+                  Bonus de l&apos;historique
                 </h2>
               <div className="mt-4">
                 <p className="text-3xl tracking-tight text-gray-500 p-2">
@@ -118,7 +117,7 @@ function CoreFeatureBackground() {
               </div>
 
               <div className="bg-gray-600 rounded-lg mt-10 m-2">
-                <div className="bg-gray-700 rounded-lg text-xl font-bold tracking-tight text-gray-50 text-center uppercase leading-4 p-1">Traits <br /> <span className= "text-sm lowercase">(Choisissez en {feature.personality_traits.choose})</span></div>
+                <div className="bg-gray-700 rounded-lg text-xl font-bold tracking-tight text-gray-50 text-center uppercase leading-4 p-2">Traits <br /> <span className= "text-sm lowercase">(Choisissez en {feature.personality_traits.choose})</span></div>
       <div className="p-1 text-gray-50"><ol>
         {feature.personality_traits.from.map((item, index) => (
           <li className="bg-gray-700 rounded-lg p-1 m-1 list-disc list-inside" key={index}>{item.string}</li>
@@ -131,9 +130,9 @@ function CoreFeatureBackground() {
               {/* Les choix de liens, passifs */}
 
               <section aria-labelledby="details-heading" className="lg:grid lg:grid-cols-3 lg:items-start lg:gap-x-4 mt-6">
-            <h2 id="details-heading" className="sr-only">Choix d'historique</h2>
+            <h2 id="details-heading" className="sr-only">Choix d&apos;historique</h2>
             <div className="bg-gray-600 rounded-lg mt-10 m-2">
-            <div className="bg-gray-700 rounded-lg text-xl font-bold tracking-tight text-gray-50 text-center uppercase leading-4 p-1">Idéaux <br /> <span className= "text-sm lowercase">(Choisissez en {feature.ideals.choose})</span></div>
+            <div className="bg-gray-700 rounded-lg text-xl font-bold tracking-tight text-gray-50 text-center uppercase leading-4 p-2">Idéaux <br /> <span className= "text-sm lowercase">(Choisissez en {feature.ideals.choose})</span></div>
             <div className="p-1 text-gray-50"><ol>
         {feature.ideals.from.map((item, index) => (
           <li className="bg-gray-700 rounded-lg p-1 m-1.5 list-disc list-inside" key={index}>{item.string}</li>
@@ -142,7 +141,7 @@ function CoreFeatureBackground() {
             </div>
 
             <div className="bg-gray-600 rounded-lg mt-10 m-2">
-            <div className="bg-gray-700 rounded-lg text-xl font-bold tracking-tight text-gray-50 text-center uppercase leading-4 p-1">Liens <br /> <span className= "text-sm lowercase">(Choisissez en {feature.bonds.choose})</span></div>
+            <div className="bg-gray-700 rounded-lg text-xl font-bold tracking-tight text-gray-50 text-center uppercase leading-4 p-2">Liens <br /> <span className= "text-sm lowercase">(Choisissez en {feature.bonds.choose})</span></div>
             <div className="p-1 text-gray-50"><ol>
         {feature.bonds.from.map((item, index) => (
           <li className="bg-gray-700 rounded-lg p-1 m-1.5 list-disc list-inside" key={index}>{item.string}</li>
@@ -151,7 +150,7 @@ function CoreFeatureBackground() {
             </div>
 
             <div className="bg-gray-600 rounded-lg mt-10 m-2">
-            <div className="bg-gray-700 rounded-lg text-xl font-bold tracking-tight text-gray-50 text-center uppercase leading-4 p-1">Défauts <br /> <span className= "text-sm lowercase">(Choisissez en {feature.flaws.choose})</span></div>
+            <div className="bg-gray-700 rounded-lg text-xl font-bold tracking-tight text-gray-50 text-center uppercase leading-4 p-2">Défauts <br /> <span className= "text-sm lowercase">(Choisissez en {feature.flaws.choose})</span></div>
             <div className="p-1 text-gray-50"><ol>
         {feature.flaws.from.map((item, index) => (
           <li className="bg-gray-700 rounded-lg p-1 m-1.5 list-disc list-inside" key={index}>{item.string}</li>

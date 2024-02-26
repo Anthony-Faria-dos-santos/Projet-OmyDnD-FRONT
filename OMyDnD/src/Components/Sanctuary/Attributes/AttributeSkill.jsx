@@ -7,10 +7,13 @@ function AttributeSkill() {
   return ( 
     <div className="bg-gray-900">
     <main className="pb-10 mx-auto max-w-7xl sm:px-6 sm:pt-16 lg:px-8">
-      <img src="../images/talents/talents.jpg" className="h-full w-8/12 object-cover object-center sm:rounded-lg mx-auto" />
+      <img src="/images/talents/talents.jpg" 
+      alt="Illustration d'une jeune elfe aux cheveux blancs, vêtue d'une armure et portant un arc dans le dos. Sa cape blanche flotte au vent tandis qu'elle chevauche un étalon blanc." 
+      aria-label="Une fière elfe en armure majestueuse est représenté sur son cheval blanc."
+      className="h-full w-8/12 object-cover object-center sm:rounded-lg mx-auto mb-6" />
 
 
-    <div className="p-2 bg-gray-800 rounded-lg mt-8">
+    <div className="p-2 bg-gray-800 rounded-lg m-4">
       {jsonData.map((item, index) => (
         <div className="bg-gray-800 rounded-lg p-2 m-2" key={index}>
           <div className="text-gray-50 bg-gray-900 rounded-lg p-2 font-semibold uppercase text-center">{item.name}</div>

@@ -1,5 +1,5 @@
-import { Fragment, useState, useEffect } from "react";
-import { Dialog, Disclosure, Popover, Transition } from "@headlessui/react";
+import { Fragment, useState, useEffect, useRef } from "react";
+import { Dialog, Disclosure, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
   XMarkIcon,
@@ -14,13 +14,11 @@ import { useSelector } from "react-redux";
 const sanctuaries = [
   {
     name: "Races",
-
     href: "/sanctuary/races",
     icon: `/images/sanctuary/races-logo-2.png`,
   },
   {
     name: "Classes",
-
     href: "/sanctuary/classes",
     icon: `/images/sanctuary/classes-logo-2.png`,
   },
@@ -69,7 +67,10 @@ function Header() {
   const isLoggedIn = Boolean(token && user);
   const [showPopupLoggedIn, setshowPopupLoggedIn] = useState(false);
 
-
+  const toggleSanctuaryMenu = () => setSanctuaryMenuOpen(!sanctuaryMenuOpen);
+  const closeSanctuaryMenu = () => setSanctuaryMenuOpen(false);
+  const [sanctuaryMenuOpen, setSanctuaryMenuOpen] = useState(false);
+  const sanctuaryMenuRef = useRef(null);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -86,7 +87,21 @@ function Header() {
     setMobileMenuOpen(false);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (sanctuaryMenuOpen && sanctuaryMenuRef.current && !sanctuaryMenuRef.current.contains(event.target)) {
+        setSanctuaryMenuOpen(false);
+      }
+    };
 
+    if (sanctuaryMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [sanctuaryMenuOpen]);
 
   return (
     <header className="bg-white border-solid border-b-gray-700 border-b-4">
@@ -128,21 +143,23 @@ function Header() {
           </Button>
         </div>
 
-        <Popover.Group className="hidden lg:flex lg:gap-x-12">
+        <div className="hidden lg:flex lg:gap-x-12">
           <Link
             to="/"
             className="inline-flex items-center justify-center rounded-md bg-gray-700 px-7 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600 text-[#fff] hover:text-[#fff]"
           >
             Accueil
           </Link>
-          <Popover className="relative">
-            <Popover.Button className="flex items-center gap-x-1 rounded-md bg-gray-700 px-7 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600">
+          <div className="relative">
+            <button
+              onClick={toggleSanctuaryMenu}
+              className="flex items-center gap-x-1 rounded-md bg-gray-700 px-7 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600">
               Sanctuaire
               <Bars3Icon
                 className="h-5 w-5 float-right ml-2 text-white"
                 aria-hidden="true"
               />
-            </Popover.Button>
+            </button>
 
             <Transition
               as={Fragment}
@@ -152,12 +169,25 @@ function Header() {
               leave="transition ease-in duration-150"
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
+              show={sanctuaryMenuOpen}
             >
-              <Popover.Panel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-gray-700 text-white shadow-lg ring-1 ring-gray-900/5">
-                <div className="p-4">
+              <div className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-gray-700 text-white shadow-lg ring-1 ring-gray-900/5" ref={sanctuaryMenuRef}>
+                <div className="p-4 flex flex-col justify-between ">
+                  <button
+                    type="button"
+                    className="ml-auto -mr-2.5 rounded-md pr-3 text-gray-700"
+                    onClick={closeSanctuaryMenu}
+                  >
+                    <span className="sr-only">Fermer le menu sanctuaire</span>
+                    <XMarkIcon
+                      className="rounded-md h-6 w-6 text-gray-50 hover:bg-gray-500 hover:text-gray-900"
+                      aria-hidden="true"
+                    />
+                  </button>
                   <Link
                     to="/sanctuary"
-                    className="p-3 rounded-lg font-semibold text-white hover:text-gray-900 flex justify-center mb-2"
+                    className="rounded-lg font-semibold text-white hover:text-gray-900 flex justify-center mb-2"
+                    onClick={closeSanctuaryMenu}
                   >
                     Voir tout
                   </Link>
@@ -177,6 +207,7 @@ function Header() {
                         <Link
                           to={item.href}
                           className="block font-semibold text-gray-50 hover:text-gray-900"
+                          onClick={closeSanctuaryMenu}
                         >
                           {item.name}
                           <span className="absolute inset-0" />
@@ -185,9 +216,9 @@ function Header() {
                     </div>
                   ))}
                 </div>
-              </Popover.Panel>
+              </div>
             </Transition>
-          </Popover>
+          </div>
 
           {isLoggedIn && (
             <Link
@@ -203,7 +234,7 @@ function Header() {
           >
             Contact
           </Link>
-        </Popover.Group>
+        </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link
             to="/search"
@@ -227,7 +258,7 @@ function Header() {
           <div className="flex items-center justify-between">
             <button
               type="button"
-              className="custom-link -m-1.5 p-1.5 sm:block"
+              className="custom-link -m-1.5 p-1.5 sm:block mr-3"
               onClick={() => {
                 setSidebarOpen(true);
                 setMobileMenuOpen(false);
@@ -238,6 +269,20 @@ function Header() {
                 className="h-8 w-auto text-gray-400 hover:text-gray-600"
                 aria-hidden="true"
               />
+            </button>
+            <button
+
+              onClick={() => { setMobileMenuOpen(false); }}
+            >
+              <Link
+                to="/search"
+                className="text-sm font-semibold leading-6 text-gray-900"
+              >
+                <MagnifyingGlassCircleIcon
+                  className="h-8 w-auto text-gray-400 hover:text-gray-600"
+                  aria-hidden="true"
+                />
+              </Link>
             </button>
 
             <button
@@ -260,13 +305,13 @@ function Header() {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-              <Link
-            to="/"
-            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-50 hover:bg-gray-500 hover:text-gray-900"
-            onClick={closeMobileMenu}
-          >
-            Accueil
-          </Link>
+                <Link
+                  to="/"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-50 hover:bg-gray-500 hover:text-gray-900"
+                  onClick={closeMobileMenu}
+                >
+                  Accueil
+                </Link>
                 <Disclosure as="div" className="-mx-3">
                   {({ open }) => (
                     <>
