@@ -2,6 +2,7 @@ import { Link, Outlet, useParams } from "react-router-dom";
 import races from "../../../data/races.json";
 import classes from "../../../data/classes.json";
 import backgrounds from "../../../data/backgrounds.json";
+import NotFound from "../../NotFound/NotFound.jsx";
 
 function CoreFeatures() {
   const { featureType } = useParams();
@@ -26,6 +27,9 @@ function CoreFeatures() {
       pageTitle = "Page";
   }
 
+  if (data.length === 0) {
+    return <NotFound />;
+  }
   return (
     <div className="bg-gray-900 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 text-center lg:px-8">

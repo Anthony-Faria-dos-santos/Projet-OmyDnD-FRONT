@@ -49,7 +49,7 @@ const NotFound = () => {
   };
 
   return (
-    <div className="bg-gray-900 m-2">
+    <div className="bg-gray-900 max-h-svh m-2">
       <main className="pb-10 mx-auto max-w-full sm:px-6 sm:pt-16 lg:px-8 flex flex-col place-items-center" >
         {/* Zone de texte indiquant l'échec critique si la valeur du dé est 1 */}
         {diceValue === 1 && <div className="bg-gray-400/75 m-2 bg-center p-2 rounded-lg">Echec critique ! Retentez votre chance !</div>}
