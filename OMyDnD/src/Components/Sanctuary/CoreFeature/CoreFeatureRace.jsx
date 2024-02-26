@@ -42,7 +42,7 @@ function CoreFeatureRace() {
       <main className="pb-10 mx-auto max-w-7xl sm:px-6 sm:pt-16 lg:px-8">
         <div className="mx-auto max-w-2xl lg:max-w-none">
           <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
-            <Tab.Group as="div" className="flex flex-col-reverse">
+            <Tab.Group as="div" className="flex flex-col-reverse m-2">
               <Tab.Panels className="aspect-h-1 aspect-w-1 w-full">
                 <Tab.Panel key={feature.index}>
                   <img
@@ -78,9 +78,9 @@ function CoreFeatureRace() {
                 
               <section aria-labelledby="details-heading">
                 <h2 id="details-heading" className="sr-only">
-                  Additional details
+                  Details additionnels
                 </h2>
-                <div className="mt-8">
+                <div className="m-2 mt-8">
                   {Object.entries(feature.traits).map(
                     ([chapterKey, chapter]) => (
                       <Disclosure key={chapterKey} as="div" className="mt-2">
@@ -97,9 +97,9 @@ function CoreFeatureRace() {
                 </div>
               </section>
               <h2 id="details-heading" className="sr-only">
-                  Additional details
+                 Informations supplémentaires
                 </h2>
-                <div className="lg:grid lg:items-start lg:gap-x-8 mt-6">
+                <div className="lg:grid lg:items-start lg:gap-x-8 m-4">
                   {Object.entries(feature.details).map(
                     ([chapterKey, chapter]) => (
                       <Disclosure key={chapterKey} as="div" className="mt-2">
@@ -142,7 +142,7 @@ function CoreFeatureRace() {
                 {Object.entries(feature.sub_races)
                   .filter(([key]) => key.startsWith("choice"))
                   .map(([key, value]) => (
-                    <Disclosure key={key} as="div" className="mt-2 bg-gray-800 rounded-lg">
+                    <Disclosure key={key} as="div" className="m-2 bg-gray-800 rounded-lg">
                       {({ open }) => (
                         <>
                           <Disclosure.Button className="flex justify-between w-full px-4 py-2 text-sm font-medium text-left text-gray-50 bg-gray-800 rounded-lg  hover:bg-gray-600  focus:outline-none focus-visible:ring focus-visible:ring-gray-500 focus-visible:ring-opacity-75">

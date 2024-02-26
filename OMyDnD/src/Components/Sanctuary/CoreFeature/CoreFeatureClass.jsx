@@ -39,7 +39,7 @@ function CoreFeatureClass() {
       <main className="pb-10 mx-auto max-w-7xl sm:px-6 sm:pt-16 lg:px-8">
         <div className="mx-auto max-w-2xl lg:max-w-none">
           <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
-            <Tab.Group as="div" className="flex flex-col-reverse">
+            <Tab.Group as="div" className="flex flex-col-reverse m-2">
               <Tab.Panels className="aspect-h-1 aspect-w-1 w-full">
                 <Tab.Panel key={feature.index}>
                   <img
@@ -184,11 +184,11 @@ function CoreFeatureClass() {
           <img
             src={feature.class_abilities.leveling_table}
             alt={feature.alt}
-            className="h-full w-full object-cover object-center sm:rounded-lg mt-6"
+            className="h-full w-full object-cover object-center sm:rounded-lg mx-auto"
           />
 
           {Object.keys(feature.tables).map((tableName) => (
-            <div key={tableName} className="bg-gray-800 text-gray-50 rounded-lg p-2 mt-6">
+            <div key={tableName} className="bg-gray-800 text-gray-50 rounded-lg p-2 m-2">
               <div className="bg-gray-900 rounded-lg p-2 m-1 font-semibold uppercase text-center text-xl">
                 {feature.tables[tableName].name}
               </div>
