@@ -8,7 +8,7 @@ const pages = [
         imageSrc:
         "/images/sanctuary/races-logo-2.png",
         imageAlt:
-        `C'est l'image d'un personnage de fantaisie de l'univers Donjon et Dragon fait par une IA`,
+        "Logo d'un rond en fer forgé qui entoure un arbre.",
     },
     {
         id: 2,
@@ -17,7 +17,7 @@ const pages = [
         imageSrc:
         "/images/sanctuary/classes-logo-2.png",
         imageAlt:
-        "",
+        "Logo de plusieurs types d'armes différentes qui s'entrecroisent.",
     },
     {
         id: 3,
@@ -26,7 +26,7 @@ const pages = [
         imageSrc:
         "/images/sanctuary/background-logo.png",
         imageAlt:
-        "",
+        "Logo d'un livre dont un losange ressort des pages.",
     },
     {
         id: 4,
@@ -35,7 +35,7 @@ const pages = [
         imageSrc:
         "/images/sanctuary/caracteristiques-logo.png",
         imageAlt:
-        "",
+        "Logo d'un cercle ailé divisé verticalement par le centre, bleu d'un côté et rouge de l'autre.",
     },
     {
         id: 5,
@@ -44,7 +44,7 @@ const pages = [
         imageSrc:
         "/images/sanctuary/equipements-logo-2.png",
         imageAlt:
-        "",
+        "Logo d'une armure en fer avec des épaulières ailées.",
     },
     {
         id: 6,
@@ -53,7 +53,7 @@ const pages = [
         imageSrc:
         "/images/sanctuary/alterations-logo.png",
         imageAlt:
-        "",
+        "Logo d'une potion à moitié verte et rouge.",
     },
     {
         id: 7,
@@ -62,7 +62,7 @@ const pages = [
         imageSrc:
         "/images/sanctuary/sorts-logo-3.png",
         imageAlt:
-        "",
+        "Logo d'un globe de verre enflammée.",
     },
     {
         id: 8,
@@ -71,7 +71,7 @@ const pages = [
         imageSrc:
         "/images/sanctuary/dons-logo-3.png",
         imageAlt:
-        "",
+        "Logo de deux mains jointes qui s'ouvrent sur une goutte d'eau.",
     }
     ];
     
