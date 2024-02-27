@@ -59,7 +59,8 @@ Header {
 //! ----------------- Styles pour les searchBar ----------------- !\\
 
 .resultStyle {
-  margin-top: 20px; /* Ajouter un peu d'espace entre la barre de recherche et le résultat */
+  margin-top: 5px; /* Ajouter un peu d'espace entre la barre de recherche et le résultat */
+  margin-bottom: 25px;
   padding: 50px; /* Ajouter un peu d'espace autour du résultat */
   background-image: url("/images/Vertical_Default_old_parchment.png"); /* Ajouter une image de fond */
   background-size: cover; /* Assure que l'image de fond couvre tout l'élément */
@@ -68,8 +69,7 @@ Header {
   max-width: 500px; /* Limiter la largeur du résultat */
   border-radius: 50px; /* Ajouter des coins arrondis */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ajouter une ombre */
-  position: absolute; /* Positionner le résultat par rapport à la barre de recherche */
-  top: 390px; /* Décaler juste en dessous de la barre de recherche */
+  position: relative; /* Positionner le résultat par rapport à la barre de recherche */
   text-align: center; /* Assure que le texte à l'intérieur est centré horizontalement */
   font-family: "cursive"; /*Changer la police d'écriture*/
 }
