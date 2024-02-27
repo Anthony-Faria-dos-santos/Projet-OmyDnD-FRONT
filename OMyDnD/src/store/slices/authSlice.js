@@ -67,6 +67,7 @@ const authSlice = createSlice({
     initialState, // État initial.
     reducers: {
         logout(state) { // Reducer pour la déconnexion.
+            localStorage.clear(); // Supprime toutes les données du localStorage.
             localStorage.removeItem("token"); // Supprime le token du localStorage.
             localStorage.removeItem("user"); // Supprime les informations utilisateur du localStorage.
             state.user = null; // Réinitialise l'utilisateur à null.

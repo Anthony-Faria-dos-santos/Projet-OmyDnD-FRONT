@@ -23,6 +23,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
 
   const handleLogout = () => {
     dispatch(logout());
+    localStorage.clear();
     localStorage.removeItem("token");
     setSidebarOpen(false);
     navigate("/signin");
