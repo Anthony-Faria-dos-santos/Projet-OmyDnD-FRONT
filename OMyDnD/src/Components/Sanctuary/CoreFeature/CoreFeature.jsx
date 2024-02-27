@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import CoreFeatureRace from "./CoreFeatureRace";
 import CoreFeatureClass from "./CoreFeatureClass";
 import CoreFeatureBackground from "./CoreFeatureBackground";
+import NotFound from '../../NotFound/NotFound.jsx';
 
 function CoreFeature() {
   const { featureType } = useParams();
@@ -14,7 +15,7 @@ function CoreFeature() {
     case 'backgrounds':
       return <CoreFeatureBackground />;
     default:
-      return <div>Feature not found</div>;
+      return <NotFound />;
   }
 }
 

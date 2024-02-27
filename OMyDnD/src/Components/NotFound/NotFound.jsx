@@ -47,23 +47,18 @@ const NotFound = () => {
       }
     }, 1000); // Désactive l'animation du dé après 1 seconde
   };
-
+  const backgroundImageUrl = images[currentIndex];
   return (
-    <div className="bg-gray-900 max-h-svh m-2">
-      <main className="pb-10 mx-auto max-w-full sm:px-6 sm:pt-16 lg:px-8 flex flex-col place-items-center" >
-        {/* Zone de texte indiquant l'échec critique si la valeur du dé est 1 */}
-        {diceValue === 1 && <div className="bg-gray-400/75 m-2 bg-center p-2 rounded-lg">Echec critique ! Retentez votre chance !</div>}
-        {/* Conteneur principal */}
-        <div className="bg-gray-900/75 m-2 bg-center p-2 rounded-lg">
-          <h1 className="text-3xl font-bold tracking-tight text-gray-50 ">Il semblerait que vous vous soyez trompé de porte ...</h1>
+    <div className="flex items-center justify-center h-screen w-screen overflow-hidden"
+      style={{ backgroundImage: `url(${backgroundImageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <main className="pb-10 max-w-full sm:px-6 lg:px-8 flex flex-col items-center justify-center bg-gray-900 bg-opacity-60 rounded-lg h-full w-full">
+        <div className="text-center mb-4">
+          <h1 className="text-xl sm:text-3xl font-bold text-gray-50 p-5">Il semblerait que vous vous soyez trompé de porte ...</h1>
         </div>
-        {/* Image aléatoire */}
-        <img src={`${images[currentIndex]}`} className="h-full w-3/5 object-cover object-center sm:rounded-lg mx-auto" />
-        {/* Bouton pour lancer le dé */}
-        <div className="bg-gray-400/75 m-2 bg-center p-2 rounded-lg">
-          <div className="text-gray-800 bg-transparent" onClick={rollDice}>Prendre la fuite ? (cliquez ci-dessous)</div>
-        </div>
-        {/* Conteneur du dé */}
+
+        <button onClick={rollDice} className="mb-5 mt-4 px-4 py-2 bg-gray-400 text-gray-800 rounded-lg focus:outline-none">
+          Prendre la fuite ? (cliquez ci-dessous)
+        </button>
         <div className="dice-container">
           {/* Dé avec animation */}
           <div className={`dice ${rolling ? 'rolling' : ''}`} onClick={rollDice}>
@@ -71,6 +66,11 @@ const NotFound = () => {
             <div className="dice-value">{diceValue !== null ? diceValue : 20}</div>
           </div>
         </div>
+        {diceValue === 1 && (
+          <div className="mt-4 bg-gray-400 text-gray-800 px-4 py-2 rounded-lg">
+            Echec critique ! Retentez votre chance !
+          </div>
+        )}
       </main>
     </div>
   );
