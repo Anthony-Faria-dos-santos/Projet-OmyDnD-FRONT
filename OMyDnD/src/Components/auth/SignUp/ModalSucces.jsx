@@ -28,7 +28,7 @@ function ModalSucces() {
                 dimmer={dimmer}
                 open={open}
                 onClose={() => dispatch({ type: 'CLOSE_MODAL' })}
-                className="modalCustom"
+                className="modalCustomNewUser"
             >
                 <ModalHeader className='text-center'>Bravo !! Enregistrement réussi</ModalHeader>
             </Modal>

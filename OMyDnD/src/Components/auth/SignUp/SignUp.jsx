@@ -22,7 +22,7 @@ function SignUp() {
     }
     if (password.length < 8) { // Si le mot de passe contient moins de 8 caractères.
       setError("Le mot de passe doit contenir au moins 8 caractères"); // Met à jour l'état des erreurs.
-      return false; 
+      return false;
     }
     return true;
   };
@@ -54,6 +54,8 @@ function SignUp() {
   };
 
   return (
+
+
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <h2 className="mt-10 text-center text-3xl font-bold leading-9 tracking-tight text-gray-50">
@@ -167,6 +169,7 @@ function SignUp() {
       </div>
       {showModal && <ModalSucces />} {/* Si showModal est vrai, affiche le composant ModalSucces */}
     </div>
+
   );
 }
 

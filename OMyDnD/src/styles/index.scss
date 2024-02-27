@@ -56,6 +56,17 @@ Header {
     1px 1px 0 #000; /* Ombres portées pour créer l'effet de contour */
 }
 
+//! ----------------- Styles pour la modale de création d'utilisateur ------------- !\\
+
+.modalCustomNewUser {
+  text-align: center !important;
+  background-color: #4b5563 !important; /* Fond gris */
+  color: white !important; /* Texte en blanc */
+  border-radius: 10px !important; /* Coins arrondis */
+  padding: 20px !important; /* Espacement intérieur */
+  font-family: cursive !important; /* Police cursive */
+}
+
 //! ----------------- Styles pour les searchBar ----------------- !\\
 
 .resultStyle {
