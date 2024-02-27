@@ -35,6 +35,7 @@ function CoreFeatureBackground() {
               <img
                 src={feature.imageUrl}
                 alt={feature.alt}
+                aria-label={feature.aria}
                 className="h-full w-full object-cover object-center sm:rounded-lg"
               />
             </Tab.Panel>
@@ -73,7 +74,7 @@ function CoreFeatureBackground() {
               </div>
 
               <div className="mt-1 p-1">
-                <h3 className="sr-only">Description</h3>
+                <h3 className="sr-only">Description</h3>Logo de deux mains jointes qui s&apos;ouvrent sur une goutte d&apos;eau.
                 <div className="p-1 bg-gray-600 font-semibold rounded-lg text-gray-50">Outils maîtrisés</div>
                 <p className="text-md p-2 text-gray-50 text-justify">
                 {feature.mastered_tools}

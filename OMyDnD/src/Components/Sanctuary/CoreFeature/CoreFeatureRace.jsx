@@ -48,6 +48,7 @@ function CoreFeatureRace() {
                   <img
                     src={feature.imageUrl}
                     alt={feature.alt}
+                    aria-label={feature.aria}
                     className="h-full w-full object-cover object-center sm:rounded-lg"
                   />
                 </Tab.Panel>

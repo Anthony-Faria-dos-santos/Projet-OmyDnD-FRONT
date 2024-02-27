@@ -23,6 +23,7 @@ import Contact from "../Contact/index.jsx";
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { initializeAuth } from '../../store/slices/authSlice.js';
+import ScrollToTop from '../ScrollToTop/index.jsx';
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-1">
@@ -48,6 +50,7 @@ function App() {
             <Route path="/sanctuary/spells" element={<AttributeSpell />} />
             <Route path="/sanctuary/skills" element={<AttributeSkill />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/search" element={<Search />} />
             <Route
               path="/sanctuary/:featureType/:featureId"
               element={<CoreFeature />}
@@ -76,9 +79,15 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route path="/search" element={<Search />} />
-            <Route path="*" element={<NotFound />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />            
+            <Route path="*" element={<NotFound />} />            
           </Routes>
         </main>
         <Footer />

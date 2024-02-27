@@ -13,6 +13,7 @@ import {
 import TableCharacters from "./TableCharacters.jsx";
 import TableSkills from "./TableSkills.jsx";
 import Loader from "../../Loader/index.jsx";
+import { Button, Header, Icon, Modal } from 'semantic-ui-react'
 
 function CharacterSheet() {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ function CharacterSheet() {
   const [bonusHealth, setBonusHealth] = useState('');
   const [experience, setExperience] = useState('');
   const [alignment, setAlignment] = useState('');
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     if (characterId && userId) {
@@ -62,7 +64,7 @@ function CharacterSheet() {
   };
 
   const handleDeleteCharacter = (characterId) => {
-    if (window.confirm("Êtes-vous sûr de vouloir supprimer ce personnage ?")) {
+    if (modalOpen) {
       dispatch(deleteCharacter({ userId, characterId }))
         .unwrap()
         .then(() => {
@@ -585,7 +587,7 @@ function CharacterSheet() {
 
             <div className="mt-8 flex items-center justify-center gap-x-6">
               <button
-                onClick={() => handleDeleteCharacter(character.id)}
+                onClick={() => setModalOpen(true)}
                 className="rounded-md bg-gray-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-500"
               >
                 Supprimer le personnage
@@ -593,6 +595,28 @@ function CharacterSheet() {
             </div>
           </div>
         </div>
+        <Modal
+        basic
+        onClose={() => setModalOpen(false)}
+        onOpen={() => setModalOpen(true)}
+        open={modalOpen}
+        size='small'>
+        <Header icon>
+          <Icon name='archive' />
+          Supprimer le personnage
+        </Header>
+        <Modal.Content>
+          <p>Êtes-vous sûr de vouloir supprimer ce personnage ?</p>
+        </Modal.Content>
+        <Modal.Actions>
+          <Button basic color='red' inverted onClick={() => setModalOpen(false)}>
+            <Icon name='remove' /> Non
+          </Button>
+          <Button color='green' inverted onClick={() => handleDeleteCharacter(character.id)}>
+            <Icon name='checkmark' /> Oui
+          </Button>
+        </Modal.Actions>
+      </Modal>
       </div>
     </form>
   );

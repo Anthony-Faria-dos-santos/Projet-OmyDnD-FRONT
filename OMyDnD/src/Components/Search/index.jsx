@@ -141,7 +141,7 @@ function Search() {
   };
 
   return (
-    <div style={containerStyle}>
+    <div className="containerStyle">
       {/* Barre de recherche pour les sorts */}
       <input
         type="search"
@@ -151,13 +151,13 @@ function Search() {
         autoComplete="off"
         onChange={(e) => setQuerySpell(e.target.value)}
         onFocus={() => setShowDropdownSpell(true)}
-        style={inputStyle}
+        className="inputStyle"
       />
 
       {/* Menu déroulant pour les sorts */}
       {showDropdownSpell && querySpell && spellsData
         .filter((spell) => spell.name.toLowerCase().includes(querySpell.toLowerCase())).length > 0 && (
-          <ul style={dropdownStyle}>
+          <ul className="dropdownStyle">
             {spellsData
               .filter((spell) =>
                 spell.name.toLowerCase().includes(querySpell.toLowerCase())
@@ -167,7 +167,7 @@ function Search() {
                 <li
                   key={index}
                   onClick={() => handleSelectSpell(spell)}
-                  style={itemStyle}
+                  className="itemStyle"
                 >
                   {spell.name}
                 </li>
@@ -177,8 +177,8 @@ function Search() {
 
       {/* Affichage du sort sélectionné  */}
       {selectedSpell && (
-        <div style={resultStyle}>
-          <button onClick={handleCloseResult} style={closeButtonStyle}>
+        <div className="resultStyle">
+          <button onClick={handleCloseResult} className="closeButtonStyle">
             X
           </button>
           <h2 style={{ fontWeight: "bold", textAlign: "center" }}>
@@ -201,13 +201,13 @@ function Search() {
         autoComplete="off"
         onChange={(e) => setQueryClass(e.target.value)}
         onFocus={() => setShowDropdownClass(true)}
-        style={inputStyle}
+        className="inputStyle"
       />
 
       {/* Menu déroulant pour les classes */}
       {showDropdownClass && queryClass && classesData
         .filter((cls) => cls.name.toLowerCase().includes(queryClass.toLowerCase())).length > 0 && (
-          <ul style={dropdownStyle}>
+          <ul className="dropdownStyle">
             {classesData
               .filter((cls) =>
                 cls.name.toLowerCase().includes(queryClass.toLowerCase())
@@ -217,7 +217,7 @@ function Search() {
                 <li
                   key={index}
                   onClick={() => handleSelectClass(cls)}
-                  style={itemStyle}
+                  className="itemStyle"
                 >
                   {cls.name}
                 </li>
@@ -233,13 +233,13 @@ function Search() {
         autoComplete="off"
         onChange={(e) => setQueryRace(e.target.value)}
         onFocus={() => setShowDropdownRace(true)}
-        style={inputStyle}
+        className="inputStyle"
       />
 
       {/* Menu déroulant pour les races */}
       {showDropdownRace && queryRace && raceData
         .filter((race) => race.name.toLowerCase().includes(queryRace.toLowerCase())).length > 0 && (
-          <ul style={dropdownStyle}>
+          <ul className="dropdownStyle">
             {raceData
               .filter((race) =>
                 race.name.toLowerCase().includes(queryRace.toLowerCase())
@@ -249,7 +249,7 @@ function Search() {
                 <li
                   key={index}
                   onClick={() => handleSelectRace(race)}
-                  style={itemStyle}
+                  className="itemStyle"
                 >
                   {race.name}
                 </li>
@@ -265,13 +265,13 @@ function Search() {
         autoComplete="off"
         onChange={(e) => setQueryAbility(e.target.value)}
         onFocus={() => setShowDropdownAbility(true)}
-        style={inputStyle}
+        className="inputStyle"
       />
 
       {/* Menu déroulant pour les abilities */}
       {showDropdownAbility && queryAbility && abilitiesData
         .filter((ability) => ability.name.toLowerCase().includes(queryAbility.toLowerCase())).length > 0 && (
-          <ul style={dropdownStyle}>
+          <ul className="dropdownStyle">
             {abilitiesData
               .filter((ability) =>
                 ability.name.toLowerCase().includes(queryAbility.toLowerCase())
@@ -281,7 +281,7 @@ function Search() {
                 <li
                   key={index}
                   onClick={() => handleSelectAbility(ability)}
-                  style={itemStyle}
+                  className="itemStyle"
                 >
                   {ability.name}
                 </li>
@@ -299,13 +299,13 @@ function Search() {
         autoComplete="off"
         onChange={(e) => setQueryBackground(e.target.value)}
         onFocus={() => setShowDropdownBackground(true)}
-        style={inputStyle}
+        className="inputStyle"
       />
 
       {/* Menu déroulant pour les backgrounds */}
       {showDropdownBackground && queryBackground && backgroundData
         .filter((background) => background.name.toLowerCase().includes(queryBackground.toLowerCase())).length > 0 && (
-          <ul style={dropdownStyle}>
+          <ul className="dropdownStyle">
             {backgroundData
               .filter((background) =>
                 background.name
@@ -317,7 +317,7 @@ function Search() {
                 <li
                   key={index}
                   onClick={() => handleSelectBackground(background)}
-                  style={itemStyle}
+                  className="itemStyle"
                 >
                   {background.name}
                 </li>
@@ -333,13 +333,13 @@ function Search() {
         autoComplete="off"
         onChange={(e) => setQueryCondition(e.target.value)}
         onFocus={() => setShowDropdownCondition(true)}
-        style={inputStyle}
+        className="inputStyle"
       />
 
       {/* Menu déroulant pour les conditions */}
       {showDropdownCondition && queryCondition && conditionsData
         .filter((condition) => condition.name.toLowerCase().includes(queryCondition.toLowerCase())).length > 0 && (
-          <ul style={dropdownStyle}>
+          <ul className="dropdownStyle">
             {conditionsData
               .filter((condition) =>
                 condition.name
@@ -351,7 +351,7 @@ function Search() {
                 <li
                   key={index}
                   onClick={() => handleSelectCondition(condition)}
-                  style={itemStyle}
+                  className="itemStyle"
                 >
                   {condition.name}
                 </li>
@@ -369,13 +369,13 @@ function Search() {
         autoComplete="off"
         onChange={(e) => setQueryTalent(e.target.value)}
         onFocus={() => setShowDropdownTalent(true)}
-        style={inputStyle}
+        className="inputStyle"
       />
 
       {/* Menu déroulant pour les talents */}
       {showDropdownTalent && queryTalent && talentsData
         .filter((talent) => talent.name.toLowerCase().includes(queryTalent.toLowerCase())).length > 0 && (
-          <ul style={dropdownStyle}>
+          <ul className="dropdownStyle">
             {talentsData
               .filter((talent) =>
                 talent.name.toLowerCase().includes(queryTalent.toLowerCase())
@@ -385,7 +385,7 @@ function Search() {
                 <li
                   key={index}
                   onClick={() => handleSelectTalent(talent)}
-                  style={itemStyle}
+                  className="itemStyle"
                 >
                   {talent.name}
                 </li>
@@ -395,79 +395,5 @@ function Search() {
     </div>
   );
 }
-
-// Styles réutilisés pour les différents éléments de notre composant
-
-const containerStyle = {
-  display: "flex", // Organiser les éléments horizontalement
-  flexDirection: "column", // Organiser les éléments verticalement
-  alignItems: "center", // Centrer horizontalement
-  justifyContent: "center", // Centrer verticalement
-  width: "100%", // Assurer que le conteneur a la même largeur que l'écran
-  marginTop: "50px", // Ajouter un peu d'espace en haut
-  position: "relative", // Positionner les éléments enfants par rapport à ce conteneur
-  fontFamily: "sans-serif", // Changer la police d'écriture
-};
-
-const closeButtonStyle = {
-  position: "absolute", // Positionner le bouton par rapport au résultat
-  top: "30px", // Décaler le bouton vers le bas
-  justifyContent: "center", // Centrer horizontalement
-  border: "none", // Supprimer la bordure
-  background: "transparent", // Rendre le bouton transparent
-  cursor: "pointer", // Changer le curseur pour indiquer que l'élément est cliquable
-  fontWeight: "bold", // Mettre en gras
-  fontSize: "20px", // Augmenter la taille de la croix
-  fontFamily: "great vibes", // Changer la police d'écriture
-};
-
-const inputStyle = {
-  padding: "10px", // Ajouter un peu d'espace autour de la barre de recherche
-  width: "100%", // Assure que la barre de recherche a la même largeur que le conteneur
-  maxWidth: "500px", // Limiter la largeur de la barre de recherche
-  borderRadius: "8px", // Ajouter des coins arrondis
-  border: "1px solid #ccc", // Ajouter une bordure autour de la barre de recherche
-  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Ajouter une ombre
-  marginBottom: "20px", // Ajouter un peu d'espace entre chaque barre de recherche
-};
-
-const dropdownStyle = {
-  listStyleType: "none", // Supprimer les puces
-  padding: 0, // Supprimer le padding par défaut
-  cursor: "pointer", // Changer le curseur pour indiquer que l'élément est cliquable
-  backgroundColor: "#f0f0f0", // Ajouter une couleur de fond
-  border: "1px solid #ccc", // Ajouter une bordure autour de la liste déroulante
-  width: "100%", // Assurer que la liste déroulante a la même largeur que la barre de recherche
-  maxWidth: "500px", // Limiter la largeur de la liste déroulante
-  position: "absolute", // Positionner la liste déroulante par rapport à la barre de recherche
-  zIndex: 1000, // Assurer que la liste déroulante est au-dessus de tout le reste
-  top: "0%", // Décaler juste en dessous de la barre de recherche
-  left: "50%", // Centrer la liste déroulante  
-  maxHeight: "600px", // Limiter la hauteur de la liste déroulante
-  overflowY: "auto", // Ajouter une barre de défilement si nécessaire
-  borderRadius: "8px", // Ajouter des coins arrondis
-  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",  // Ajouter une ombre
-};
-
-const itemStyle = {
-  padding: "10px", // Ajouter un peu d'espace autour de chaque élément
-  borderBottom: "1px solid #ddd", // Ajouter une bordure en bas de chaque élément
-};
-
-const resultStyle = {
-  marginTop: "20px", // Ajouter un peu d'espace entre la barre de recherche et le résultat    
-  padding: "50px", // Ajouter un peu d'espace autour du résultat
-  backgroundImage: "url('/images/Vertical_Default_old_parchment.png')", // Ajouter une image de fond
-  backgroundSize: "cover", // Assure que l'image de fond couvre tout l'élément
-  backgroundPosition: "center", // Centre l'image dans l'élément  
-  width: "100%", // Assure que le résultat a la même largeur que la barre de recherche
-  maxWidth: "500px", // Limiter la largeur du résultat
-  borderRadius: "50px", // Ajouter des coins arrondis
-  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Ajouter une ombre
-  position: "absolute", // Positionner le résultat par rapport à la barre de recherche
-  top: "390px", // Décaler juste en dessous de la barre de recherche
-  fontFamily: "Cursive", // Changer la police d'écriture
-  textAlign: "center", // Assure que le texte à l'intérieur est centré horizontalement
-};
 
 export default Search;

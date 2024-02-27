@@ -45,6 +45,7 @@ function CoreFeatureClass() {
                   <img
                     src={feature.imageUrl}
                     alt={feature.alt}
+                    aria-label={feature.aria}
                     className="h-full w-full object-cover object-center sm:rounded-lg"
                   />
                 </Tab.Panel>
@@ -183,7 +184,7 @@ function CoreFeatureClass() {
 
           <img
             src={feature.class_abilities.leveling_table}
-            alt={feature.alt}
+            alt={feature.alt_abilities}
             className="h-full w-full object-cover object-center sm:rounded-lg mx-auto"
           />
 

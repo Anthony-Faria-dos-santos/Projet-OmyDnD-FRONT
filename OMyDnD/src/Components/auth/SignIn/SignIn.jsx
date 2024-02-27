@@ -11,10 +11,18 @@ function SignIn() {
   const { error, isAuthenticated, status } = useSelector((state) => state.auth); // Extrait l'erreur, l'état d'authentification et le statut de l'état global Redux.
   const navigate = useNavigate();  
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(signInUser({ email, password }));
-    navigate("/");
+    try {
+      const response = await dispatch(signInUser({ email, password }));
+      if (signInUser.fulfilled.match(response)) {
+        navigate("/");
+      } else {
+        console.error("Échec de la connexion");
+      }
+    } catch (error) {
+      console.error("Erreur lors de la tentative de connexion", error);
+    }
   };
 
   useEffect(() => {
