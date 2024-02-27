@@ -1,102 +1,139 @@
-@import './reset';
-@import './vars';
+@import "./reset";
+@import "./vars";
 
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 body {
-    background: #111827 !important;
+  background: #111827 !important;
 }
 
 Header {
-    background: #111827 !important;
+  background: #111827 !important;
 }
 
 .custom-color {
-    background: #4B5563 !important;
+  background: #4b5563 !important;
 
-    &:hover {
-        background: #6f7c8d !important;
-    }
+  &:hover {
+    background: #6f7c8d !important;
+  }
 }
 
 .sidebar-border {
-    border-right: 1px solid #111827;
-    box-shadow: 0 0 10px 0 rgba(73, 14, 233, 0.151);
+  border-right: 1px solid #111827;
+  box-shadow: 0 0 10px 0 rgba(73, 14, 233, 0.151);
 }
 
 .description-clamp {
-    display: -webkit-box;
-    -webkit-line-clamp: 8;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .connexion-color {
-    color: #009C95 !important;
+  color: #009c95 !important;
 }
 
 .custom-border {
-    border: 1px solid #ffffff;    
+  border: 1px solid #ffffff;
 }
 
+//! ----------------- Styles pour la modale Contact ------------- !\\
 
 .modalCustom {
-    text-align: center !important;
-    background-color: #4B5563 !important; /* Fond gris */
-    color: white !important; /* Texte en blanc */
-    border-radius: 10px !important; /* Coins arrondis */
-    padding: 20px !important; /* Espacement intérieur */    
-    font-family: cursive !important; /* Police cursive */
-    font-size: larger !important; /* Taille de la police */
-    text-shadow:
-        -1px -1px 0 #000,  
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000; /* Ombres portées pour créer l'effet de contour */
+  text-align: center !important;
+  background-color: #4b5563 !important; /* Fond gris */
+  color: white !important; /* Texte en blanc */
+  border-radius: 10px !important; /* Coins arrondis */
+  padding: 20px !important; /* Espacement intérieur */
+  font-family: cursive !important; /* Police cursive */
+  font-size: larger !important; /* Taille de la police */
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000; /* Ombres portées pour créer l'effet de contour */
 }
 
+//! ----------------- Styles pour les searchBar ----------------- !\\
+
+.resultStyle {
+  margin-top: 20px; /* Ajouter un peu d'espace entre la barre de recherche et le résultat */
+  padding: 50px; /* Ajouter un peu d'espace autour du résultat */
+  background-image: url("/images/Vertical_Default_old_parchment.png"); /* Ajouter une image de fond */
+  background-size: cover; /* Assure que l'image de fond couvre tout l'élément */
+  background-position: center; /* Centre l'image dans l'élément */
+  width: 100%; /* Assure que le résultat a la même largeur que la barre de recherche */
+  max-width: 500px; /* Limiter la largeur du résultat */
+  border-radius: 50px; /* Ajouter des coins arrondis */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ajouter une ombre */
+  position: absolute; /* Positionner le résultat par rapport à la barre de recherche */
+  top: 390px; /* Décaler juste en dessous de la barre de recherche */
+  text-align: center; /* Assure que le texte à l'intérieur est centré horizontalement */
+  font-family: "cursive"; /*Changer la police d'écriture*/
+}
+
+.itemStyle {
+  padding: 10px; /* Ajouter un peu d'espace autour de chaque élément */
+  border-bottom: 1px solid #ddd; /* Ajouter une bordure en bas de chaque élément */
+}
+
+.dropdownStyle {
+  list-style-type: none; /* Supprimer les puces */
+  padding: 0; /* Supprimer le padding par défaut */
+  cursor: pointer; /* Changer le curseur pour indiquer que l'élément est cliquable */
+  background-color: #f0f0f0; /* Ajouter une couleur de fond */
+  border: 1px solid #ccc; /* Ajouter une bordure autour de la liste déroulante */
+  width: 100%; /* Assurer que la liste déroulante a la même largeur que la barre de recherche */
+  max-width: 500px; /* Limiter la largeur de la liste déroulante */
+  position: absolute; /* Positionner la liste déroulante par rapport à la barre de recherche */
+  z-index: 1000; /* Assurer que la liste déroulante est au-dessus de tout le reste */
+  top: 0%; /* Décaler juste en dessous de la barre de recherche */
+  left: 50%; /* Centrer la liste déroulante */
+  max-height: 600px; /* Limiter la hauteur de la liste déroulante */
+  overflow-y: auto; /* Ajouter une barre de défilement si nécessaire */
+  border-radius: 8px; /* Ajouter des coins arrondis */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ajouter une ombre */
+}
+
+.inputStyle {
+  padding: 10px; /* Ajouter un peu d'espace autour de la barre de recherche */
+  width: 100%; /* Assure que la barre de recherche a la même largeur que le conteneur */
+  max-width: 500px; /* Limiter la largeur de la barre de recherche */
+  border-radius: 8px; /* Ajouter des coins arrondis */
+  border: 1px solid #ccc; /* Ajouter une bordure autour de la barre de recherche */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ajouter une ombre */
+  margin-bottom: 20px; /* Ajouter un peu d'espace entre chaque barre de recherche */
+}
+
+.closeButtonStyle {
+  position: absolute; /* Positionner le bouton par rapport au résultat */
+  top: 30px; /* Décaler le bouton vers le bas */
+  justify-content: center; /* Centrer horizontalement */
+  border: none; /* Supprimer la bordure */
+  background: transparent; /* Rendre le bouton transparent */
+  cursor: pointer; /* Changer le curseur pour indiquer que l'élément est cliquable */
+  font-weight: bold; /* Mettre en gras */
+  font-size: 20px; /* Augmenter la taille de la croix */
+  font-family: "great vibes"; /* Changer la police d'écriture */
+}
+
+.containerStyle {
+  display: flex; /* Organiser les éléments horizontalement */
+  flex-direction: column; /* Organiser les éléments verticalement */
+  align-items: center; /* Centrer horizontalement */
+  justify-content: center; /* Centrer verticalement */
+  width: 100%; /* Assurer que le conteneur a la même largeur que l'écran */
+  margin-top: 50px; /* Ajouter un peu d'espace en haut */
+  position: relative; /* Positionner les éléments enfants par rapport à ce conteneur */
+  font-family: sans-serif; /* Changer la police d'écriture */
+}
+
+//! ----------------- MediaQuery ----------------- !\\
 
 @media (min-width: 640px) and (max-width: 1024px) {
-    .custom-link {
-        display: none !important;
-    }
-}
-
-/* Hide the default file input button */
-input[type="file"] {
-    display: none;
-}
-
-/* Style the container of the file input */
-.file-input-container {
-    position: relative;
-    display: inline-block;
-    overflow: hidden;
-}
-
-/* Style the custom button to mimic the file input button */
-.custom-file-input {
-    background-color: #3498db;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/* Style the label for the custom file input */
-.custom-file-label {
-    display: block;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    padding: 5px 10px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
+  .custom-link {
+    display: none !important;
+  }
 }
