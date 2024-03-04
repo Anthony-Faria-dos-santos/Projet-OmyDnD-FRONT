@@ -1,7 +1,6 @@
 // Importation des outils nécessaires depuis Redux Toolkit et Axios pour les requêtes HTTP.
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { decodeToken } from "../../utils/decodeJwt.js"; // Importe la fonction de décodage du token.
 
 // Initialisation de l'état pour la gestion de l'authentification.
 const initialState = {
@@ -80,16 +79,6 @@ const authSlice = createSlice({
             const storedToken = localStorage.getItem("token");
             const storedUserInfo = localStorage.getItem("userInfo");
             if (storedToken) {
-                const decoded = decodeToken(storedToken); // Décodage du token.
-                if (!decoded) {
-                    localStorage.removeItem("token");
-                    localStorage.removeItem("userInfo");
-                    state.isAuthenticated = false;
-                    state.token = null;
-                } else {
-                    state.isAuthenticated = true;
-                    state.token = storedToken;
-                }
                 state.token = storedToken;
                 state.isAuthenticated = true;
             }
@@ -120,25 +109,19 @@ const authSlice = createSlice({
             })
             // Gère l'état après une connexion réussie.
             .addCase(signInUser.fulfilled, (state, action) => {
-                const decoded = decodeToken(action.payload.token); // Décodage du token.
-                if (!decoded) {
-                    state.status = "failed";
-                    state.error = "Token invalide ou expiré";
-                } else {
-                    state.user = {                      // Met à jour l'utilisateur.
-                        id: action.payload.id,
-                        slug: action.payload.slug,
-                        pseudo: action.payload.pseudo,
-                        email: action.payload.email,
-                    };
-                    state.token = action.payload.token; // Met à jour le token.
-                    state.isAuthenticated = true; // Indique qu'un utilisateur est connecté.
-                    state.status = "succeeded"; // Indique que l'action a réussi.
-                    state.error = null; // Réinitialise l'erreur.
+                state.user = {                      // Met à jour l'utilisateur.
+                    id: action.payload.id,
+                    slug: action.payload.slug,
+                    pseudo: action.payload.pseudo,
+                    email: action.payload.email,
+                };
+                state.token = action.payload.token; // Met à jour le token.
+                state.isAuthenticated = true; // Indique qu'un utilisateur est connecté.
+                state.status = "succeeded"; // Indique que l'action a réussi.
+                state.error = null; // Réinitialise l'erreur.
 
-                    localStorage.setItem("token", action.payload.token); // Stocke le token dans le localStorage.
-                    localStorage.setItem("userInfo", JSON.stringify(state.user)); // Stocke les informations utilisateur dans le localStorage.
-                }
+                localStorage.setItem("token", action.payload.token); // Stocke le token dans le localStorage.
+                localStorage.setItem("userInfo", JSON.stringify(state.user)); // Stocke les informations utilisateur dans le localStorage.
             })
             // Gère l'état après une connexion échouée.
             .addCase(signInUser.rejected, (state, action) => {
