@@ -10,7 +10,7 @@ function Footer() {
       <div className="bg-gray-900  p-2">
 
         <p className="text-xs sm:text-base text-gray-50 text-center">
-        Atlas des Royaumes oubliés - <Link to=".." relative="path">Mentions légles</Link>
+        Atlas des Royaumes oubliés - <Link to="/legals" relative="path">Mentions légles</Link>
         </p>
 
         <p className="text-xs sm:text-base text-gray-50 text-center">
