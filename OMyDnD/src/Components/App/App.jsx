@@ -25,12 +25,24 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { initializeAuth } from '../../store/slices/authSlice.js';
 import ScrollToTop from '../ScrollToTop/index.jsx';
+import { decodeToken } from '../../utils/decodeJwt.js';
+import { logout } from '../../store/slices/authSlice.js';
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(initializeAuth());
+    const interval = setInterval(() => { // Vérification de la validité du token toutes les minutes.
+      const token = localStorage.getItem("token"); 
+      if (token) {
+        const decoded = decodeToken(token);
+        if (!decoded) {
+          dispatch(logout());
+        }
+      }
+    }, 60000);
+    return () => clearInterval(interval);
 }, [dispatch]);
 
   return (
