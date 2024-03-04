@@ -35,6 +35,12 @@ function CharacterSheet() {
   const [experience, setExperience] = useState('');
   const [alignment, setAlignment] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
+  const [strength, setStrength] = useState('');
+  const [dexterity, setDexterity] = useState('');
+  const [constitution, setConstitution] = useState('');
+  const [inteligence, setInteligence] = useState('');
+  const [wisdom, setWisdom] = useState('');
+  const [charisma, setCharisma] = useState('');
 
   useEffect(() => {
     if (characterId && userId) {
@@ -52,6 +58,12 @@ function CharacterSheet() {
       setBonusHealth(character.bonus_health || '');
       setExperience(character.experience || '');
       setAlignment(character.alignment || '');
+      setStrength(character.strength || '');
+      setDexterity(character.dexterity || '');
+      setConstitution(character.constitution || '');
+      setInteligence(character.inteligence || '');
+      setWisdom(character.wisdom || '');
+      setCharisma(character.charisma || '');
     }
   }, [character]);
 
@@ -88,6 +100,12 @@ function CharacterSheet() {
       experience: parseInt(experience),
       inspiration: parseInt(inspiration),
       alignment,
+      strength: parseInt(strength),
+      dexterity: parseInt(dexterity),
+      constitution: parseInt(constitution),
+      inteligence: parseInt(inteligence),
+      wisdom: parseInt(wisdom),
+      charisma: parseInt(charisma),
     };
     try {
       await dispatch(updateCharacter({
@@ -131,15 +149,15 @@ function CharacterSheet() {
                       Force
                     </label>
                     <div className="mt-1 mb-1">
-                      <div className="flex rounded-md bg-blue-500 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
+                      <div className="flex rounded-md bg-green-500 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
                         <input
                           type="text"
-                          readOnly
                           name="strength"
                           id="strength"
                           autoComplete="strength"
-                          className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
-                          defaultValue={character?.strength || ""}
+                          className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-black focus:ring-0 sm:text-sm sm:leading-6"
+                          value={strength}
+                          onChange={(e) => setStrength(e.target.value)}
                         />
                       </div>
                     </div>
@@ -178,15 +196,15 @@ function CharacterSheet() {
                       Dext..
                     </label>
                     <div className="mt-1 mb-1">
-                      <div className="flex rounded-md bg-blue-500 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
+                      <div className="flex rounded-md bg-green-500 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
                         <input
                           type="text"
-                          readOnly
                           name="dexterity"
                           id="dexterity"
                           autoComplete="dexterity"
-                          className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
-                          defaultValue={character?.dexterity || ""}
+                          className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-black focus:ring-0 sm:text-sm sm:leading-6"
+                          value={dexterity}
+                          onChange={(e) => setDexterity(e.target.value)}
                         />
                       </div>
                     </div>
@@ -225,15 +243,15 @@ function CharacterSheet() {
                       Const..
                     </label>
                     <div className="mt-1 mb-1">
-                      <div className="flex rounded-md bg-blue-500 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
+                      <div className="flex rounded-md bg-green-500 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
                         <input
                           type="text"
-                          readOnly
                           name="constitution"
                           id="constitution"
                           autoComplete="constitution"
-                          className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
-                          defaultValue={character?.constitution || ""}
+                          className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-black focus:ring-0 sm:text-sm sm:leading-6"
+                          value={constitution}
+                          onChange={(e) => setConstitution(e.target.value)}
                         />
                       </div>
                     </div>
@@ -272,15 +290,15 @@ function CharacterSheet() {
                       intel..
                     </label>
                     <div className="mt-1 mb-1">
-                      <div className="flex rounded-md bg-blue-500 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
+                      <div className="flex rounded-md bg-green-500 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
                         <input
                           type="text"
-                          readOnly
                           name="inteligence"
                           id="inteligence"
                           autoComplete="inteligence"
-                          className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
-                          defaultValue={character?.inteligence || ""}
+                          className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-black focus:ring-0 sm:text-sm sm:leading-6"
+                          value={inteligence}
+                          onChange={(e) => setInteligence(e.target.value)}
                         />
                       </div>
                     </div>
@@ -319,15 +337,15 @@ function CharacterSheet() {
                       Sage..
                     </label>
                     <div className="mt-1 mb-1">
-                      <div className="flex rounded-md bg-blue-500 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
+                      <div className="flex rounded-md bg-green-500 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
                         <input
                           type="text"
-                          readOnly
                           name="wisdom"
                           id="wisdom"
                           autoComplete="wisdom"
-                          className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
-                          defaultValue={character?.wisdom || ""}
+                          className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-black focus:ring-0 sm:text-sm sm:leading-6"
+                          value={wisdom}
+                          onChange={(e) => setWisdom(e.target.value)}
                         />
                       </div>
                     </div>
@@ -366,15 +384,15 @@ function CharacterSheet() {
                       Char..
                     </label>
                     <div className="mt-1 mb-1">
-                      <div className="flex rounded-md bg-blue-500 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
+                      <div className="flex rounded-md bg-green-500 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500">
                         <input
                           type="text"
-                          readOnly
                           name="charisma"
                           id="charisma"
                           autoComplete="charisma"
-                          className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
-                          defaultValue={character?.charisma || ""}
+                          className="w-full text-center flex-1 border-0 bg-transparent py-1.5 pl-1 text-black focus:ring-0 sm:text-sm sm:leading-6"
+                          value={charisma}
+                          onChange={(e) => setCharisma(e.target.value)}
                         />
                       </div>
                     </div>
