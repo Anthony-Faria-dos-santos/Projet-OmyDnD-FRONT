@@ -20,6 +20,7 @@ import Profile from "../UserPanel/Profil"
 import NotFound from "../NotFound/NotFound.jsx";
 import Footer from "../Footer/index.jsx";
 import Contact from "../Contact/index.jsx";
+import Legals from "../Legals/index.jsx";
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { initializeAuth } from '../../store/slices/authSlice.js';
@@ -50,6 +51,7 @@ function App() {
             <Route path="/sanctuary/spells" element={<AttributeSpell />} />
             <Route path="/sanctuary/skills" element={<AttributeSkill />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/legals" element={<Legals />} />
             <Route path="/search" element={<Search />} />
             <Route
               path="/sanctuary/:featureType/:featureId"
